@@ -15,7 +15,8 @@ void InitialiserEcran()
 // Terminer la console ncurses
 void TerminerEcran()
 {
-    // A CODER, cf. cours LPP2 ncurses
+    // Terminer l'écran en mode ncurses
+    endwin();
 }
 
 // Efface l'ecran de la console ncurses
