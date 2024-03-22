@@ -41,7 +41,9 @@ void RetourALaLigne()
 // - la chaine de caracteres a afficher (pointeur)
 void AfficherTexteIndenteSansRetour(char *texteAAfficher)
 {
-    // A CODER, cf. cours LPP2 ncurses
+    // Afficher Texte avec indentation
+    printw("\t%s", texteAAfficher);
+    refresh(); // On rafraichit l'écran pour être sûr du changement
 }
 
 // Affiche une chaine de caracteres a la position courante dans la console ncurses
