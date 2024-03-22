@@ -92,7 +92,12 @@ void AfficherNombreSansRetour(int nombreAAfficher)
 // - le nombre de fois qu'il faut le repeter
 void AfficherCharSpecialSansRetour(unsigned char caractereAAfficher, int repetition)
 {
-    // A CODER, cf. cours LPP2 ncurses
+    // Afficher caractère spécial x fois sans retour à la ligne
+    for (int compteur = 0; compteur < repetition; compteur++)
+    {
+        addch(caractereAAfficher);
+    }
+    refresh(); // On rafraichit l'écran pour être sûr du changement
 }
 
 // Affiche dans la console ncurses un texte dans un cadre indente d'une tabulation
