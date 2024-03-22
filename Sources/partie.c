@@ -21,15 +21,16 @@ struct Partie *CreerPartie(struct Dictionnaire *dictionnaire)
     // On initialise les champs de la structure
     partieEnCours->essaiEnCours = 0;
     partieEnCours->resultat = false;
-    partieEnCours->solution[4] = '\0';
+    partieEnCours->solution[5] = '\0';
     partieEnCours->nomJoueur[20] = '\0';
-    for (int i = 0; i < 10; i++)
-    {
-        partieEnCours->liste_essais[i][4] = '\0';
-        partieEnCours->resultats[i].bienPlaces = 0;
-        partieEnCours->resultats[i].malPlaces = 0;
+    for (int compteur = 0; compteur < 10; compteur++){
+        for(int compteur_essai = 0; compteur_essai < 4; compteur_essai++){
+            partieEnCours->liste_essais[compteur][compteur_essai] = ' ';
+        }
+        partieEnCours->liste_essais[compteur][4] = '\0'; // Mettez le caractère de fin de chaîne après avoir rempli les espaces
+        partieEnCours->resultats[compteur].bienPlaces = 0;
+        partieEnCours->resultats[compteur].malPlaces = 0;
     }
-
     // On choisit un mot au hasard dans le dictionnaire
     srand(time(NULL)); // Initialisation du générateur de nombres aléatoires
     int index = rand() % dictionnaire->nbMots; // Un nombre entre 0 et nbMots-1
@@ -58,13 +59,12 @@ void EffacerPartie(struct Partie *partieEnCours)
 void AfficherPartie(struct Partie *partieEnCours, bool modeDebug)
 {
     // On efface tout et on affiche le jeu dans son état actuel
-
-    // FONCTIONS UTILISEES
-    // EffacerEcran();
-    // AfficherHautDeJeu();
-    // AfficherMotDeJeu();
-    // AfficherSeparateurDeJeu();
-    // AfficherBasDeJeu();
+    EffacerEcran();
+    AfficherHautDeJeu();
+    for(int compteur = 0; compteur < 10; compteur++){
+        AfficherMotDeJeu(partieEnCours->liste_essais[compteur], partieEnCours->resultats->bienPlaces, partieEnCours->resultats->malPlaces);
+    }
+    AfficherBasDeJeu();
 }
 
 // Fonction pour jouer une partie

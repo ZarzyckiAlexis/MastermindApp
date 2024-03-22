@@ -208,6 +208,7 @@ void AfficherMotDeJeu(char *motAAfficher, int nbreLettresBienplacées, int nbreL
     AfficherCharSpecialSansRetour('q', LENGTH-8); // On affiche la ligne du bas
     AfficherCharSpecialSansRetour('u', 1); // On affiche le coin inférieur droit
     RetourALaLigne(); // On fait un retour à la ligne
+    refresh();
 }
 
 // Affiche la bordure inférieure du jeu
