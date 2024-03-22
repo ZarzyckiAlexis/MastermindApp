@@ -29,7 +29,9 @@ void EffacerEcran()
 // Va a la ligne dans la console ncurses
 void RetourALaLigne()
 {
-    // A CODER, cf. cours LPP2 ncurses
+    // Effectuer un retour à la ligne
+    printw("\n");
+    refresh(); // On rafraichit l'écran pour être sûr du changement
 }
 
 // Affiche dans la console ncurses un texte avec indentation
