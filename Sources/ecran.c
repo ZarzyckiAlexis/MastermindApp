@@ -64,7 +64,12 @@ void AfficherTexteSansRetour(char *texteAAfficher)
 // - le nombre de fois qu'il faut le repeter
 void AfficherCharSansRetour(unsigned char caractereAAfficher, int repetition)
 {
-    // A CODER, cf. cours LPP2 ncurses
+    // Afficher caractère x fois sans retour à la ligne
+    for (int compteur = 0; compteur < repetition; compteur++)
+    {
+        printw("%c", caractereAAfficher);
+    }
+    refresh(); // On rafraichit l'écran pour être sûr du changement
 }
 
 // Affiche un nombre entier a la position courante dans la console ncurses
