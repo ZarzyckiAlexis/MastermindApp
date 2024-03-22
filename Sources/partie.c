@@ -17,7 +17,7 @@ struct Partie *CreerPartie(struct Dictionnaire *dictionnaire)
 
     // On alloue la mémoire pour la structure Partie
     partieEnCours = malloc(sizeof(struct Partie));
-    
+
     // On initialise les champs de la structure
     partieEnCours->essaiEnCours = 0;
     partieEnCours->resultat = false;
@@ -44,8 +44,8 @@ struct Partie *CreerPartie(struct Dictionnaire *dictionnaire)
 // - Pointeur vers la strcuture Partie a libérer de la memoire
 void EffacerPartie(struct Partie *partieEnCours)
 {
-    // FONCTIONS UTILISEES
-    // free()
+    // On libère la mémoire allouée pour la structure
+    free(partieEnCours);
 }
 
 // Fonction pour afficher une partie en cours
