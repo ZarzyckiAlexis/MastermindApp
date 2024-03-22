@@ -8,10 +8,21 @@
 // - Le mot à vérifier
 // Renvoie:
 // - true si le mot est correct, false si le mot n'est pas correct
-bool VerifierMot(char *motAVerifier)
-{
-    // A CODER (cours LPP2)
-    return false; // A adapter
+bool VerifierMot(char *motAVerifier){
+
+    int length = strlen(motAVerifier);
+
+    if(length != 4){ 
+        return false; // Si la longueur n'est pas de 4
+    }
+
+    for(int compteur=0; compteur<length; compteur++){
+        if(motAVerifier[compteur] < 'a' || motAVerifier[compteur] > 'z'){
+            return false; // Si le caractère n'est pas une lettre minuscule
+        }
+
+    }
+    return true; // Si le mot est correct
 }
 
 // Cette fonction initialise la structure avec le dictionnaire

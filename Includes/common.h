@@ -12,7 +12,8 @@
 // et toute autre information utile qui l'accompagne
 struct Dico_Message
 {
-    // A completer avec un texte d'erreur et un code d'erreur
+    char message[51];
+    int codeErreur;
 };
 // Constantes du jeu
 #define NbreMaxDEssais 10
