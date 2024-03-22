@@ -4,7 +4,10 @@
 // Elle contient un tableau dynamique de mots et le compteur du nombre de mots
 struct Dictionnaire
 {
-    // A COMPLETER (Cf. LPP2 structures)
+    // Tableau dynamique de mots
+    char **mots;
+    // Compteur du nombre de mots
+    int nbMots;
 };
 
 // Structure pour le résultat d'un ligne contenant le nombre de lettres bien

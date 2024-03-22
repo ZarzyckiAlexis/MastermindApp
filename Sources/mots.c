@@ -15,12 +15,10 @@ bool VerifierMot(char *motAVerifier){
     if(length != 4){ 
         return false; // Si la longueur n'est pas de 4
     }
-
     for(int compteur=0; compteur<length; compteur++){
         if(motAVerifier[compteur] < 'a' || motAVerifier[compteur] > 'z'){
             return false; // Si le caractère n'est pas une lettre minuscule
         }
-
     }
     return true; // Si le mot est correct
 }
@@ -38,13 +36,32 @@ bool VerifierMot(char *motAVerifier){
 // - ou NULL s'il y a eu une erreur
 struct Dictionnaire *LireDictionnaire(char *nomDeFichier, struct Dico_Message *messageDeRetour)
 {
-    // A CODER
-    // FONCTIONS UTILISEES
-    // malloc()
-    // EffacerDictionnaire()
-    // Cf cours FBD2 pour lire le fichier
-
-    return NULL; // A Adapter
+    FILE *dictionnaire = fopen(nomDeFichier, "r"); // On ouvre le fichier en lecture
+    if(dictionnaire == NULL){ // Si le fichier n'a pas pu être ouvert
+        strcpy(messageDeRetour->message, "Erreur lors de l'ouverture du fichier"); // On copie le message d'erreur
+        messageDeRetour->codeErreur = errno; // On copie le code d'erreur
+        return NULL; // On renvoie NULL
+    } 
+    // Si le fichier a bien été ouvert
+    struct Dictionnaire *dico = malloc(sizeof(struct Dictionnaire)); // On alloue la mémoire pour le dictionnaire
+    dico->nbMots = 0; // On initialise le nombre de mots à 0
+    dico->mots = malloc(sizeof(char*)); // On alloue la mémoire pour le tableau de mots
+    char buffer[LongueurDesMots+1]; // On crée un buffer pour stocker les mots
+    while(fscanf(dictionnaire, "%s", buffer) != EOF){ // On lit les mots du fichier
+        if(VerifierMot(buffer)){ // Si le mot est correct
+            dico->mots[dico->nbMots] = malloc(sizeof(char) * LongueurDesMots+1); // On alloue la mémoire pour le mot
+            strcpy(dico->mots[dico->nbMots], buffer); // On copie le mot dans le tableau
+            dico->nbMots++; // On incrémente le nombre de mots
+            dico->mots = realloc(dico->mots, sizeof(char*) * (dico->nbMots+1)); // On réalloue la mémoire pour le tableau
+        } else{
+            strcpy(messageDeRetour->message, "Erreur lors de la lecture du mot"); // On copie le message d'erreur
+            messageDeRetour->codeErreur = 1; // On copie le code d'erreur
+            fclose(dictionnaire); // On ferme le fichier
+            return NULL; // On renvoie NULL
+        }
+    }
+    fclose(dictionnaire); // On ferme le fichier
+    return dico; // On renvoie le dictionnaire
 }
 
 // Cette fonction libère la mémoire du dictionnaire passé en Paramètre
@@ -53,8 +70,11 @@ struct Dictionnaire *LireDictionnaire(char *nomDeFichier, struct Dico_Message *m
 // A appeler en fin de partie
 void EffacerDictionnaire(struct Dictionnaire *dictionnaire)
 {   
-    // FONCTIONS UTILISEES
-    // free()
+    for(int compteur=0; compteur<dictionnaire->nbMots; compteur++){
+        free(dictionnaire->mots[compteur]); // On libère la mémoire de chaque mot
+    }
+    free(dictionnaire->mots); // On libère la mémoire du tableau de mots
+    free(dictionnaire); // On libère la mémoire du dictionnaire
 }
 
 // Cette fonction compare deux mots pour une ligne de jeu
