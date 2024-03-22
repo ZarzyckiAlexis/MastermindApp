@@ -78,7 +78,9 @@ void AfficherCharSansRetour(unsigned char caractereAAfficher, int repetition)
 // - le nombre a afficher
 void AfficherNombreSansRetour(int nombreAAfficher)
 {
-    // A CODER, cf. cours LPP2 ncurses
+    // Afficher nombre sans retour à la ligne
+    printw("%d", nombreAAfficher);
+    refresh(); // On rafraichit l'écran pour être sûr du changement
 }
 
 // Affiche un caractere special a la position courante dans la console ncurses
