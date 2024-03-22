@@ -8,7 +8,8 @@
 // Initialise la console ncurses
 void InitialiserEcran()
 {
-    // A CODER, cf. cours LPP2 ncurses
+    // Initialiser l'écran en mode ncurses
+    initscr();
 }
 
 // Terminer la console ncurses
