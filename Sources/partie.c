@@ -15,11 +15,27 @@ struct Partie *CreerPartie(struct Dictionnaire *dictionnaire)
 {
     struct Partie *partieEnCours;
 
-    // FONCTIONS UTILISEES
-    // malloc()
-    // AfficherErreurEtTerminer()
-    // srand()
+    // On alloue la mémoire pour la structure Partie
+    partieEnCours = malloc(sizeof(struct Partie));
+    
+    // On initialise les champs de la structure
+    partieEnCours->essaiEnCours = 0;
+    partieEnCours->resultat = false;
+    partieEnCours->solution[4] = '\0';
+    partieEnCours->nomJoueur[20] = '\0';
+    for (int i = 0; i < 10; i++)
+    {
+        partieEnCours->liste_essais[i][4] = '\0';
+        partieEnCours->resultats[i].bienPlaces = 0;
+        partieEnCours->resultats[i].malPlaces = 0;
+    }
 
+    // On choisit un mot au hasard dans le dictionnaire
+    srand(time(NULL)); // Initialisation du générateur de nombres aléatoires
+    int index = rand() % dictionnaire->nbMots; // Un nombre entre 0 et nbMots-1
+    strcpy(partieEnCours->solution, dictionnaire->mots[index]); // On copie le mot dans la structure
+
+    // On renvoie la structure initialisée
     return partieEnCours;
 }
 
