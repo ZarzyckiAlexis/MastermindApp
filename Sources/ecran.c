@@ -155,13 +155,21 @@ void AfficherErreurEtTerminer(char *texteDErreur, int codeDErreur)
 // - Le mot à afficher, ou NULL si rien ne doit etre affiché
 void AfficherHautDeJeu(char *motAAfficher)
 {
-    // Cf. LPP2 Labo 5, à compléter
+    AfficherCharSpecialSansRetour('l', 1); // On affiche le coin supérieur gauche
+    AfficherCharSpecialSansRetour('q', 15); // On affiche la ligne du haut
+    AfficherCharSpecialSansRetour('w', 1); // On affiche la ligne du haut
+    AfficherCharSpecialSansRetour('q', 14); // On affiche la ligne du haut
+    AfficherCharSpecialSansRetour('k', 1); // On affiche le coin supérieur droit
+    RetourALaLigne(); // On fait un retour à la ligne
+    if (motAAfficher == NULL) { // Si le mot à afficher est NULL
+    } else { // Sinon
+    }
 }
 
 // Affiche un separateur entre deux mots du jeu
 void AfficherSeparateurDeJeu()
 {
-    // Cf. LPP2 Labo 5, à compléter
+    AfficherCharSpecialSansRetour('x', 1); // On affiche la barre gauche
 }
 
 // Affiche un mot du jeu et son resultat
@@ -170,7 +178,24 @@ void AfficherSeparateurDeJeu()
 // - Des espaces pour compléter
 void AfficherMotDeJeu(char *motAAfficher, int nbreLettresBienplacées, int nbreLettresMalplacées)
 {
-    // Cf. LPP2 Labo 5, à compléter
+    AfficherSeparateurDeJeu(); // On affiche le séparateur de jeu
+    AfficherCharSansRetour(' ', 2); // On affiche 2 espaces
+    for(int compteur=0; compteur<strlen(motAAfficher); compteur++){ // Pour chaque lettre du mot à afficher
+        AfficherCharSansRetour(motAAfficher[compteur], 1); // On affiche la lettre
+        AfficherCharSansRetour(' ', 2); // On affiche 2 espaces
+    }
+    AfficherCharSansRetour(' ', 1); // On affiche 1 espace
+    AfficherSeparateurDeJeu(); // On affiche le séparateur de jeu
+    AfficherCharSansRetour(' ', 1); // On affiche 1 espace
+    for(int compteur=0; compteur<nbreLettresBienplacées; compteur++){ // Pour chaque lettre bien placée
+        AfficherCharSansRetour('+', 1); // On affiche un +
+    }
+    for(int compteur=0; compteur<nbreLettresMalplacées; compteur++){ // Pour chaque lettre mal placée
+        AfficherCharSansRetour('-', 1); // On affiche un -
+    }
+    // Reste à géré la fin du cadre (Nb espace à ajouter)
+    AfficherSeparateurDeJeu(); // On affiche le séparateur de jeu
+    RetourALaLigne(); // On fait un retour à la ligne
 }
 
 // Affiche la bordure inférieure du jeu
