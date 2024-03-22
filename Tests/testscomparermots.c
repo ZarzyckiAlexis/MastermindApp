@@ -1,17 +1,250 @@
 #include "./tests.h"
 #include "../Includes/mots.h"
 
-// Test qui vérifie (à compléter)
-void TestComparerMots_Identiques1()
+/** Test qui vérifie la comparaison de mots
+ * TestComparerMots_Identiques
+ * TestComparerMots_TroisLettresBienPlacees_UneLettreAbsente
+ * TestComparerMots_DeuxLettresBienPlacees_DeuxLettresMalPlacees
+ * TestComparerMots_DeuxLettresBienPlacees_DeuxLettresAbsentes
+ * TestComparerMots_UneLettreBienPlacee_TroisLettresMalPlacees
+ * TestComparerMots_UneLettreBienPlacee_DeuxLettresMalPlacees_UneLettreAbsente
+ * TestComparerMots_UneLettreBienPlacee_TroisLettresAbsentes
+ * TestComparerMots_AucuneLettreBienPlacee
+ * TestComparerMots_TroisLettresMalPlacees_UneLettreAbsente
+ * TestComparerMots_DeuxLettresMalPlacees_DeuxLettresAbsentes
+ * TestComparerMots_UneLettreMalPlacee_TroisLettresAbsentes
+ * TestComparerMots_AucuneLettreBienPlacee_UneLettreAbsente
+ * TestComparerMots_DeuxLettresAbsentes_DeuxLettresBienPlacees
+ * TestComparerMots_UneLettreAbsente_TroisLettresBienPlacees
+ * TestComparerMots_DeuxLettresAbsentes_DeuxLettresMalPlacees
+ * TestComparerMots_UneLettreAbsente_DeuxLettresMalPlacees_UneLettreBienPlacee
+ * TestComparerMots_QuatreLettresAbsentes
+ * => Total: 17 tests
+ * 
+**/
+
+// Test de comparaison de mots identiques
+void TestComparerMots_Identiques()
 {
-    // Test à écrire
+    char mot1[] = "test";
+    char mot2[] = "test";
+    struct ResultatLigne resultat;
+    bool resultatAttendu = ComparerMots(mot1, mot2, &resultat);
+    TEST_ASSERT_TRUE(resultatAttendu);
+    TEST_ASSERT_EQUAL_INT(4, resultat.bienPlaces);
+    TEST_ASSERT_EQUAL_INT(0, resultat.malPlaces);
 }
 
-// Ajouter d'autres tests, à imaginer
+// Test de comparaison de mots trois lettres sont bien placées et une lettre absente
+void TestComparerMots_TroisLettresBienPlacees_UneLettreAbsente()
+{
+    char mot1[] = "test";
+    char mot2[] = "tost";
+    struct ResultatLigne resultat;
+    bool resultatAttendu = ComparerMots(mot1, mot2, &resultat);
+    TEST_ASSERT_TRUE(resultatAttendu);
+    TEST_ASSERT_EQUAL_INT(3, resultat.bienPlaces);
+    TEST_ASSERT_EQUAL_INT(0, resultat.malPlaces);
+}
+
+// Test de comparaison de mots deux lettres sont bien placées et deux lettres sont mal placées
+void TestComparerMots_DeuxLettresBienPlacees_DeuxLettresMalPlacees()
+{
+    char mot1[] = "lore";
+    char mot2[] = "lero";
+    struct ResultatLigne resultat;
+    bool resultatAttendu = ComparerMots(mot1, mot2, &resultat);
+    TEST_ASSERT_TRUE(resultatAttendu);
+    TEST_ASSERT_EQUAL_INT(2, resultat.bienPlaces);
+    TEST_ASSERT_EQUAL_INT(2, resultat.malPlaces);
+}
+
+// Test de comparaison de mots deux lettres sont bien placées et deux lettres sont absentes
+void TestComparerMots_DeuxLettresBienPlacees_DeuxLettresAbsentes()
+{
+    char mot1[] = "tard";
+    char mot2[] = "tant";
+    struct ResultatLigne resultat;
+    bool resultatAttendu = ComparerMots(mot1, mot2, &resultat);
+    TEST_ASSERT_TRUE(resultatAttendu);
+    TEST_ASSERT_EQUAL_INT(2, resultat.bienPlaces);
+    TEST_ASSERT_EQUAL_INT(0, resultat.malPlaces);
+}
+
+// Test de comparaison de mots une lettre est bien placée et trois lettres sont mal placées
+void TestComparerMots_UneLettreBienPlacee_TroisLettresMalPlacees()
+{
+    char mot1[] = "arme";
+    char mot2[] = "amer";
+    struct ResultatLigne resultat;
+    bool resultatAttendu = ComparerMots(mot1, mot2, &resultat);
+    TEST_ASSERT_TRUE(resultatAttendu);
+    TEST_ASSERT_EQUAL_INT(1, resultat.bienPlaces);
+    TEST_ASSERT_EQUAL_INT(3, resultat.malPlaces);
+}
+
+// Test de comparaison de mots une lettre est bien placée, deux lettres sont mal placées et une lettre est absente
+void TestComparerMots_UneLettreBienPlacee_DeuxLettresMalPlacees_UneLettreAbsente()
+{
+    char mot1[] = "arme";
+    char mot2[] = "amex";
+    struct ResultatLigne resultat;
+    bool resultatAttendu = ComparerMots(mot1, mot2, &resultat);
+    TEST_ASSERT_TRUE(resultatAttendu);
+    TEST_ASSERT_EQUAL_INT(1, resultat.bienPlaces);
+    TEST_ASSERT_EQUAL_INT(2, resultat.malPlaces);
+}
+
+// Test de comparaison de mots une lettre est bien placée et trois lettres sont absentes
+void TestComparerMots_UneLettreBienPlacee_TroisLettresAbsentes()
+{
+    char mot1[] = "arme";
+    char mot2[] = "azzz";
+    struct ResultatLigne resultat;
+    bool resultatAttendu = ComparerMots(mot1, mot2, &resultat);
+    TEST_ASSERT_TRUE(resultatAttendu);
+    TEST_ASSERT_EQUAL_INT(1, resultat.bienPlaces);
+    TEST_ASSERT_EQUAL_INT(0, resultat.malPlaces);
+}
+
+// Test de comparaison de mots aucune lettre n'est bien placée, mais les quatre lettres sont présentes
+void TestComparerMots_AucuneLettreBienPlacee()
+{
+    char mot1[] = "tard";
+    char mot2[] = "atdr";
+    struct ResultatLigne resultat;
+    bool resultatAttendu = ComparerMots(mot1, mot2, &resultat);
+    TEST_ASSERT_TRUE(resultatAttendu);
+    TEST_ASSERT_EQUAL_INT(0, resultat.bienPlaces);
+    TEST_ASSERT_EQUAL_INT(4, resultat.malPlaces);
+}
+
+// Test de comparaison de mots trois lettres sont mal placées et une lettre est absente
+void TestComparerMots_TroisLettresMalPlacees_UneLettreAbsente()
+{
+    char mot1[] = "lore";
+    char mot2[] = "olea";
+    struct ResultatLigne resultat;
+    bool resultatAttendu = ComparerMots(mot1, mot2, &resultat);
+    TEST_ASSERT_TRUE(resultatAttendu);
+    TEST_ASSERT_EQUAL_INT(0, resultat.bienPlaces);
+    TEST_ASSERT_EQUAL_INT(3, resultat.malPlaces);
+}
+
+// Test de comparaison de mots deux lettres sont mal placées et deux lettres sont absentes
+void TestComparerMots_DeuxLettresMalPlacees_DeuxLettresAbsentes()
+{
+    char mot1[] = "arme";
+    char mot2[] = "mzaz";
+    struct ResultatLigne resultat;
+    bool resultatAttendu = ComparerMots(mot1, mot2, &resultat);
+    TEST_ASSERT_TRUE(resultatAttendu);
+    TEST_ASSERT_EQUAL_INT(0, resultat.bienPlaces);
+    TEST_ASSERT_EQUAL_INT(2, resultat.malPlaces);
+}
+
+// Test de comparaison de mots une lettre est mal placée et trois lettres sont absentes
+void TestComparerMots_UneLettreMalPlacee_TroisLettresAbsentes()
+{
+    char mot1[] = "arme";
+    char mot2[] = "zazz";
+    struct ResultatLigne resultat;
+    bool resultatAttendu = ComparerMots(mot1, mot2, &resultat);
+    TEST_ASSERT_TRUE(resultatAttendu);
+    TEST_ASSERT_EQUAL_INT(0, resultat.bienPlaces);
+    TEST_ASSERT_EQUAL_INT(1, resultat.malPlaces);
+}
+
+// Test de comparaisons de mots aucune lettre n'est bien placée et une lettre est absente
+void TestComparerMots_AucuneLettreBienPlacee_UneLettreAbsente()
+{
+    char mot1[] = "arme";
+    char mot2[] = "zzzz";
+    struct ResultatLigne resultat;
+    bool resultatAttendu = ComparerMots(mot1, mot2, &resultat);
+    TEST_ASSERT_TRUE(resultatAttendu);
+    TEST_ASSERT_EQUAL_INT(0, resultat.bienPlaces);
+    TEST_ASSERT_EQUAL_INT(0, resultat.malPlaces);
+}
+
+// Test de comparaisons de mots deux lettres sont absentes et deux lettres sont bien placées
+void TestComparerMots_DeuxLettresAbsentes_DeuxLettresBienPlacees()
+{
+    char mot1[] = "arme";
+    char mot2[] = "xrmz";
+    struct ResultatLigne resultat;
+    bool resultatAttendu = ComparerMots(mot1, mot2, &resultat);
+    TEST_ASSERT_TRUE(resultatAttendu);
+    TEST_ASSERT_EQUAL_INT(2, resultat.bienPlaces);
+    TEST_ASSERT_EQUAL_INT(0, resultat.malPlaces);
+}
+
+// Test de comparaisons de mots une lettre est absente et trois lettres sont bien placées
+void TestComparerMots_UneLettreAbsente_TroisLettresBienPlacees()
+{
+    char mot1[] = "arme";
+    char mot2[] = "armz";
+    struct ResultatLigne resultat;
+    bool resultatAttendu = ComparerMots(mot1, mot2, &resultat);
+    TEST_ASSERT_TRUE(resultatAttendu);
+    TEST_ASSERT_EQUAL_INT(3, resultat.bienPlaces);
+    TEST_ASSERT_EQUAL_INT(0, resultat.malPlaces);
+}
+
+// Test de comparaisons de mots deux lettres sont absentes et deux lettres sont mal placées
+void TestComparerMots_DeuxLettresAbsentes_DeuxLettresMalPlacees()
+{
+    char mot1[] = "arme";
+    char mot2[] = "mxzr";
+    struct ResultatLigne resultat;
+    bool resultatAttendu = ComparerMots(mot1, mot2, &resultat);
+    TEST_ASSERT_TRUE(resultatAttendu);
+    TEST_ASSERT_EQUAL_INT(0, resultat.bienPlaces);
+    TEST_ASSERT_EQUAL_INT(2, resultat.malPlaces);
+}
+
+// Test de comparaisons de mots une lettre est absente, deux lettres sont mal placées et une lettre est bien placée
+void TestComparerMots_UneLettreAbsente_DeuxLettresMalPlacees_UneLettreBienPlacee()
+{
+    char mot1[] = "arme";
+    char mot2[] = "azrm";
+    struct ResultatLigne resultat;
+    bool resultatAttendu = ComparerMots(mot1, mot2, &resultat);
+    TEST_ASSERT_TRUE(resultatAttendu);
+    TEST_ASSERT_EQUAL_INT(1, resultat.bienPlaces);
+    TEST_ASSERT_EQUAL_INT(2, resultat.malPlaces);
+}
+
+// Test de comparaisons de mots quatre lettres sont absentes
+void TestComparerMots_QuatreLettresAbsentes()
+{
+    char mot1[] = "arme";
+    char mot2[] = "zzzz";
+    struct ResultatLigne resultat;
+    bool resultatAttendu = ComparerMots(mot1, mot2, &resultat);
+    TEST_ASSERT_TRUE(resultatAttendu);
+    TEST_ASSERT_EQUAL_INT(0, resultat.bienPlaces);
+    TEST_ASSERT_EQUAL_INT(0, resultat.malPlaces);
+}
 
 // Execute tous les tests de comparaison de mots
 void TestsComparaisonDeMots()
 {
-    RUN_TEST(TestComparerMots_Identiques1);
-    // Appeler les autres tests ici
+    RUN_TEST(TestComparerMots_Identiques);
+    RUN_TEST(TestComparerMots_TroisLettresBienPlacees_UneLettreAbsente);
+    RUN_TEST(TestComparerMots_DeuxLettresBienPlacees_DeuxLettresMalPlacees);
+    RUN_TEST(TestComparerMots_DeuxLettresBienPlacees_DeuxLettresAbsentes);
+    RUN_TEST(TestComparerMots_UneLettreBienPlacee_TroisLettresMalPlacees);
+    RUN_TEST(TestComparerMots_UneLettreBienPlacee_DeuxLettresMalPlacees_UneLettreAbsente);
+    RUN_TEST(TestComparerMots_UneLettreBienPlacee_TroisLettresAbsentes);
+    RUN_TEST(TestComparerMots_AucuneLettreBienPlacee);
+    RUN_TEST(TestComparerMots_TroisLettresMalPlacees_UneLettreAbsente);
+    RUN_TEST(TestComparerMots_DeuxLettresMalPlacees_DeuxLettresAbsentes);
+    RUN_TEST(TestComparerMots_UneLettreMalPlacee_TroisLettresAbsentes);
+    RUN_TEST(TestComparerMots_AucuneLettreBienPlacee_UneLettreAbsente);
+    RUN_TEST(TestComparerMots_DeuxLettresAbsentes_DeuxLettresBienPlacees);
+    RUN_TEST(TestComparerMots_UneLettreAbsente_TroisLettresBienPlacees);
+    RUN_TEST(TestComparerMots_DeuxLettresAbsentes_DeuxLettresMalPlacees);
+    RUN_TEST(TestComparerMots_UneLettreAbsente_DeuxLettresMalPlacees_UneLettreBienPlacee);
+    RUN_TEST(TestComparerMots_QuatreLettresAbsentes);
 }

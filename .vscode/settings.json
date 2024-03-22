@@ -9,7 +9,8 @@
         "mots.h": "c",
         "score.h": "c",
         "common.h": "c",
-        "partie.h": "c"
+        "partie.h": "c",
+        "tests.h": "c"
     },
     "files.encoding": "utf8"
 }

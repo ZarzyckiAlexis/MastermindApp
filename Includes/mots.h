@@ -14,7 +14,10 @@ struct Dictionnaire
 // placées et le nombre de lettre mal placées
 struct ResultatLigne
 {
-    // A COMPLETER (Cf. LPP2 structures)
+    // Nombre de lettres bien placées
+    int bienPlaces;
+    // Nombre de lettres mal placées
+    int malPlaces;
 };
 #endif
 

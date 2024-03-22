@@ -12,7 +12,7 @@ bool VerifierMot(char *motAVerifier){
 
     int length = strlen(motAVerifier);
 
-    if(length != 4){ 
+    if(length != 4){
         return false; // Si la longueur n'est pas de 4
     }
     for(int compteur=0; compteur<length; compteur++){
@@ -88,10 +88,32 @@ void EffacerDictionnaire(struct Dictionnaire *dictionnaire)
 // - Si la comparaison est possible, elle garnit la structure ResultatLigne et renvoie true
 bool ComparerMots(char *solution, char *motPlace, struct ResultatLigne *resultat)
 {
-    // Conseil: commencer par décrire l'algorithme en détail, p.ex. en pseudo langage
-
-    // FONCTIONS UTILISEES:
-    // cf. cours LPP2 et LPP1 (chaînes de caractères)
-
-    return false; // A adapter
+    if(VerifierMot(motPlace) == false){ // Si le mot placé n'est pas correct
+        return false; // On renvoie false
+    }
+    resultat->bienPlaces = 0; // On initialise le nombre de lettres bien placées
+    resultat->malPlaces = 0; // On initialise le nombre de lettres mal placées
+    char *solutionTemp = malloc(sizeof(char) * strlen(solution)); // On alloue la mémoire pour une copie du mot de référence
+    char *motPlaceTemp = malloc(sizeof(char) * strlen(motPlace)); // On alloue la mémoire pour une copie du mot placé
+    strcpy(solutionTemp, solution); // On copie le mot de référence
+    strcpy(motPlaceTemp, motPlace); // On copie le mot placé
+    for(int compteur=0; compteur<strlen(solution); compteur++){
+        if(solutionTemp[compteur] == motPlaceTemp[compteur]){ // Si la lettre est bien placée
+            resultat->bienPlaces++; // On incrémente le nombre de lettres bien placées
+            solutionTemp[compteur] = ' '; // On remplace la lettre par un espace
+            motPlaceTemp[compteur] = ' '; // On remplace la lettre par un espace
+        }
+    }
+    for(int compteur=0; compteur<strlen(solution); compteur++){
+        for(int compteur2=0; compteur2<strlen(solution); compteur2++){
+            if(solutionTemp[compteur] == motPlaceTemp[compteur2] && solutionTemp[compteur] != ' '){ // Si la lettre est mal placée
+                resultat->malPlaces++; // On incrémente le nombre de lettres mal placées
+                solutionTemp[compteur] = ' '; // On remplace la lettre par un espace
+                motPlaceTemp[compteur2] = ' '; // On remplace la lettre par un espace
+            }
+        }
+    }
+    free(solutionTemp); // On libère la mémoire de la copie du mot de référence
+    free(motPlaceTemp); // On libère la mémoire de la copie du mot placé
+    return true; // On renvoie true
 }
