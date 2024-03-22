@@ -105,7 +105,30 @@ void AfficherCharSpecialSansRetour(unsigned char caractereAAfficher, int repetit
 // - la chaine de caracteres a afficher dans le cadre (pointeur)
 void AfficherTexteDansCadre(char *texteAAfficher)
 {
-    // A CODER, cf. labo4 LPP2 ncurses
+    int i,len=strlen(texteAAfficher)+2;
+    //affichage de la ligne suppérieur du cadre
+    printw(" ");
+    addch(NCURSES_ACS('l'));
+    for(i=0;i<(len);i++){
+        addch(NCURSES_ACS('q'));
+    }
+    addch(NCURSES_ACS('k'));
+    
+    //affichage de la ligne centrale du cadre avec le texte
+    printw("\n ");
+    addch(NCURSES_ACS('x'));
+    printw(" %s ",texteAAfficher);
+    addch(NCURSES_ACS('x'));
+
+    //affichage de la ligne inférieur du cadre
+    printw("\n ");
+    addch(NCURSES_ACS('m'));
+    for(i=0;i<len;i++){
+        addch(NCURSES_ACS('q'));
+    }
+    addch(NCURSES_ACS('j'));
+    printw("\n\n");
+    refresh();
 }
 
 // Cette fonction efface l'ecran, affiche "Erreur" dans un cadre
