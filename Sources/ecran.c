@@ -201,7 +201,7 @@ void AfficherMotDeJeu(char *motAAfficher, int nbreLettresBienplacées, int nbreL
     
     AfficherCharSansRetour(' ', space); // On affiche 1 espace
     AfficherSeparateurDeJeu(); // On affiche le séparateur de jeu
-    RetourALaLigne();
+    RetourALaLigne(); // On fait un retour à la ligne
     AfficherCharSpecialSansRetour('t', 1); // On affiche le coin inférieur gauche
     AfficherCharSpecialSansRetour('q', LENGTH); // On affiche la ligne du bas
     AfficherCharSpecialSansRetour('n', 1); // On affiche la ligne du bas
