@@ -138,15 +138,16 @@ void AfficherTexteDansCadre(char *texteAAfficher)
 // - Le code d'erreur eventuel
 void AfficherErreurEtTerminer(char *texteDErreur, int codeDErreur)
 {
-    // FONCTIONS UTILISEES:
-    // EffacerEcran()
-    // AfficherTexteDansCadre
-    // AfficherTexteSansRetour()
-    // AfficherNombreSansRetour(codeDErreur)
-    // RetourALaLigne()
-    // sleep()
-    // TerminerEcran()
-    // exit(à)
+    EffacerEcran(); // On efface l'écran
+    AfficherTexteDansCadre("Erreur"); // On affiche le texte "Erreur" dans un cadre
+    AfficherTexteSansRetour(texteDErreur); // On affiche le texte d'erreur
+    RetourALaLigne(); // On fais un retour à la ligne
+    AfficherTexteSansRetour("Code d'erreur: "); // On affiche le texte "Code d'erreur: "
+    AfficherNombreSansRetour(codeDErreur); // On affiche le code d'erreur
+    RetourALaLigne() ; // On fais un retour à la ligne
+    sleep(5); // On attends 5 secondes
+    TerminerEcran(); // On termine l'écran
+    exit(EXIT_FAILURE); // On exit en failure
 }
 
 // Affiche le haut du cadre de jeu (bordure supérieure)
