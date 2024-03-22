@@ -1,5 +1,6 @@
 #include "../Includes/common.h"
 #include "../Includes/ecran.h"
+#define LENGTH 15
 
 // ***************************************//
 // FONCTIONS DECLAREES DANS LE FICHIER .h //
@@ -156,9 +157,9 @@ void AfficherErreurEtTerminer(char *texteDErreur, int codeDErreur)
 void AfficherHautDeJeu(char *motAAfficher)
 {
     AfficherCharSpecialSansRetour('l', 1); // On affiche le coin supérieur gauche
-    AfficherCharSpecialSansRetour('q', 15); // On affiche la ligne du haut
+    AfficherCharSpecialSansRetour('q', LENGTH); // On affiche la ligne du haut
     AfficherCharSpecialSansRetour('w', 1); // On affiche la ligne du haut
-    AfficherCharSpecialSansRetour('q', 14); // On affiche la ligne du haut
+    AfficherCharSpecialSansRetour('q', LENGTH-8); // On affiche la ligne du haut
     AfficherCharSpecialSansRetour('k', 1); // On affiche le coin supérieur droit
     RetourALaLigne(); // On fait un retour à la ligne
     if (motAAfficher == NULL) { // Si le mot à afficher est NULL
@@ -187,19 +188,38 @@ void AfficherMotDeJeu(char *motAAfficher, int nbreLettresBienplacées, int nbreL
     AfficherCharSansRetour(' ', 1); // On affiche 1 espace
     AfficherSeparateurDeJeu(); // On affiche le séparateur de jeu
     AfficherCharSansRetour(' ', 1); // On affiche 1 espace
+    int space = LENGTH-9; // On initialise la variable space à 10
     for(int compteur=0; compteur<nbreLettresBienplacées; compteur++){ // Pour chaque lettre bien placée
+        space--; // On décrémente la variable space
         AfficherCharSansRetour('+', 1); // On affiche un +
     }
     for(int compteur=0; compteur<nbreLettresMalplacées; compteur++){ // Pour chaque lettre mal placée
+        space--; // On décrémente la variable space
         AfficherCharSansRetour('-', 1); // On affiche un -
     }
-    // Reste à géré la fin du cadre (Nb espace à ajouter)
+    // Reste à géré la fin du cadre (Nb espace à ajouter en fonction des nbreLettresBienplacées et nbreLettresMalplacées)
+    
+    AfficherCharSansRetour(' ', space); // On affiche 1 espace
     AfficherSeparateurDeJeu(); // On affiche le séparateur de jeu
+    RetourALaLigne();
+    AfficherCharSpecialSansRetour('t', 1); // On affiche le coin inférieur gauche
+    AfficherCharSpecialSansRetour('q', LENGTH); // On affiche la ligne du bas
+    AfficherCharSpecialSansRetour('n', 1); // On affiche la ligne du bas
+    AfficherCharSpecialSansRetour('q', LENGTH-8); // On affiche la ligne du bas
+    AfficherCharSpecialSansRetour('u', 1); // On affiche le coin inférieur droit
     RetourALaLigne(); // On fait un retour à la ligne
 }
 
 // Affiche la bordure inférieure du jeu
 void AfficherBasDeJeu()
 {
-    // Cf. LPP2 Labo 5, à compléter
+    int x,y;
+    getyx(stdscr, y, x); // On récupère la position courante
+    move(y-1, 0); // On se déplace à la position courante
+    AfficherCharSpecialSansRetour('m', 1); // On affiche le coin inférieur gauche
+    AfficherCharSpecialSansRetour('q', LENGTH); // On affiche la ligne du bas
+    AfficherCharSpecialSansRetour('v', 1); // On affiche la ligne du bas
+    AfficherCharSpecialSansRetour('q', LENGTH-8); // On affiche la ligne du bas
+    AfficherCharSpecialSansRetour('j', 1); // On affiche le coin inférieur droit
+    RetourALaLigne(); // On fait un retour à la ligne
 }
