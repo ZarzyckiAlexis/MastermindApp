@@ -22,7 +22,8 @@ void TerminerEcran()
 // Efface l'ecran de la console ncurses
 void EffacerEcran()
 {
-    // A CODER, cf. cours LPP2 ncurses
+    // Effacer l'écran 
+    clear();
 }
 
 // Va a la ligne dans la console ncurses
