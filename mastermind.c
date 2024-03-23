@@ -22,6 +22,7 @@ int main()
 
     // Initialisation de la structure Partie
     JouerPartie(maPartie);
+    free(dico_message);
     EffacerDictionnaire(dictionnaire);
     EffacerPartie(maPartie);
     getch();
