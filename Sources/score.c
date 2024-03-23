@@ -1,7 +1,6 @@
 #include "../Includes/common.h"
 #include "../Includes/score.h"
-#define PROD_DB_NAME "la219263"
-#define TEST_DB_NAME "la219263_test"
+
 
 // Fonction pour executer une instruction SQL
 // En cas d'erreur, affiche la cause a la console, mais continue toujours
@@ -14,8 +13,20 @@
 // - booleen qui indique le resultat
 bool ExecuterInstructionSQL(MYSQL *sqlConnection, char *instructionSQL, struct Dico_Message *messageDeRetour)
 {
-    // A coder - cf cours FBD2
-    return false; // A adapter
+    if(mysql_query(sqlConnection, instructionSQL)){ // Si erreur
+        messageDeRetour->codeErreur = 12;
+        strcpy(messageDeRetour->message, "Erreur lors de l'execution de l'instruction SQL");
+        return false;
+    }
+
+    if(mysql_store_result(sqlConnection) == NULL && mysql_affected_rows(sqlConnection) == 0){ // Si erreur
+        messageDeRetour->codeErreur = 13;
+        strcpy(messageDeRetour->message, "Erreur lors de l'execution de l'instruction SQL");
+        return false;
+    }
+    // Stocker le résultat de la requête
+    sqlResult = mysql_store_result(sqlConnection);
+    return true; // A adapter
 }
 
 
@@ -64,13 +75,12 @@ MYSQL *ConnecterBaseDeDonnees(bool baseDeTest, struct Dico_Message *messageDeRet
 // - L'identifiant unique du joueur dans la base de donnees
 int LireIDJoueur(MYSQL *sqlConnection, char *nomJoueur, struct Dico_Message *messageDeRetour)
 {
-    MYSQL_RES *sqlResult;
     MYSQL_ROW sqlRow;
 
     // FONCTIONS APPELLEES:
     // ExecuterInstructionSQL();
     // Autres fonctions: voir le cours FBD2
-
+    
     // Verification du nom du joueur: pas NULL et max 50 caracteres
 
     return 0; // A Adapter

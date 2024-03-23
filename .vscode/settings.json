@@ -10,7 +10,8 @@
         "score.h": "c",
         "common.h": "c",
         "partie.h": "c",
-        "tests.h": "c"
+        "tests.h": "c",
+        "mysql.h": "c"
     },
     "files.encoding": "utf8"
 }
