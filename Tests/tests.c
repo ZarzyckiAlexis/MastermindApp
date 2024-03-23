@@ -6,8 +6,8 @@ int main()
     UNITY_BEGIN();
 
     // Lance tous les tests en une seule fois
-    //TestsVerificationDUnMot();
-    //TestsDictionnaire();
+    TestsVerificationDUnMot();
+    TestsDictionnaire();
     TestsComparaisonDeMots();
     //TestsScores();
 

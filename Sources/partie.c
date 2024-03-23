@@ -62,7 +62,7 @@ void AfficherPartie(struct Partie *partieEnCours, bool modeDebug)
     EffacerEcran();
     AfficherHautDeJeu();
     for(int compteur = 0; compteur < 10; compteur++){
-        AfficherMotDeJeu(partieEnCours->liste_essais[compteur], partieEnCours->resultats->bienPlaces, partieEnCours->resultats->malPlaces);
+        AfficherMotDeJeu(partieEnCours->liste_essais[compteur], partieEnCours->resultats[compteur].bienPlaces, partieEnCours->resultats[compteur].malPlaces);
     }
     AfficherBasDeJeu();
 }
@@ -83,18 +83,27 @@ void AfficherPartie(struct Partie *partieEnCours, bool modeDebug)
 // - Si abandon: fin de partie, on affiche la solution
 bool JouerPartie(struct Partie *partieEnCours)
 {
-    // Conseil: commencer par décrire l'algorithme en détail, p.ex. en pseudo langage
+    strcpy(partieEnCours->solution, partieEnCours->solution); // Fix un bug de solution?
+    do{
+        AfficherPartie(partieEnCours, false); // On affiche la partie
+        AfficherTexteIndenteSansRetour("Entrez un mot de 4 lettres ou ENTER pour abandonner: "); // On demande un mot
+        char *answer = LireTexte(); // On demande un mot
+        strcpy(partieEnCours->liste_essais[partieEnCours->essaiEnCours], answer); // On copie le mot dans la structure
+        if(VerifierMot(partieEnCours->liste_essais[partieEnCours->essaiEnCours]) == false){ // On vérifie que le mot est correct
+            AfficherErreurEtTerminer("Le mot doit contenir exactement 4 lettres.", 0); // On affiche un message d'erreur
+            return false; // On retourne false pour abandonner
+        }
+        ComparerMots(partieEnCours->solution, partieEnCours->liste_essais[partieEnCours->essaiEnCours], &partieEnCours->resultats[partieEnCours->essaiEnCours]); // On compare les mots
+        if (strcmp(partieEnCours->liste_essais[partieEnCours->essaiEnCours], partieEnCours->solution) == 0){ // Si le mot est correct
+            AfficherPartie(partieEnCours, false); // On affiche la partie
+            partieEnCours->resultat = true; // On met le résultat à true
+            break; // On sort de la boucle
+        }
+        partieEnCours->essaiEnCours++; // On incrémente le nombre d'essais
+        AfficherPartie(partieEnCours, false); // On affiche la partie
+    } while (partieEnCours->resultat == false && partieEnCours->essaiEnCours < 10); // Tant que le jeu n'est pas fini
 
-    // FONCTIONS UTILISEES:
-    // AfficherPartie()
-    // AfficherTexteIndenteSansRetour()
-    // LireTexte()
-    // VerifierMot()
-    // ComparerMots()
-    // SauverScore()
-    // free()
-
-    return false; // A adapter
+    return partieEnCours->resultat; // On retourne le résultat
 }
 
 // Fonction pour afficher les meilleurs scores

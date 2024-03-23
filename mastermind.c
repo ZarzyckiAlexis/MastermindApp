@@ -7,32 +7,26 @@
 
 int main()
 {
-    // A CODER - fonctions principale. 
-    // Penser à MM2, LPP2, FBD2
+    InitialiserEcran(); // Initialisation de l'écran
 
-    // Création d'une instance de Partie
+    // Création des instances de la structure Partie et Dictionnaire
+
     struct Dictionnaire *dictionnaire;
-    dictionnaire = LireDictionnaire("./liste_francais_4.txt", NULL);
+    struct Dico_Message *dico_message = malloc(sizeof(struct Dico_Message));
+    dictionnaire = LireDictionnaire("./liste_francais_4.txt", dico_message);
+    if(dictionnaire == NULL){
+        AfficherErreurEtTerminer(dico_message->message, dico_message->codeErreur);
+        return EXIT_FAILURE;
+    }
     struct Partie *maPartie = CreerPartie(dictionnaire);
 
     // Initialisation de la structure Partie
-    InitialiserEcran();
-    AfficherPartie(maPartie, false);
+    JouerPartie(maPartie);
+    EffacerDictionnaire(dictionnaire);
+    EffacerPartie(maPartie);
     getch();
     EffacerEcran();
     TerminerEcran();
-    EffacerDictionnaire(dictionnaire);
-    EffacerPartie(maPartie);
-    // FONCTIONS UTILISEES:
-    // InitialiserEcran()
-    // LireDictionnaire()
-    // AfficherErreurEtTerminer()
-    // CreerPartie()
-    // JouerPartie()
-    // AfficherMeilleursScores()
-    // EffacerPartie()
-    // EffacerDictionnaire()
-    // TerminerEcran()
     
-    return EXIT_SUCCESS; // A adapter
+    return EXIT_SUCCESS;
 }

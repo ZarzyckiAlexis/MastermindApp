@@ -12,7 +12,7 @@
 // et toute autre information utile qui l'accompagne
 struct Dico_Message
 {
-    char message[51];
+    char message[201];
     int codeErreur;
 };
 // Constantes du jeu
