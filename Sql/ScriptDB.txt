@@ -1,6 +1,13 @@
 CREATE TABLE joueurs(
-   id INT AUTO_INCREMENT,
+   id_joueur INT AUTO_INCREMENT,
    pseudo VARCHAR(50) NOT NULL,
+   PRIMARY KEY(id_joueur)
+);
+
+CREATE TABLE scores(
+   id_score INT AUTO_INCREMENT,
    score INT NOT NULL,
-   PRIMARY KEY(id)
+   id_joueur INT NOT NULL,
+   PRIMARY KEY(id_score),
+   FOREIGN KEY(id_joueur) REFERENCES joueurs(id_joueur)
 );

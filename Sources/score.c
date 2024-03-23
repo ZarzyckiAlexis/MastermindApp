@@ -19,14 +19,14 @@ bool ExecuterInstructionSQL(MYSQL *sqlConnection, char *instructionSQL, struct D
         return false;
     }
 
-    if(mysql_store_result(sqlConnection) == NULL && mysql_affected_rows(sqlConnection) == 0){ // Si erreur
+    // Stocker le résultat de la requête
+    sqlResult = mysql_store_result(sqlConnection);
+    if (sqlResult == NULL && mysql_affected_rows(sqlConnection) == 0) { // Si erreur
         messageDeRetour->codeErreur = 13;
         strcpy(messageDeRetour->message, "Erreur lors de l'execution de l'instruction SQL");
         return false;
     }
-    // Stocker le résultat de la requête
-    sqlResult = mysql_store_result(sqlConnection);
-    return true; // A adapter
+    return true;
 }
 
 
@@ -77,13 +77,28 @@ int LireIDJoueur(MYSQL *sqlConnection, char *nomJoueur, struct Dico_Message *mes
 {
     MYSQL_ROW sqlRow;
 
-    // FONCTIONS APPELLEES:
-    // ExecuterInstructionSQL();
-    // Autres fonctions: voir le cours FBD2
-    
-    // Verification du nom du joueur: pas NULL et max 50 caracteres
+    if(nomJoueur == NULL || strlen(nomJoueur) > 50){ // Si le nom du joueur est NULL ou depasse 50 caracteres
+        messageDeRetour->codeErreur = 14; // Code d'erreur
+        strcpy(messageDeRetour->message, "Nom du joueur invalide"); // Message d'erreur
+        return -1; // On retourne -1 en cas d'erreur
+    }
+    char query[256]; // Declaration de la requete SQL
+    sprintf(query, "SELECT id_joueur FROM joueurs WHERE pseudo='%s'", nomJoueur); // Creation de la requete SQL
+    bool hasPassed = ExecuterInstructionSQL(sqlConnection, query, messageDeRetour); // Execution de l'instruction SQL
+    if(!hasPassed){ // Si erreur
+        return -1;
+    }
+    sqlRow = mysql_fetch_row(sqlResult); // Recuperation de la ligne
+    if(sqlRow == NULL){ // Si le joueur n'existe pas
+        sprintf(query, "INSERT INTO joueurs (pseudo) VALUES ('%s')", nomJoueur); // Creation de la requete SQL
+        hasPassed = ExecuterInstructionSQL(sqlConnection, query, messageDeRetour); // Execution de l'instruction SQL
+        if(!hasPassed){ // Si erreur
+            return -1; // On retourne -1 en cas d'erreur
+        }
+        return LireIDJoueur(sqlConnection, nomJoueur, messageDeRetour); // On rappelle la fonction pour obtenir l'ID du joueur
+    }
 
-    return 0; // A Adapter
+    return atoi(sqlRow[0]); // On retourne l'ID du joueur
 }
 
 // Fonction pour sauver un score dans la base de donnees

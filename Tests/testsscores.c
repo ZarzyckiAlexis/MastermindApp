@@ -56,6 +56,48 @@ void test_ExecuterInstructionSQL_KO()
     mysql_close(sqlConnection); // Fermer la connexion
 }
 
+// Test OK de la fonction LireIDJoueur
+void test_LireIDJoueur_OK()
+{
+    struct Dico_Message *dico_message = malloc(sizeof(struct Dico_Message)); // Allocation de la memoire pour les messages
+    MYSQL *sqlConnection = ConnecterBaseDeDonnees(true, dico_message); // Connexion a la base de donnees
+    TEST_ASSERT_NOT_NULL(sqlConnection); // Verifier que la connexion a la base de donnees a reussi
+    char *nomJoueur = "Joueur1"; // Nom du joueur
+    int idJoueur = LireIDJoueur(sqlConnection, nomJoueur, dico_message); // Lire l'ID du joueur
+    TEST_ASSERT_TRUE(idJoueur > 0); // Verifier que l'ID du joueur est valide
+    free(dico_message); // Liberer la memoire
+    mysql_close(sqlConnection); // Fermer la connexion
+}
+
+// Test KO Pseudo NULL de la fonction LireIDJoueur
+void test_LireIDJoueur_KO_NULL()
+{
+    struct Dico_Message *dico_message = malloc(sizeof(struct Dico_Message)); // Allocation de la memoire pour les messages
+    MYSQL *sqlConnection = ConnecterBaseDeDonnees(true, dico_message); // Connexion a la base de donnees
+    TEST_ASSERT_NOT_NULL(sqlConnection); // Verifier que la connexion a la base de donnees a reussi
+    char *nomJoueur = NULL; // Nom du joueur à NULL
+    int idJoueur = LireIDJoueur(sqlConnection, nomJoueur, dico_message); // Lire l'ID du joueur
+    TEST_ASSERT_EQUAL_INT(-1, idJoueur); // Verifier que l'ID du joueur est valide
+    TEST_ASSERT_EQUAL_INT(14, dico_message->codeErreur); // Verifier que le code d'erreur est valide
+    free(dico_message); // Liberer la memoire
+    mysql_close(sqlConnection); // Fermer la connexion
+}
+
+// Test KO Pseudo + de 50 caractères de la fonction LireIDJoueur
+void test_LireIDJoueur_KO_50C()
+{
+    struct Dico_Message *dico_message = malloc(sizeof(struct Dico_Message)); // Allocation de la memoire pour les messages
+    MYSQL *sqlConnection = ConnecterBaseDeDonnees(true, dico_message); // Connexion a la base de donnees
+    TEST_ASSERT_NOT_NULL(sqlConnection); // Verifier que la connexion a la base de donnees a reussi
+    char *nomJoueur = "Ceciestunpseudovraimentbeaucouptroplongnestcepasnonmdrlol"; // Nom du joueur à + de 50 caractères
+    int idJoueur = LireIDJoueur(sqlConnection, nomJoueur, dico_message); // Lire l'ID du joueur
+    TEST_ASSERT_EQUAL_INT(-1, idJoueur); // Verifier que l'ID du joueur est valide
+    TEST_ASSERT_EQUAL_INT(14, dico_message->codeErreur); // Verifier que le code d'erreur est valide
+    free(dico_message); // Liberer la memoire
+    mysql_close(sqlConnection); // Fermer la connexion
+}
+
+
 
 // Execute tous les tests de scores dans la base de donnees
 void TestsScores()
@@ -64,4 +106,7 @@ void TestsScores()
     RUN_TEST(test_connexionDBTEST_OK);
     RUN_TEST(test_ExecuterInstructionSQL_OK);
     RUN_TEST(test_ExecuterInstructionSQL_KO);
+    RUN_TEST(test_LireIDJoueur_OK);
+    RUN_TEST(test_LireIDJoueur_KO_NULL);
+    RUN_TEST(test_LireIDJoueur_KO_50C);
 }
