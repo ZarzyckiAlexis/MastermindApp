@@ -1,2 +1,6 @@
-// Ecrire ici le SCRIPT qui crée la base de donnée
-// C'est à faire même si la DB est créée dans le code
+CREATE TABLE joueurs(
+   id INT AUTO_INCREMENT,
+   pseudo VARCHAR(50) NOT NULL,
+   score INT NOT NULL,
+   PRIMARY KEY(id)
+);

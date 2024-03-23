@@ -5,8 +5,8 @@
 #define _DICO_SCORE
 struct Points
 {
-    // A COMPLETER, CF LPP structures
-    // Contient: le nom du joueur et son score
+    char nomJoueur[51]; // 50 caractères + 1 pour le \0
+    int score;
 };
 static const char *ServerDB = "127.0.0.1";
 #endif

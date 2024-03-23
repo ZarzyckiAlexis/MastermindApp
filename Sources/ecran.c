@@ -1,6 +1,5 @@
 #include "../Includes/common.h"
 #include "../Includes/ecran.h"
-#define LENGTH 15
 
 // ***************************************//
 // FONCTIONS DECLAREES DANS LE FICHIER .h //

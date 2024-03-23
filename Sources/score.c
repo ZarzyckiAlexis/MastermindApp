@@ -1,5 +1,7 @@
 #include "../Includes/common.h"
 #include "../Includes/score.h"
+#define PROD_DB_NAME "la219263"
+#define TEST_DB_NAME "la219263_test"
 
 // Fonction pour executer une instruction SQL
 // En cas d'erreur, affiche la cause a la console, mais continue toujours
@@ -26,9 +28,27 @@ bool ExecuterInstructionSQL(MYSQL *sqlConnection, char *instructionSQL, struct D
 MYSQL *ConnecterBaseDeDonnees(bool baseDeTest, struct Dico_Message *messageDeRetour)
 {
     MYSQL *sqlConnection;
+    sqlConnection = mysql_init(NULL); // Initialisation de la structure de connexion MYSQL
+    if(baseDeTest == false){ // Si c'est la base de donnees de production
+        // Connexion a la base de donnees
+        if (mysql_real_connect(sqlConnection, "localhost", "root", "", PROD_DB_NAME, 0, NULL, 0) == NULL)
+        {
+            messageDeRetour->codeErreur = 10;
+            strcpy(messageDeRetour->message, "Erreur lors de la connexion a la base de donnees");
+            return NULL;
+        }
+    }
+    else{ // Si c'est la base de donnees pour les tests
 
-    // FONCTIONS APPELLEES: voir le cours FBD2
-    // Le nom de la DB contient le numéro d'étudiant
+        // Connexion a la base de donnees pour les tests
+        if (mysql_real_connect(sqlConnection, "localhost", "root", "", TEST_DB_NAME, 0, NULL, 0) == NULL)
+        {
+            messageDeRetour->codeErreur = 11;
+            strcpy(messageDeRetour->message, "Erreur lors de la connexion a la base de donnees pour les tests");
+            return NULL;
+        }
+
+    }
 
     return sqlConnection;
 }

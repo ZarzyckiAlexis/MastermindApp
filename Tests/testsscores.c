@@ -10,17 +10,29 @@ void ViderDBDeTest()
     // pour que tous les tests de DB démarrent avec une DB propre.
 }
 
-// Test de connexion a la base de donnees
-void test_connexionDB_OK()
+// Test de connexion a la base de donnees PRODUCTION
+void test_connexionDBPROD_OK()
 {
-    // Créer le test ici
+    struct Dico_Message *dico_message = malloc(sizeof(struct Dico_Message));
+    MYSQL *sqlConnection = ConnecterBaseDeDonnees(false, dico_message);
+    TEST_ASSERT_NOT_NULL(sqlConnection);
+    free(dico_message);
+    mysql_close(sqlConnection);
 }
 
-// Ajouter d'autres tests, à imaginer
+// Test de connexion a la base de donnees TEST
+void test_connexionDBTEST_OK()
+{
+    struct Dico_Message *dico_message = malloc(sizeof(struct Dico_Message));
+    MYSQL *sqlConnection = ConnecterBaseDeDonnees(true, dico_message);
+    TEST_ASSERT_NOT_NULL(sqlConnection);
+    free(dico_message);
+    mysql_close(sqlConnection);
+}
 
 // Execute tous les tests de scores dans la base de donnees
 void TestsScores()
 {
-    RUN_TEST(test_connexionDB_OK);
-    // Appeler les autres tests ici
+    RUN_TEST(test_connexionDBPROD_OK);
+    RUN_TEST(test_connexionDBTEST_OK);
 }

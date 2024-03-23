@@ -14,6 +14,7 @@ static const int NombreDeTabulationAGauche = 3;
 #define COULEURS_MALPLACE 4
 #define COULEURS_ERREUR 4
 #endif
+#define LENGTH 15 // Longeur dynamique
 
 // Déclaration des fonctions du module
 //void ChoisirModeEcran(bool couleur);
