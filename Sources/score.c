@@ -14,17 +14,17 @@
 bool ExecuterInstructionSQL(MYSQL *sqlConnection, char *instructionSQL, struct Dico_Message *messageDeRetour)
 {
     if(mysql_query(sqlConnection, instructionSQL)){ // Si erreur
-        messageDeRetour->codeErreur = 12;
-        strcpy(messageDeRetour->message, "Erreur lors de l'execution de l'instruction SQL");
-        return false;
+        messageDeRetour->codeErreur = 12; // Code d'erreur
+        strcpy(messageDeRetour->message, "Erreur lors de l'execution de l'instruction SQL"); // Message d'erreur
+        return false; // On retourne false en cas d'erreur
     }
 
     // Stocker le résultat de la requête
     sqlResult = mysql_store_result(sqlConnection);
     if (sqlResult == NULL && mysql_affected_rows(sqlConnection) == 0) { // Si erreur
-        messageDeRetour->codeErreur = 13;
-        strcpy(messageDeRetour->message, "Erreur lors de l'execution de l'instruction SQL");
-        return false;
+        messageDeRetour->codeErreur = 13; // Code d'erreur
+        strcpy(messageDeRetour->message, "Erreur lors de l'execution de l'instruction SQL"); // Message d'erreur
+        return false; // On retourne false en cas d'erreur
     }
     return true;
 }
@@ -44,9 +44,9 @@ MYSQL *ConnecterBaseDeDonnees(bool baseDeTest, struct Dico_Message *messageDeRet
         // Connexion a la base de donnees
         if (mysql_real_connect(sqlConnection, "localhost", "root", "", PROD_DB_NAME, 0, NULL, 0) == NULL)
         {
-            messageDeRetour->codeErreur = 10;
-            strcpy(messageDeRetour->message, "Erreur lors de la connexion a la base de donnees");
-            return NULL;
+            messageDeRetour->codeErreur = 10; // Code d'erreur
+            strcpy(messageDeRetour->message, "Erreur lors de la connexion a la base de donnees"); // Message d'erreur
+            return NULL; // On retourne NULL en cas d'erreur
         }
     }
     else{ // Si c'est la base de donnees pour les tests
@@ -54,14 +54,13 @@ MYSQL *ConnecterBaseDeDonnees(bool baseDeTest, struct Dico_Message *messageDeRet
         // Connexion a la base de donnees pour les tests
         if (mysql_real_connect(sqlConnection, "localhost", "root", "", TEST_DB_NAME, 0, NULL, 0) == NULL)
         {
-            messageDeRetour->codeErreur = 11;
-            strcpy(messageDeRetour->message, "Erreur lors de la connexion a la base de donnees pour les tests");
-            return NULL;
+            messageDeRetour->codeErreur = 11; // Code d'erreur
+            strcpy(messageDeRetour->message, "Erreur lors de la connexion a la base de donnees pour les tests"); // Message d'erreur
+            return NULL; // On retourne NULL en cas d'erreur
         }
 
     }
-
-    return sqlConnection;
+    return sqlConnection; // On retourne la connexion a la base de donnees
 }
 
 // Fonction lire l'identifiant unique du joueur dans la base de donnees
@@ -112,13 +111,36 @@ int LireIDJoueur(MYSQL *sqlConnection, char *nomJoueur, struct Dico_Message *mes
 // - Un booleen qui indique si le sauvetage s'est fait ou pas
 bool SauverScore(bool baseDeTest, char *nomJoueur, int nombreDEssais, struct Dico_Message *messageDeRetour)
 {
-    // FONCTIONS APPELLEES:
-    // ConnecterBaseDeDonnees();
-    // LireIDJoueur();
-    // ExecuterInstructionSQL();
-    // Autres fonctions: voir le cours FBD2
 
-    return false; // A adapter
+    MYSQL *sqlConnection = ConnecterBaseDeDonnees(baseDeTest, messageDeRetour); // Connexion a la base de donnees
+    if(sqlConnection == NULL){ // Si erreur
+        return false;
+    }
+
+    // Lire l'ID du joueur
+    int idJoueur = LireIDJoueur(sqlConnection, nomJoueur, messageDeRetour); // Lire l'ID du joueur
+    if(idJoueur == -1){ // Si erreur
+        return false; // On retourne false en cas d'erreur
+    }
+    
+    if(nombreDEssais < 1){ // Si le nombre d'essais est inferieur a 1
+        messageDeRetour->codeErreur = 15; // Code d'erreur
+        strcpy(messageDeRetour->message, "Nombre d'essais invalide"); // Message d'erreur
+        return false; // On retourne false en cas d'erreur
+    }
+
+    // Sauvegarde du score
+    char query[256]; // Declaration de la requete SQL
+    int score = 11 - nombreDEssais;
+    sprintf(query, "INSERT INTO scores (score, id_joueur) VALUES (%d, %d)", score, idJoueur); // Creation de la requete SQL
+    bool isOK = ExecuterInstructionSQL(sqlConnection, query, messageDeRetour); // Execution de l'instruction SQL
+    if(!isOK){ // Si erreur
+        return false; // On retourne false en cas d'erreur
+    }
+
+    // Fermeture de la connexion
+    mysql_close(sqlConnection);
+    return true;
 }
 
 // Fonction pour les meilleurs scores dans la base de donnees
@@ -138,4 +160,49 @@ struct Points *LireMeilleursScores(bool baseDeTest, int nombreDeScore, struct Di
     // Autres fonctions: voir le cours FBD2
 
     return NULL; // A adapter
+}
+
+bool viderBaseDeDonnees(bool baseDeTest, struct Dico_Message *messageDeRetour)
+{
+    MYSQL *sqlConnection = ConnecterBaseDeDonnees(baseDeTest, messageDeRetour); // Connexion a la base de donnees
+    if(sqlConnection == NULL){ // Si erreur
+        printf("Erreur lors de la connexion a la base de donnees\n");
+        return false;
+    }
+
+    // Vider la table scores
+    char query[256]; // Declaration de la requete SQL
+    sprintf(query, "DROP TABLE scores"); // Creation de la requete SQL
+    ExecuterInstructionSQL(sqlConnection, query, messageDeRetour); // Execution de l'instruction SQL
+
+    // Vider la table joueurs
+    sprintf(query, "DROP TABLE joueurs"); // Creation de la requete SQL
+    bool hasPassed = ExecuterInstructionSQL(sqlConnection, query, messageDeRetour); // Execution de l'instruction SQL
+    if(hasPassed){ // Si erreur
+        return false; // On retourne false en cas d'erreur
+    }
+
+    // Fermeture de la connexion
+    mysql_close(sqlConnection);
+    return true;
+}
+
+bool creerBaseDeDonnees(bool baseDeTest, struct Dico_Message *messageDeRetour)
+{
+    MYSQL *sqlConnection = ConnecterBaseDeDonnees(baseDeTest, messageDeRetour); // Connexion a la base de donnees
+    if(sqlConnection == NULL){ // Si erreur
+        return false;
+    }
+
+    // Creation de la table joueurs
+    char query[256]; // Declaration de la requete SQL
+    sprintf(query, "CREATE TABLE joueurs (id_joueur INT AUTO_INCREMENT PRIMARY KEY, pseudo VARCHAR(50) NOT NULL);"); // Creation de la requete SQL
+    ExecuterInstructionSQL(sqlConnection, query, messageDeRetour); // Execution de l'instruction SQL
+    // Creation de la table scores
+    sprintf(query, "CREATE TABLE scores (id_score INT AUTO_INCREMENT PRIMARY KEY, score INT NOT NULL, id_joueur INT NOT NULL, FOREIGN KEY (id_joueur) REFERENCES joueurs(id_joueur));"); // Creation de la requete SQL
+    ExecuterInstructionSQL(sqlConnection, query, messageDeRetour); // Execution de l'instruction SQL
+
+    // Fermeture de la connexion
+    mysql_close(sqlConnection);
+    return true;
 }

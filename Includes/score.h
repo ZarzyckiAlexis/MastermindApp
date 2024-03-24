@@ -20,3 +20,6 @@ MYSQL *ConnecterBaseDeDonnees(bool DBDeTest, struct Dico_Message *messageDeRetou
 int LireIDJoueur(MYSQL *sqlConnection, char *nomJoueur, struct Dico_Message *messageDeRetour);
 bool SauverScore(bool baseDeTest, char *nomJoueur, int nombreDEssais, struct Dico_Message *messageDeRetour);
 struct Points *LireMeilleursScores(bool baseDeTest, int nombreDeScore,  struct Dico_Message *messageDeRetour);
+// Dépassement
+bool viderBaseDeDonnees(bool baseDeTest, struct Dico_Message *messageDeRetour);
+bool creerBaseDeDonnees(bool baseDeTest, struct Dico_Message *messageDeRetour);

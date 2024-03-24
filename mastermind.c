@@ -8,10 +8,12 @@
 int main()
 {
     InitialiserEcran(); // Initialisation de l'écran
+    struct Dico_Message *messageDeRetour = malloc(sizeof(struct Dico_Message));
+    viderBaseDeDonnees(true, messageDeRetour);
 
     // Création des instances de la structure Partie et Dictionnaire
 
-    struct Dictionnaire *dictionnaire;
+    /*struct Dictionnaire *dictionnaire;
     struct Dico_Message *dico_message = malloc(sizeof(struct Dico_Message));
     dictionnaire = LireDictionnaire("./liste_francais_4.txt", dico_message);
     if(dictionnaire == NULL){
@@ -26,7 +28,9 @@ int main()
     EffacerDictionnaire(dictionnaire);
     EffacerPartie(maPartie);
     getch();
-    EffacerEcran();
+    EffacerEcran();*/
+    free(messageDeRetour);
+    getch();
     TerminerEcran();
     
     return EXIT_SUCCESS;
