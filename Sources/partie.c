@@ -133,5 +133,5 @@ void AfficherMeilleursScores()
     RetourALaLigne(); // On retourne à la ligne
     AfficherTexteSansRetour("Enfoncez ENTER pour continuer..."); // On affiche un message
     LireTexte();
-    // free()
+    free(points); // On libère la mémoire allouée pour les points
 }
