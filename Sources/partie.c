@@ -112,15 +112,26 @@ bool JouerPartie(struct Partie *partieEnCours)
 // Son résultat est un tableau alloué en mémoire, qu'il faut libérer a la fin
 void AfficherMeilleursScores()
 {
-    // FONCTIONS UTILISEES:
-    // LireMeilleursScores()
-    // AfficherErreurEtTerminer()
-    // EffacerEcran()
-    // AfficherTexteDansCadre()
-    // AfficherTexteIndenteSansRetour()
-    // AfficherTexteSansRetour()
-    // AfficherNombreSansRetour()
-    // RetourALaLigne()
-    // LireTexte();
+    struct Dico_Message *dico_message = malloc(sizeof(struct Dico_Message)); // On alloue la mémoire pour la structure Dico_Message
+    struct Points *points = LireMeilleursScores(true, 10, dico_message); // On lit les meilleurs scores
+    if(points == NULL){ // Si on n'a pas pu lire les meilleurs scores
+        AfficherErreurEtTerminer(dico_message->message, dico_message->codeErreur); // On affiche un message d'erreur
+    }
+    EffacerEcran(); // On efface l'écran
+    // On affiche le texte dans le cadre
+    AfficherTexteDansCadre("Meilleurs scores");
+    for(int compteur = 0; compteur < 10; compteur++){
+        // Si le nom du joueur est vide
+        if(strcmp(points[compteur].nomJoueur, "") == 0){
+            break; // On sort de la boucle
+        }
+        AfficherTexteSansRetour(points[compteur].nomJoueur); // On affiche le nom du joueur
+        AfficherTexteSansRetour(" : "); // On affiche un deux points
+        AfficherNombreSansRetour(points[compteur].score); // On affiche le score
+        RetourALaLigne(); // On retourne à la ligne
+    }
+    RetourALaLigne(); // On retourne à la ligne
+    AfficherTexteSansRetour("Enfoncez ENTER pour continuer..."); // On affiche un message
+    LireTexte();
     // free()
 }
