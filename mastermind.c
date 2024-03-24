@@ -26,8 +26,6 @@ int main()
     EffacerDictionnaire(dictionnaire);
     EffacerPartie(maPartie);
     getch();
-    EffacerEcran();
     TerminerEcran();
-    
     return EXIT_SUCCESS;
 }

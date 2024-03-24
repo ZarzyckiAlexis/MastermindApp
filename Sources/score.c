@@ -158,8 +158,30 @@ struct Points *LireMeilleursScores(bool baseDeTest, int nombreDeScore, struct Di
     // ExecuterInstructionSQL();
     // malloc
     // Autres fonctions: voir le cours FBD2
+    struct Points *points = malloc(sizeof(struct Points) * nombreDeScore); // Allocation de la memoire pour les scores
+    MYSQL *sqlConnection = ConnecterBaseDeDonnees(baseDeTest, messageDeRetour); // Connexion a la base de donnees
+    if(sqlConnection == NULL){ // Si erreur
+        return NULL; // On retourne NULL en cas d'erreur
+    }
 
-    return NULL; // A adapter
+    // Lire les scores
+    char query[256]; // Declaration de la requete SQL
+    sprintf(query, "SELECT scores.score, scores.id_joueur, joueurs.pseudo FROM scores JOIN joueurs ON scores.id_joueur = joueurs.id_joueur ORDER BY scores.score DESC LIMIT %d;", nombreDeScore); // Creation de la requete SQL
+    bool hasPassed = ExecuterInstructionSQL(sqlConnection, query, messageDeRetour); // Execution de l'instruction SQL
+    if(!hasPassed){ // Si erreur
+        return NULL; // On retourne NULL en cas d'erreur
+    }
+    // On garnit la structure des scores
+    MYSQL_ROW sqlRow;
+    int compteur = 0;
+    while((sqlRow = mysql_fetch_row(sqlResult)) != NULL){ // Tant qu'il y a des lignes
+        points[compteur].score = atoi(sqlRow[0]); // On recupere le score
+        strcpy(points[compteur].nomJoueur, sqlRow[2]); // On recupere le nom du joueur
+        compteur++; // On incremente le compteur
+    }
+    // Fermeture de la connexion
+    mysql_close(sqlConnection);
+    return points;
 }
 
 bool viderBaseDeDonnees(bool baseDeTest, struct Dico_Message *messageDeRetour)
