@@ -170,30 +170,26 @@ void test_creerDB_OK(){
 
 // Test OK de la fonction LireMeilleursScores
 void test_LireMeilleursScores_OK(){
+    ViderDBDeTest(); // Vider la base de donnees de test
     struct Dico_Message *dico_message = malloc(sizeof(struct Dico_Message)); // Allocation de la memoire pour les messages
-    MYSQL *sqlConnection = ConnecterBaseDeDonnees(true, dico_message); // Connexion a la base de donnees
-    TEST_ASSERT_NOT_NULL(sqlConnection); // Verifier que la connexion a la base de donnees a reussi
     char *nomJoueur = "Joueur1"; // Nom du joueur
-    int nombreDEssais = 10; // Nombre d'essais
+    int nombreDEssais = 2; // Nombre d'essais
     bool resultat = SauverScore(true, nomJoueur, nombreDEssais, dico_message); // Sauver le score pour l'obtenir ensuite
-    struct Points *points = LireMeilleursScores(sqlConnection, 1, dico_message); // Lire les meilleurs scores
+    struct Points *points = LireMeilleursScores(true, 1, dico_message); // Lire les meilleurs scores
     TEST_ASSERT_NOT_NULL(points); // Verifier que les scores ont ete lus
-    TEST_ASSERT_EQUAL_INT(1, points->score); // Verifier que l'ID du joueur est valide
+    TEST_ASSERT_EQUAL_INT(8, points->score); // Verifier que l'ID du joueur est valide
     TEST_ASSERT_EQUAL_STRING(nomJoueur, points->nomJoueur); // Verifier que le nom du joueur est valide
     free(dico_message); // Liberer la memoire
-    mysql_close(sqlConnection); // Fermer la connexion
 }
 
 // Test KO de la fonction LireMeilleursScores
 void test_LireMeilleursScores_KO(){
+    ViderDBDeTest(); // Vider la base de donnees de test
     struct Dico_Message *dico_message = malloc(sizeof(struct Dico_Message)); // Allocation de la memoire pour les messages
-    MYSQL *sqlConnection = ConnecterBaseDeDonnees(true, dico_message); // Connexion a la base de donnees
-    TEST_ASSERT_NOT_NULL(sqlConnection); // Verifier que la connexion a la base de donnees a reussi
     // Ici on ne crée pas le score
-    struct Points *points = LireMeilleursScores(sqlConnection, 1, dico_message); // Lire les meilleurs scores
+    struct Points *points = LireMeilleursScores(true, 1, dico_message); // Lire les meilleurs scores
     TEST_ASSERT_NOT_NULL(points); // Verifier que les scores ont ete lus
     free(dico_message); // Liberer la memoire
-    mysql_close(sqlConnection); // Fermer la connexion
 }
 
 // Execute tous les tests de scores dans la base de donnees
