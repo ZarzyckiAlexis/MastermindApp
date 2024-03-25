@@ -8,7 +8,7 @@
 char *LireTexte(){
    char buffer[256]; // Pour stocker temporairement la chaîne de caractère
    scanw("%255s", buffer); // On précise %255s pour éviter le overflow
-   char *texte = malloc(sizeof(strlen(buffer) + 1)); // On prends la taille réel du buffer pour le malloc + 1 pour le null byte
+   char *texte = malloc(strlen(buffer) + 1); // On prends la taille réel du buffer pour le malloc + 1 pour le null byte
    strcpy(texte, buffer); // On copie le contenu du buffer dans notre texte
    return texte; // On renvoie le pointeur
 }

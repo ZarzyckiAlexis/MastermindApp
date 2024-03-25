@@ -105,6 +105,7 @@ void AfficherCharSpecialSansRetour(unsigned char caractereAAfficher, int repetit
 // - la chaine de caracteres a afficher dans le cadre (pointeur)
 void AfficherTexteDansCadre(char *texteAAfficher)
 {
+    RetourALaLigne();
     int longeurTexte = strlen(texteAAfficher)+2; // On prends la longeur du texte + 2 pour les coins
 
     // Affichage de la ligne suppérieur du cadre
@@ -155,14 +156,21 @@ void AfficherErreurEtTerminer(char *texteDErreur, int codeDErreur)
 // - Le mot à afficher, ou NULL si rien ne doit etre affiché
 void AfficherHautDeJeu(char *motAAfficher)
 {
-    AfficherCharSpecialSansRetour('l', 1); // On affiche le coin supérieur gauche
-    AfficherCharSpecialSansRetour('q', LENGTH); // On affiche la ligne du haut
-    AfficherCharSpecialSansRetour('w', 1); // On affiche la ligne du haut
-    AfficherCharSpecialSansRetour('q', LENGTH-8); // On affiche la ligne du haut
-    AfficherCharSpecialSansRetour('k', 1); // On affiche le coin supérieur droit
-    RetourALaLigne(); // On fait un retour à la ligne
     if (motAAfficher == NULL) { // Si le mot à afficher est NULL
+        AfficherCharSpecialSansRetour('l', 1); // On affiche le coin supérieur gauche
+        AfficherCharSpecialSansRetour('q', LENGTH); // On affiche la ligne du haut
+        AfficherCharSpecialSansRetour('w', 1); // On affiche la ligne du haut
+        AfficherCharSpecialSansRetour('q', LENGTH-8); // On affiche la ligne du haut
+        AfficherCharSpecialSansRetour('k', 1); // On affiche le coin supérieur droit
+        RetourALaLigne(); // On fait un retour à la ligne
     } else { // Sinon
+        AfficherCharSpecialSansRetour('l', 1); // On affiche le coin supérieur gauche
+        AfficherCharSpecialSansRetour('q', LENGTH-strlen(motAAfficher)); // On affiche la ligne du haut
+        AfficherTexteSansRetour(motAAfficher); // On affiche le mot
+        AfficherCharSpecialSansRetour('w', 1); // On affiche la ligne du haut
+        AfficherCharSpecialSansRetour('q', LENGTH-8); // On affiche la ligne du haut
+        AfficherCharSpecialSansRetour('k', 1); // On affiche le coin supérieur droit
+        RetourALaLigne(); // On fait un retour à la ligne
     }
 }
 

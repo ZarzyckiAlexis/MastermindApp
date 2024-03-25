@@ -123,7 +123,7 @@ bool SauverScore(bool baseDeTest, char *nomJoueur, int nombreDEssais, struct Dic
         return false; // On retourne false en cas d'erreur
     }
     
-    if(nombreDEssais < 1){ // Si le nombre d'essais est inferieur a 1
+    if(nombreDEssais < 0){ // Si le nombre d'essais est inferieur a 1
         messageDeRetour->codeErreur = 15; // Code d'erreur
         strcpy(messageDeRetour->message, "Nombre d'essais invalide"); // Message d'erreur
         return false; // On retourne false en cas d'erreur
@@ -131,7 +131,7 @@ bool SauverScore(bool baseDeTest, char *nomJoueur, int nombreDEssais, struct Dic
 
     // Sauvegarde du score
     char query[256]; // Declaration de la requete SQL
-    int score = 11 - nombreDEssais;
+    int score = 10 - nombreDEssais;
     sprintf(query, "INSERT INTO scores (score, id_joueur) VALUES (%d, %d)", score, idJoueur); // Creation de la requete SQL
     bool isOK = ExecuterInstructionSQL(sqlConnection, query, messageDeRetour); // Execution de l'instruction SQL
     if(!isOK){ // Si erreur
@@ -174,6 +174,10 @@ struct Points *LireMeilleursScores(bool baseDeTest, int nombreDeScore, struct Di
     // On garnit la structure des scores
     MYSQL_ROW sqlRow;
     int compteur = 0;
+    for(int compteur=0; compteur<nombreDeScore; compteur++){ // On initialise les scores
+        points[compteur].score = 0; // On initialise le score
+        strcpy(points[compteur].nomJoueur, ""); // On initialise le nom du joueur
+    }
     while((sqlRow = mysql_fetch_row(sqlResult)) != NULL){ // Tant qu'il y a des lignes
         points[compteur].score = atoi(sqlRow[0]); // On recupere le score
         strcpy(points[compteur].nomJoueur, sqlRow[2]); // On recupere le nom du joueur

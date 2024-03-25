@@ -60,7 +60,12 @@ void AfficherPartie(struct Partie *partieEnCours, bool modeDebug)
 {
     // On efface tout et on affiche le jeu dans son état actuel
     EffacerEcran();
-    AfficherHautDeJeu();
+    if(modeDebug == true){ // Si on est en mode debug
+        AfficherHautDeJeu(partieEnCours->solution); // On affiche le haut du jeu avec le mot
+    }
+    else{ // Si on est pas en mode debug
+        AfficherHautDeJeu(NULL); // On affiche le haut du jeu sans le mot
+    }
     for(int compteur = 0; compteur < 10; compteur++){
         AfficherMotDeJeu(partieEnCours->liste_essais[compteur], partieEnCours->resultats[compteur].bienPlaces, partieEnCours->resultats[compteur].malPlaces);
     }
@@ -82,27 +87,38 @@ void AfficherPartie(struct Partie *partieEnCours, bool modeDebug)
 // - Si gagne ou perdu: on demande le nom du jour et on sauve le résultat
 // - Si abandon: fin de partie, on affiche la solution
 bool JouerPartie(struct Partie *partieEnCours)
-{
+{  
+    bool modeDebug = false; // On initialise le mode debug
     strcpy(partieEnCours->solution, partieEnCours->solution); // Fix un bug de solution?
     do{
-        AfficherPartie(partieEnCours, false); // On affiche la partie
-        AfficherTexteIndenteSansRetour("Entrez un mot de 4 lettres ou ENTER pour abandonner: "); // On demande un mot
-        char *answer = LireTexte(); // On demande un mot
-        strcpy(partieEnCours->liste_essais[partieEnCours->essaiEnCours], answer); // On copie le mot dans la structure
-        if(VerifierMot(partieEnCours->liste_essais[partieEnCours->essaiEnCours]) == false){ // On vérifie que le mot est correct
-            AfficherErreurEtTerminer("Le mot doit contenir exactement 4 lettres.", 0); // On affiche un message d'erreur
-            return false; // On retourne false pour abandonner
-        }
-        ComparerMots(partieEnCours->solution, partieEnCours->liste_essais[partieEnCours->essaiEnCours], &partieEnCours->resultats[partieEnCours->essaiEnCours]); // On compare les mots
-        if (strcmp(partieEnCours->liste_essais[partieEnCours->essaiEnCours], partieEnCours->solution) == 0){ // Si le mot est correct
-            AfficherPartie(partieEnCours, false); // On affiche la partie
-            partieEnCours->resultat = true; // On met le résultat à true
-            break; // On sort de la boucle
-        }
-        partieEnCours->essaiEnCours++; // On incrémente le nombre d'essais
-        AfficherPartie(partieEnCours, false); // On affiche la partie
-    } while (partieEnCours->resultat == false && partieEnCours->essaiEnCours < 10); // Tant que le jeu n'est pas fini
+        AfficherPartie(partieEnCours, modeDebug);
+        AfficherTexteIndenteSansRetour("Entrez un mot de 4 lettres ou ENTER pour abandonner: ");
+        char *answer = LireTexte();
 
+        if(strcmp(answer, "*") == 0) {
+            modeDebug = !modeDebug; // Toggle debug mode
+            continue; // Skip the rest of the loop and start from the beginning
+        }
+        else{
+            strcpy(partieEnCours->liste_essais[partieEnCours->essaiEnCours], answer);
+            if((VerifierMot(partieEnCours->liste_essais[partieEnCours->essaiEnCours]) == false)){ // On vérifie que le mot est correct
+                AfficherTexteSansRetour("Vous avez abandonner ou votre mot n'était pas correcte. La solution était: "); // On affiche un message
+                AfficherTexteSansRetour(partieEnCours->solution); // On affiche la solution
+                return false; // On sort de la boucle
+            }
+            ComparerMots(partieEnCours->solution, partieEnCours->liste_essais[partieEnCours->essaiEnCours], &partieEnCours->resultats[partieEnCours->essaiEnCours]); // On compare les mots
+            if (strcmp(partieEnCours->liste_essais[partieEnCours->essaiEnCours], partieEnCours->solution) == 0){ // Si le mot est correct
+                AfficherPartie(partieEnCours, modeDebug); // On affiche la partie
+                partieEnCours->resultat = true; // On met le résultat à true
+                break; // On sort de la boucle
+            }
+            partieEnCours->essaiEnCours++; // On incrémente le nombre d'essais
+            AfficherPartie(partieEnCours, modeDebug); // On affiche la partie   
+            }
+    } while (partieEnCours->resultat == false && partieEnCours->essaiEnCours < 10); // Tant que le jeu n'est pas fini
+    RetourALaLigne();
+    AfficherTexteSansRetour("Quel est votre pseudo ? "); // On demande le pseudo du joueur
+    strcpy(partieEnCours->nomJoueur, LireTexte()); // On copie le pseudo dans la structure
     return partieEnCours->resultat; // On retourne le résultat
 }
 
@@ -114,12 +130,15 @@ void AfficherMeilleursScores()
 {
     struct Dico_Message *dico_message = malloc(sizeof(struct Dico_Message)); // On alloue la mémoire pour la structure Dico_Message
     struct Points *points = LireMeilleursScores(true, 10, dico_message); // On lit les meilleurs scores
-    if(points == NULL){ // Si on n'a pas pu lire les meilleurs scores
-        AfficherErreurEtTerminer(dico_message->message, dico_message->codeErreur); // On affiche un message d'erreur
-    }
     EffacerEcran(); // On efface l'écran
-    // On affiche le texte dans le cadre
-    AfficherTexteDansCadre("Meilleurs scores");
+    AfficherTexteDansCadre("Meilleurs scores"); // On affiche le texte dans un cadre
+    if(points == NULL){ // Si on n'a pas pu lire les meilleurs scores
+        AfficherTexteSansRetour("Il n'y a pas de score."); // On affiche un message d'erreur
+        RetourALaLigne(); // On retourne à la ligne
+        AfficherTexteSansRetour("Appuyez sur une touche pour continuer"); // On affiche un message
+        getch(); // On attend que l'utilisateur appuie sur une touche
+        exit(0); // On quitte le programme
+    }
     for(int compteur = 0; compteur < 10; compteur++){
         // Si le nom du joueur est vide
         if(strcmp(points[compteur].nomJoueur, "") == 0){
