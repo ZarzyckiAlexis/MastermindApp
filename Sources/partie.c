@@ -165,3 +165,65 @@ void AfficherMeilleursScores()
     free(dico_message); // On libère la mémoire allouée pour la structure Dico_Message
     free(points); // On libère la mémoire allouée pour les points
 }
+
+// Dépassement
+/*
+    Fonction pour afficher le menu
+*/
+void afficherMenu(){
+    char *choix;
+    struct Dico_Message *dico_message = malloc(sizeof(struct Dico_Message));
+    MYSQL *sqlConnection = ConnecterBaseDeDonnees(Is_DB_TEST, dico_message); // Se connecter à la DB
+    mysql_close(sqlConnection); // Fermer la connexion à la DB
+    do{
+        EffacerEcran(); // On efface l'écran
+        // On affiche le menu
+        AfficherTexteSansRetour("1. Jouer\n");
+        AfficherTexteSansRetour("2. Meilleurs scores\n");
+        AfficherTexteSansRetour("3. Quitter\n");
+        AfficherTexteSansRetour("Votre choix: ");
+        choix = LireTexte(); // On lit le choix de l'utilisateur
+        if(strcmp(choix, "1") == 0){
+             // Création des instances de la structure Partie et Dictionnaire
+            struct Dictionnaire *dictionnaire;
+            MYSQL *sqlConnection = ConnecterBaseDeDonnees(Is_DB_TEST, dico_message); // Se connecter à la DB
+            mysql_close(sqlConnection); // Fermer la connexion à la DB
+            
+            dictionnaire = LireDictionnaire("./liste_francais_4.txt", dico_message);
+            if(dictionnaire == NULL){
+                AfficherErreurEtTerminer(dico_message->message, dico_message->codeErreur);
+            }
+            
+            struct Partie *maPartie = CreerPartie(dictionnaire);
+            // Initialisation de la structure Partie
+            JouerPartie(maPartie);
+            if(maPartie == NULL){
+                AfficherErreurEtTerminer("Erreur lors de la création de la partie", 1);
+            }
+            if(maPartie->resultat == true){
+                bool resultat = SauverScore(Is_DB_TEST, maPartie->nomJoueur, maPartie->essaiEnCours, dico_message);
+                if(resultat == false){
+                    AfficherErreurEtTerminer(dico_message->message, dico_message->codeErreur);
+                }
+            }
+            RetourALaLigne();
+            AfficherTexteSansRetour("Appuyez sur une touche pour continuer");
+            getch();
+            AfficherMeilleursScores();
+            EffacerDictionnaire(dictionnaire);
+            EffacerPartie(maPartie);
+            free(choix);
+        }
+        else if(strcmp(choix, "2") == 0){
+            // On affiche les meilleurs scores
+            free(choix);
+            AfficherMeilleursScores();
+        }
+        else if(strcmp(choix, "3") == 0){
+            // On quitte le jeu
+            free(choix);
+            TerminerEcran();
+            exit(EXIT_SUCCESS);
+        }
+    } while (strcmp(choix, "1") != 0 && strcmp(choix, "2") != 0 && strcmp(choix, "3") != 0);
+}

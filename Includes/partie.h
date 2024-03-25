@@ -20,3 +20,5 @@ void EffacerPartie(struct Partie *partieEnCours);
 bool JouerPartie(struct Partie *partieEnCours);
 void AfficherPartie(struct Partie *partieEnCours, bool modeDebug);
 void AfficherMeilleursScores();
+// Dépassement
+void afficherMenu();
