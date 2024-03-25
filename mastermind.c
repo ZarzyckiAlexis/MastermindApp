@@ -9,12 +9,13 @@ int main()
 {
     InitialiserEcran(); // Initialisation de l'écran
 
+
     // Création des instances de la structure Partie et Dictionnaire
     struct Dictionnaire *dictionnaire;
     struct Dico_Message *dico_message = malloc(sizeof(struct Dico_Message));
 
-    creerBaseDeDonnees(Is_DB_TEST, dico_message); // Crée la DB si elle n'existe pas
-
+    MYSQL *sqlConnection = ConnecterBaseDeDonnees(Is_DB_TEST, dico_message); // Se connecter à la DB
+    mysql_close(sqlConnection); // Fermer la connexion à la DB
     dictionnaire = LireDictionnaire("./liste_francais_4.txt", dico_message);
     if(dictionnaire == NULL){
         AfficherErreurEtTerminer(dico_message->message, dico_message->codeErreur);

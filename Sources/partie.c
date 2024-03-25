@@ -116,6 +116,7 @@ bool JouerPartie(struct Partie *partieEnCours)
             partieEnCours->essaiEnCours++; // On incrémente le nombre d'essais
             AfficherPartie(partieEnCours, modeDebug); // On affiche la partie   
             }
+            free(answer); // On libère la mémoire allouée pour la réponse
     } while (partieEnCours->resultat == false && partieEnCours->essaiEnCours < NbreMaxDEssais); // Tant que le jeu n'est pas fini
     if(partieEnCours->resultat == true){ // Si le résultat est vrai => Le joueur à gagner
         RetourALaLigne();
@@ -140,6 +141,8 @@ void AfficherMeilleursScores()
         RetourALaLigne(); // On retourne à la ligne
         AfficherTexteSansRetour("Appuyez sur une touche pour continuer"); // On affiche un message
         getch(); // On attend que l'utilisateur appuie sur une touche
+        EffacerEcran(); // On efface l'écran
+        TerminerEcran(); // On termine l'écran
         exit(0); // On quitte le programme
     }
     for(int compteur = 0; compteur < NbreDeScoresAAfficher; compteur++){
@@ -154,6 +157,6 @@ void AfficherMeilleursScores()
     }
     RetourALaLigne(); // On retourne à la ligne
     AfficherTexteSansRetour("Enfoncez ENTER pour continuer..."); // On affiche un message
-    LireTexte();
+    getch(); // On attend que l'utilisateur appuie sur une touche
     free(points); // On libère la mémoire allouée pour les points
 }

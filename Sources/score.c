@@ -44,9 +44,23 @@ MYSQL *ConnecterBaseDeDonnees(bool baseDeTest, struct Dico_Message *messageDeRet
         // Connexion a la base de donnees
         if (mysql_real_connect(sqlConnection, "localhost", "root", "", PROD_DB_NAME, 0, NULL, 0) == NULL)
         {
-            messageDeRetour->codeErreur = 10; // Code d'erreur
-            strcpy(messageDeRetour->message, "Erreur lors de la connexion a la base de donnees"); // Message d'erreur
-            return NULL; // On retourne NULL en cas d'erreur
+            // Creation de la base de données si elle n'existe pas
+            if (mysql_real_connect(sqlConnection, "localhost", "root", "", "", 0, NULL, 0) == NULL)
+            {
+                messageDeRetour->codeErreur = 10; // Code d'erreur
+                strcpy(messageDeRetour->message, "Erreur lors de la connexion a la base de donnees"); // Message d'erreur
+                return NULL; // On retourne NULL en cas d'erreur
+            }
+            else{
+                // Creation de la base de donnees si elle n'existe pas
+                char query[256]; // Declaration de la requete SQL
+                sprintf(query, "CREATE DATABASE IF NOT EXISTS %s", PROD_DB_NAME); // Creation de la requete SQL
+                if(!ExecuterInstructionSQL(sqlConnection, query, messageDeRetour)){ // Execution de l'instruction SQL
+                    return NULL; // On retourne NULL en cas d'erreur
+                }
+                // Creation de la table joueurs
+                creerBaseDeDonnees(baseDeTest, messageDeRetour);
+            }  
         }
     }
     else if(baseDeTest==true){ // Si c'est la base de donnees pour les tests
@@ -54,9 +68,23 @@ MYSQL *ConnecterBaseDeDonnees(bool baseDeTest, struct Dico_Message *messageDeRet
         // Connexion a la base de donnees pour les tests
         if (mysql_real_connect(sqlConnection, "localhost", "root", "", TEST_DB_NAME, 0, NULL, 0) == NULL)
         {
-            messageDeRetour->codeErreur = 11; // Code d'erreur
-            strcpy(messageDeRetour->message, "Erreur lors de la connexion a la base de donnees pour les tests"); // Message d'erreur
-            return NULL; // On retourne NULL en cas d'erreur
+            // Creation de la base de données si elle n'existe pas
+            if (mysql_real_connect(sqlConnection, "localhost", "root", "", "", 0, NULL, 0) == NULL)
+            {
+                messageDeRetour->codeErreur = 11; // Code d'erreur
+                strcpy(messageDeRetour->message, "Erreur lors de la connexion a la base de donnees"); // Message d'erreur
+                return NULL; // On retourne NULL en cas d'erreur
+            }
+            else{
+                // Creation de la base de donnees si elle n'existe pas
+                char query[256]; // Declaration de la requete SQL
+                sprintf(query, "CREATE DATABASE IF NOT EXISTS %s", TEST_DB_NAME); // Creation de la requete SQL
+                if(!ExecuterInstructionSQL(sqlConnection, query, messageDeRetour)){ // Execution de l'instruction SQL
+                    return NULL; // On retourne NULL en cas d'erreur
+                }
+                // Selection de la base de donnees
+                creerBaseDeDonnees(baseDeTest, messageDeRetour);
+            }
         }
 
     }
