@@ -58,6 +58,7 @@ MYSQL *ConnecterBaseDeDonnees(bool baseDeTest, struct Dico_Message *messageDeRet
                 if(!ExecuterInstructionSQL(sqlConnection, query, messageDeRetour)){ // Execution de l'instruction SQL
                     return NULL; // On retourne NULL en cas d'erreur
                 }
+                mysql_free_result(sqlResult); // Liberer la memoire resultat de la requete
                 // Creation de la table joueurs
                 creerBaseDeDonnees(baseDeTest, messageDeRetour);
             }  
@@ -82,7 +83,7 @@ MYSQL *ConnecterBaseDeDonnees(bool baseDeTest, struct Dico_Message *messageDeRet
                 if(!ExecuterInstructionSQL(sqlConnection, query, messageDeRetour)){ // Execution de l'instruction SQL
                     return NULL; // On retourne NULL en cas d'erreur
                 }
-                // Selection de la base de donnees
+                mysql_free_result(sqlResult); // Liberer la memoire resultat de la requete
                 creerBaseDeDonnees(baseDeTest, messageDeRetour);
             }
         }
@@ -116,15 +117,17 @@ int LireIDJoueur(MYSQL *sqlConnection, char *nomJoueur, struct Dico_Message *mes
         return -1;
     }
     sqlRow = mysql_fetch_row(sqlResult); // Recuperation de la ligne
+    mysql_free_result(sqlResult); // Liberer la memoire resultat de la requete
     if(sqlRow == NULL){ // Si le joueur n'existe pas
         sprintf(query, "INSERT INTO joueurs (pseudo) VALUES ('%s')", nomJoueur); // Creation de la requete SQL
         hasPassed = ExecuterInstructionSQL(sqlConnection, query, messageDeRetour); // Execution de l'instruction SQL
         if(!hasPassed){ // Si erreur
+            mysql_free_result(sqlResult); // Liberer la memoire resultat de la requete
             return -1; // On retourne -1 en cas d'erreur
         }
+        mysql_free_result(sqlResult); // Liberer la memoire resultat de la requete
         return LireIDJoueur(sqlConnection, nomJoueur, messageDeRetour); // On rappelle la fonction pour obtenir l'ID du joueur
     }
-
     return atoi(sqlRow[0]); // On retourne l'ID du joueur
 }
 
@@ -167,6 +170,7 @@ bool SauverScore(bool baseDeTest, char *nomJoueur, int nombreDEssais, struct Dic
     }
 
     // Fermeture de la connexion
+    mysql_free_result(sqlResult); // Liberer la memoire resultat de la requete
     mysql_close(sqlConnection);
     return true;
 }
@@ -181,11 +185,6 @@ bool SauverScore(bool baseDeTest, char *nomJoueur, int nombreDEssais, struct Dic
 //   ou bien NULL en cas d'erreur
 struct Points *LireMeilleursScores(bool baseDeTest, int nombreDeScore, struct Dico_Message *messageDeRetour)
 {
-    // FONCTIONS APPELLEES:
-    // ConnecterBaseDeDonnees();
-    // ExecuterInstructionSQL();
-    // malloc
-    // Autres fonctions: voir le cours FBD2
     struct Points *points = malloc(sizeof(struct Points) * nombreDeScore); // Allocation de la memoire pour les scores
     MYSQL *sqlConnection = ConnecterBaseDeDonnees(baseDeTest, messageDeRetour); // Connexion a la base de donnees
     if(sqlConnection == NULL){ // Si erreur
@@ -211,6 +210,7 @@ struct Points *LireMeilleursScores(bool baseDeTest, int nombreDeScore, struct Di
         strcpy(points[compteur].nomJoueur, sqlRow[2]); // On recupere le nom du joueur
         compteur++; // On incremente le compteur
     }
+    mysql_free_result(sqlResult); // Liberer la memoire resultat de la requete
     // Fermeture de la connexion
     mysql_close(sqlConnection);
     return points;
@@ -255,7 +255,6 @@ bool creerBaseDeDonnees(bool baseDeTest, struct Dico_Message *messageDeRetour)
     // Creation de la table scores
     sprintf(query, "CREATE TABLE scores (id_score INT AUTO_INCREMENT PRIMARY KEY, score INT NOT NULL, id_joueur INT NOT NULL, FOREIGN KEY (id_joueur) REFERENCES joueurs(id_joueur));"); // Creation de la requete SQL
     ExecuterInstructionSQL(sqlConnection, query, messageDeRetour); // Execution de l'instruction SQL
-
     // Fermeture de la connexion
     mysql_close(sqlConnection);
     return true;

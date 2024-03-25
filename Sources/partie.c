@@ -89,7 +89,6 @@ void AfficherPartie(struct Partie *partieEnCours, bool modeDebug)
 bool JouerPartie(struct Partie *partieEnCours)
 {  
     bool modeDebug = false; // On initialise le mode debug
-    strcpy(partieEnCours->solution, partieEnCours->solution); // Fix un bug de solution?
     do{
         AfficherPartie(partieEnCours, modeDebug);
         AfficherTexteSansRetour("Entrez un mot de 4 lettres ou ENTER pour abandonner: ");
@@ -97,6 +96,7 @@ bool JouerPartie(struct Partie *partieEnCours)
 
         if(strcmp(answer, "*") == 0) {
             modeDebug = !modeDebug; // Toggle debug mode
+            free(answer); // On libère la mémoire allouée pour la réponse
             continue; // Skip the rest of the loop and start from the beginning
         }
         else{
@@ -105,23 +105,27 @@ bool JouerPartie(struct Partie *partieEnCours)
                 RetourALaLigne();
                 AfficherTexteSansRetour("Vous avez abandonner ou votre mot n'était pas correcte. La solution était: "); // On affiche un message
                 AfficherTexteSansRetour(partieEnCours->solution); // On affiche la solution
+                free(answer); // On libère la mémoire allouée pour la réponse
                 return false; // On sort de la boucle
             }
             ComparerMots(partieEnCours->solution, partieEnCours->liste_essais[partieEnCours->essaiEnCours], &partieEnCours->resultats[partieEnCours->essaiEnCours]); // On compare les mots
             if (strcmp(partieEnCours->liste_essais[partieEnCours->essaiEnCours], partieEnCours->solution) == 0){ // Si le mot est correct
                 AfficherPartie(partieEnCours, modeDebug); // On affiche la partie
                 partieEnCours->resultat = true; // On met le résultat à true
+                free(answer); // On libère la mémoire allouée pour la réponse
                 break; // On sort de la boucle
             }
             partieEnCours->essaiEnCours++; // On incrémente le nombre d'essais
             AfficherPartie(partieEnCours, modeDebug); // On affiche la partie   
-            }
-            free(answer); // On libère la mémoire allouée pour la réponse
+        }
+        free(answer); // On libère la mémoire allouée pour la réponse
     } while (partieEnCours->resultat == false && partieEnCours->essaiEnCours < NbreMaxDEssais); // Tant que le jeu n'est pas fini
     if(partieEnCours->resultat == true){ // Si le résultat est vrai => Le joueur à gagner
         RetourALaLigne();
         AfficherTexteSansRetour("Quel est votre pseudo ? "); // On demande le pseudo du joueur
-        strcpy(partieEnCours->nomJoueur, LireTexte()); // On copie le pseudo dans la structure
+        char *pseudo = LireTexte(); // On lit le pseudo du joueur
+        strcpy(partieEnCours->nomJoueur, pseudo); // On copie le pseudo dans la structure
+        free(pseudo); // On libère la mémoire allouée pour le pseudo
     }
     return partieEnCours->resultat; // On retourne le résultat
 }
@@ -158,5 +162,6 @@ void AfficherMeilleursScores()
     RetourALaLigne(); // On retourne à la ligne
     AfficherTexteSansRetour("Enfoncez ENTER pour continuer..."); // On affiche un message
     getch(); // On attend que l'utilisateur appuie sur une touche
+    free(dico_message); // On libère la mémoire allouée pour la structure Dico_Message
     free(points); // On libère la mémoire allouée pour les points
 }

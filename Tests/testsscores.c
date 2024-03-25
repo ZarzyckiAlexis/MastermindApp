@@ -42,7 +42,7 @@ void test_ExecuterInstructionSQL_OK()
     MYSQL *sqlConnection = ConnecterBaseDeDonnees(true, dico_message); // Connexion a la base de donnees
     TEST_ASSERT_NOT_NULL(sqlConnection); // Verifier que la connexion a la base de donnees a reussi
     char *instructionSQL = "SELECT * FROM joueurs"; // Instruction SQL
-    bool resultat = ExecuterInstructionSQL(sqlConnection, instructionSQL, dico_message); // Execution de l'instruction SQL
+    bool resultat = ExecuterInstructionSQL(sqlConnection, instructionSQL, dico_message); // Execution de l'instruction SQ
     TEST_ASSERT_TRUE(resultat); // Verifier que l'instruction SQL a reussi
     free(dico_message); // Liberer la memoire
     mysql_close(sqlConnection); // Fermer la connexion
@@ -57,6 +57,7 @@ void test_ExecuterInstructionSQL_KO()
     TEST_ASSERT_NOT_NULL(sqlConnection); // Verifier que la connexion a la base de donnees a reussi
     char *instructionSQL = "SELECT * FROM joueur"; // Instruction SQL éronnée
     bool resultat = ExecuterInstructionSQL(sqlConnection, instructionSQL, dico_message); // Execution de l'instruction SQL
+    mysql_free_result(sqlResult); // Liberer la memoire
     TEST_ASSERT_FALSE(resultat); // Verifier que l'instruction SQL a échoué
     TEST_ASSERT_EQUAL_INT(12, dico_message->codeErreur); // Verifier que le code d'erreur est valide
     free(dico_message); // Liberer la memoire
@@ -72,6 +73,7 @@ void test_LireIDJoueur_OK_PasExistant()
     TEST_ASSERT_NOT_NULL(sqlConnection); // Verifier que la connexion a la base de donnees a reussi
     char *nomJoueur = "Joueur1"; // Nom du joueur
     int idJoueur = LireIDJoueur(sqlConnection, nomJoueur, dico_message); // Lire l'ID du joueur
+    mysql_free_result(sqlResult); // Liberer la memoire
     TEST_ASSERT_TRUE(idJoueur > 0); // Verifier que l'ID du joueur est valide
     free(dico_message); // Liberer la memoire
     mysql_close(sqlConnection); // Fermer la connexion
@@ -86,6 +88,7 @@ void test_LireIDJoueur_OK_Existant()
     TEST_ASSERT_NOT_NULL(sqlConnection); // Verifier que la connexion a la base de donnees a reussi
     char *nomJoueur = "Joueur1"; // Nom du joueur
     int idJoueur = LireIDJoueur(sqlConnection, nomJoueur, dico_message); // Lire l'ID du joueur
+    mysql_free_result(sqlResult); // Liberer la memoire
     TEST_ASSERT_TRUE(idJoueur > 0); // Verifier que l'ID du joueur est valide
     free(dico_message); // Liberer la memoire
     mysql_close(sqlConnection); // Fermer la connexion
@@ -100,6 +103,7 @@ void test_LireIDJoueur_KO_NULL()
     TEST_ASSERT_NOT_NULL(sqlConnection); // Verifier que la connexion a la base de donnees a reussi
     char *nomJoueur = NULL; // Nom du joueur à NULL
     int idJoueur = LireIDJoueur(sqlConnection, nomJoueur, dico_message); // Lire l'ID du joueur
+    mysql_free_result(sqlResult); // Liberer la memoire
     TEST_ASSERT_EQUAL_INT(-1, idJoueur); // Verifier que l'ID du joueur est valide
     TEST_ASSERT_EQUAL_INT(14, dico_message->codeErreur); // Verifier que le code d'erreur est valide
     free(dico_message); // Liberer la memoire
@@ -113,8 +117,9 @@ void test_LireIDJoueur_KO_50C()
     struct Dico_Message *dico_message = malloc(sizeof(struct Dico_Message)); // Allocation de la memoire pour les messages
     MYSQL *sqlConnection = ConnecterBaseDeDonnees(true, dico_message); // Connexion a la base de donnees
     TEST_ASSERT_NOT_NULL(sqlConnection); // Verifier que la connexion a la base de donnees a reussi
-    char *nomJoueur = "Ceciestunpseudovraimentbeaucouptroplongnestcepasnonmdrlol"; // Nom du joueur à + de 50 caractères
+    char *nomJoueur = "Ceciestunpseudovraimentbeaucouptroplongnestcepasnonmdrlol"; // Nom du joueur à + de 10 caractères
     int idJoueur = LireIDJoueur(sqlConnection, nomJoueur, dico_message); // Lire l'ID du joueur
+    mysql_free_result(sqlResult); // Liberer la memoire
     TEST_ASSERT_EQUAL_INT(-1, idJoueur); // Verifier que l'ID du joueur est valide
     TEST_ASSERT_EQUAL_INT(14, dico_message->codeErreur); // Verifier que le code d'erreur est valide
     free(dico_message); // Liberer la memoire
@@ -131,6 +136,7 @@ void test_SauverScore_OK()
     char *nomJoueur = "Joueur1"; // Nom du joueur
     int nombreDEssais = 10; // Nombre d'essais
     bool resultat = SauverScore(true, nomJoueur, nombreDEssais, dico_message); // Sauver le score
+    mysql_free_result(sqlResult); // Liberer la memoire
     TEST_ASSERT_TRUE(resultat); // Verifier que le score a ete sauve
     free(dico_message); // Liberer la memoire
     mysql_close(sqlConnection); // Fermer la connexion
@@ -146,6 +152,7 @@ void test_SauverScore_KO()
     char *nomJoueur = "Joueur1"; // Nom du joueur
     int nombreDEssais = -2; // Nombre d'essais négatif pour créer l'erreur
     bool resultat = SauverScore(true, nomJoueur, nombreDEssais, dico_message); // Sauver le score
+    mysql_free_result(sqlResult); // Liberer la memoire
     TEST_ASSERT_EQUAL_INT(0, resultat); // Verifier que le score n'a pas ete sauve
     TEST_ASSERT_EQUAL_INT(15, dico_message->codeErreur); // Verifier que le code d'erreur est valide
     free(dico_message); // Liberer la memoire
@@ -175,7 +182,9 @@ void test_LireMeilleursScores_OK(){
     char *nomJoueur = "Joueur1"; // Nom du joueur
     int nombreDEssais = 2; // Nombre d'essais
     bool resultat = SauverScore(true, nomJoueur, nombreDEssais, dico_message); // Sauver le score pour l'obtenir ensuite
+    mysql_free_result(sqlResult); // Liberer la memoire
     struct Points *points = LireMeilleursScores(true, 1, dico_message); // Lire les meilleurs scores
+    mysql_free_result(sqlResult); // Liberer la memoire
     TEST_ASSERT_NOT_NULL(points); // Verifier que les scores ont ete lus
     TEST_ASSERT_EQUAL_INT(8, points->score); // Verifier que l'ID du joueur est valide
     TEST_ASSERT_EQUAL_STRING(nomJoueur, points->nomJoueur); // Verifier que le nom du joueur est valide
@@ -188,6 +197,7 @@ void test_LireMeilleursScores_KO(){
     struct Dico_Message *dico_message = malloc(sizeof(struct Dico_Message)); // Allocation de la memoire pour les messages
     // Ici on ne crée pas le score
     struct Points *points = LireMeilleursScores(true, 1, dico_message); // Lire les meilleurs scores
+    mysql_free_result(sqlResult); // Liberer la memoire
     TEST_ASSERT_NOT_NULL(points); // Verifier que les scores ont ete lus
     free(dico_message); // Liberer la memoire
 }

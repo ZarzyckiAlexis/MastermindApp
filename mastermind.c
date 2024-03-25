@@ -39,7 +39,7 @@ int main()
 
     RetourALaLigne();
     AfficherTexteSansRetour("Appuyez sur une touche pour continuer");
-    LireTexte();
+    getch();
     AfficherMeilleursScores();
     free(dico_message);
     EffacerDictionnaire(dictionnaire);
