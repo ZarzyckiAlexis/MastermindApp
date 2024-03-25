@@ -12,7 +12,7 @@ bool VerifierMot(char *motAVerifier){
 
     int length = strlen(motAVerifier);
 
-    if(length != 4){
+    if(length != LongueurDesMots){
         return false; // Si la longueur n'est pas de 4
     }
     for(int compteur=0; compteur<length; compteur++){

@@ -20,4 +20,5 @@ struct Dico_Message
 #define LongueurMaxNomJoueur 10
 #define LongueurDesMots 4
 #define NbreDeScoresAAfficher 10
+#define Is_DB_TEST false
 #endif

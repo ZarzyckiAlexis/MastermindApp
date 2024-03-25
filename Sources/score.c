@@ -49,7 +49,7 @@ MYSQL *ConnecterBaseDeDonnees(bool baseDeTest, struct Dico_Message *messageDeRet
             return NULL; // On retourne NULL en cas d'erreur
         }
     }
-    else{ // Si c'est la base de donnees pour les tests
+    else if(baseDeTest==true){ // Si c'est la base de donnees pour les tests
 
         // Connexion a la base de donnees pour les tests
         if (mysql_real_connect(sqlConnection, "localhost", "root", "", TEST_DB_NAME, 0, NULL, 0) == NULL)
@@ -76,7 +76,7 @@ int LireIDJoueur(MYSQL *sqlConnection, char *nomJoueur, struct Dico_Message *mes
 {
     MYSQL_ROW sqlRow;
 
-    if(nomJoueur == NULL || strlen(nomJoueur) > 50){ // Si le nom du joueur est NULL ou depasse 50 caracteres
+    if(nomJoueur == NULL || strlen(nomJoueur) > LongueurMaxNomJoueur){ // Si le nom du joueur est NULL ou depasse 50 caracteres
         messageDeRetour->codeErreur = 14; // Code d'erreur
         strcpy(messageDeRetour->message, "Nom du joueur invalide"); // Message d'erreur
         return -1; // On retourne -1 en cas d'erreur

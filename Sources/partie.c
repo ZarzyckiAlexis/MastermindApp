@@ -21,13 +21,13 @@ struct Partie *CreerPartie(struct Dictionnaire *dictionnaire)
     // On initialise les champs de la structure
     partieEnCours->essaiEnCours = 0;
     partieEnCours->resultat = false;
-    partieEnCours->solution[5] = '\0';
-    partieEnCours->nomJoueur[20] = '\0';
-    for (int compteur = 0; compteur < 10; compteur++){
+    partieEnCours->solution[LongueurDesMots+1] = '\0';
+    partieEnCours->nomJoueur[LongueurMaxNomJoueur] = '\0';
+    for (int compteur = 0; compteur < NbreMaxDEssais; compteur++){
         for(int compteur_essai = 0; compteur_essai < 4; compteur_essai++){
             partieEnCours->liste_essais[compteur][compteur_essai] = ' ';
         }
-        partieEnCours->liste_essais[compteur][4] = '\0'; // Mettez le caractère de fin de chaîne après avoir rempli les espaces
+        partieEnCours->liste_essais[compteur][4] = '\0'; // Mettre le caractère de fin de chaîne après avoir rempli les espaces
         partieEnCours->resultats[compteur].bienPlaces = 0;
         partieEnCours->resultats[compteur].malPlaces = 0;
     }
@@ -66,7 +66,7 @@ void AfficherPartie(struct Partie *partieEnCours, bool modeDebug)
     else{ // Si on est pas en mode debug
         AfficherHautDeJeu(NULL); // On affiche le haut du jeu sans le mot
     }
-    for(int compteur = 0; compteur < 10; compteur++){
+    for(int compteur = 0; compteur < NbreMaxDEssais; compteur++){
         AfficherMotDeJeu(partieEnCours->liste_essais[compteur], partieEnCours->resultats[compteur].bienPlaces, partieEnCours->resultats[compteur].malPlaces);
     }
     AfficherBasDeJeu();
@@ -92,7 +92,7 @@ bool JouerPartie(struct Partie *partieEnCours)
     strcpy(partieEnCours->solution, partieEnCours->solution); // Fix un bug de solution?
     do{
         AfficherPartie(partieEnCours, modeDebug);
-        AfficherTexteIndenteSansRetour("Entrez un mot de 4 lettres ou ENTER pour abandonner: ");
+        AfficherTexteSansRetour("Entrez un mot de 4 lettres ou ENTER pour abandonner: ");
         char *answer = LireTexte();
 
         if(strcmp(answer, "*") == 0) {
@@ -102,6 +102,7 @@ bool JouerPartie(struct Partie *partieEnCours)
         else{
             strcpy(partieEnCours->liste_essais[partieEnCours->essaiEnCours], answer);
             if((VerifierMot(partieEnCours->liste_essais[partieEnCours->essaiEnCours]) == false)){ // On vérifie que le mot est correct
+                RetourALaLigne();
                 AfficherTexteSansRetour("Vous avez abandonner ou votre mot n'était pas correcte. La solution était: "); // On affiche un message
                 AfficherTexteSansRetour(partieEnCours->solution); // On affiche la solution
                 return false; // On sort de la boucle
@@ -115,10 +116,12 @@ bool JouerPartie(struct Partie *partieEnCours)
             partieEnCours->essaiEnCours++; // On incrémente le nombre d'essais
             AfficherPartie(partieEnCours, modeDebug); // On affiche la partie   
             }
-    } while (partieEnCours->resultat == false && partieEnCours->essaiEnCours < 10); // Tant que le jeu n'est pas fini
-    RetourALaLigne();
-    AfficherTexteSansRetour("Quel est votre pseudo ? "); // On demande le pseudo du joueur
-    strcpy(partieEnCours->nomJoueur, LireTexte()); // On copie le pseudo dans la structure
+    } while (partieEnCours->resultat == false && partieEnCours->essaiEnCours < NbreMaxDEssais); // Tant que le jeu n'est pas fini
+    if(partieEnCours->resultat == true){ // Si le résultat est vrai => Le joueur à gagner
+        RetourALaLigne();
+        AfficherTexteSansRetour("Quel est votre pseudo ? "); // On demande le pseudo du joueur
+        strcpy(partieEnCours->nomJoueur, LireTexte()); // On copie le pseudo dans la structure
+    }
     return partieEnCours->resultat; // On retourne le résultat
 }
 
@@ -129,7 +132,7 @@ bool JouerPartie(struct Partie *partieEnCours)
 void AfficherMeilleursScores()
 {
     struct Dico_Message *dico_message = malloc(sizeof(struct Dico_Message)); // On alloue la mémoire pour la structure Dico_Message
-    struct Points *points = LireMeilleursScores(true, 10, dico_message); // On lit les meilleurs scores
+    struct Points *points = LireMeilleursScores(Is_DB_TEST, NbreDeScoresAAfficher, dico_message); // On lit les meilleurs scores
     EffacerEcran(); // On efface l'écran
     AfficherTexteDansCadre("Meilleurs scores"); // On affiche le texte dans un cadre
     if(points == NULL){ // Si on n'a pas pu lire les meilleurs scores
@@ -139,7 +142,7 @@ void AfficherMeilleursScores()
         getch(); // On attend que l'utilisateur appuie sur une touche
         exit(0); // On quitte le programme
     }
-    for(int compteur = 0; compteur < 10; compteur++){
+    for(int compteur = 0; compteur < NbreDeScoresAAfficher; compteur++){
         // Si le nom du joueur est vide
         if(strcmp(points[compteur].nomJoueur, "") == 0){
             break; // On sort de la boucle
