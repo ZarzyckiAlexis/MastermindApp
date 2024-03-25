@@ -107,7 +107,7 @@ void AfficherTexteDansCadre(char *texteAAfficher)
 {
     RetourALaLigne();
     int longeurTexte = strlen(texteAAfficher)+2; // On prends la longeur du texte + 2 pour les coins
-
+    attron(COLOR_PAIR(COULEURS_CONTOUR)); // On active la couleur des contours
     // Affichage de la ligne suppérieur du cadre
     AfficherCharSpecialSansRetour('l', 1); // On affiche le coin supérieur gauche
     AfficherCharSpecialSansRetour('q', longeurTexte); // On affihce la ligne du haut
@@ -117,7 +117,11 @@ void AfficherTexteDansCadre(char *texteAAfficher)
     RetourALaLigne();
     AfficherCharSpecialSansRetour('x', 1); // On affiche la barre gauche
     AfficherCharSansRetour(' ', 1); // On affiche 3 espace pour la séparation
+    attroff(COLOR_PAIR(COULEURS_CONTOUR)); // On désactive la couleur des contours
+    attron(COLOR_PAIR(COULEURS_MOT)); // On active la couleur des mots
     AfficherTexteSansRetour(texteAAfficher); // On affiche le texte
+    attroff(COLOR_PAIR(COULEURS_MOT)); // On désactive la couleur des mots
+    attron(COLOR_PAIR(COULEURS_CONTOUR)); // On active la couleur des contours
     AfficherCharSansRetour(' ', 1); // On affiche 1 espace pour la séparation
     AfficherCharSpecialSansRetour('x', 1);  // On affiche la barre droite
 
@@ -128,6 +132,7 @@ void AfficherTexteDansCadre(char *texteAAfficher)
     AfficherCharSpecialSansRetour('j', 1); // On affiche le coin inférieur droit
     RetourALaLigne(); // On fais un retour à la ligne
     RetourALaLigne(); // On fais un retour à la ligne
+    attroff(COLOR_PAIR(COULEURS_CONTOUR)); // On désactive la couleur des contours
     refresh(); // On rafraichît l'écran pour être sûr du changement
 }
 
@@ -141,10 +146,16 @@ void AfficherErreurEtTerminer(char *texteDErreur, int codeDErreur)
 {
     EffacerEcran(); // On efface l'écran
     AfficherTexteDansCadre("Erreur"); // On affiche le texte "Erreur" dans un cadre
+    attron(COLOR_PAIR(COULEURS_ERREUR)); // On active la couleur des mots
     AfficherTexteSansRetour(texteDErreur); // On affiche le texte d'erreur
     RetourALaLigne(); // On fais un retour à la ligne
+    attroff(COLOR_PAIR(COULEURS_ERREUR)); // On désactive la couleur des mots
+    attron(COLOR_PAIR(COULEURS_MOT)); // On active la couleur des mots
     AfficherTexteSansRetour("Code d'erreur: "); // On affiche le texte "Code d'erreur: "
+    attroff(COLOR_PAIR(COULEURS_MOT)); // On désactive la couleur des mots
+    attron(COLOR_PAIR(COULEURS_ERREUR)); // On active la couleur des mots
     AfficherNombreSansRetour(codeDErreur); // On affiche le code d'erreur
+    attroff(COLOR_PAIR(COULEURS_ERREUR)); // On désactive la couleur des mots
     RetourALaLigne() ; // On fais un retour à la ligne
     sleep(5); // On attends 5 secondes
     TerminerEcran(); // On termine l'écran
@@ -156,6 +167,7 @@ void AfficherErreurEtTerminer(char *texteDErreur, int codeDErreur)
 // - Le mot à afficher, ou NULL si rien ne doit etre affiché
 void AfficherHautDeJeu(char *motAAfficher)
 {
+    attron(COLOR_PAIR(COULEURS_CONTOUR)); // On active la couleur des contours
     if (motAAfficher == NULL) { // Si le mot à afficher est NULL
         for(int compteur=0; compteur<NombreDeTabulationAGauche; compteur++){
             AfficherTexteIndenteSansRetour(" "); // On affiche les tabulations
@@ -172,12 +184,17 @@ void AfficherHautDeJeu(char *motAAfficher)
         }
         AfficherCharSpecialSansRetour('l', 1); // On affiche le coin supérieur gauche
         AfficherCharSpecialSansRetour('q', LENGTH-strlen(motAAfficher)); // On affiche la ligne du haut
+        attroff(COLOR_PAIR(COULEURS_CONTOUR)); // On désactive la couleur des contours
+        attron(COLOR_PAIR(COULEURS_MOT)); // On active la couleur des mots
         AfficherTexteSansRetour(motAAfficher); // On affiche le mot
+        attroff(COLOR_PAIR(COULEURS_MOT)); // On désactive la couleur des mots
+        attron(COLOR_PAIR(COULEURS_CONTOUR)); // On active la couleur des contours
         AfficherCharSpecialSansRetour('w', 1); // On affiche la ligne du haut
         AfficherCharSpecialSansRetour('q', LENGTH-8); // On affiche la ligne du haut
         AfficherCharSpecialSansRetour('k', 1); // On affiche le coin supérieur droit
         RetourALaLigne(); // On fait un retour à la ligne
     }
+    attroff(COLOR_PAIR(COULEURS_CONTOUR)); // On désactive la couleur des contours
 }
 
 // Affiche un separateur entre deux mots du jeu
@@ -195,24 +212,35 @@ void AfficherMotDeJeu(char *motAAfficher, int nbreLettresBienplacées, int nbreL
     for(int compteur=0; compteur<NombreDeTabulationAGauche; compteur++){
             AfficherTexteIndenteSansRetour(" "); // On affiche les tabulations
     }
+    attron(COLOR_PAIR(COULEURS_CONTOUR)); // On active la couleur des contours
     AfficherSeparateurDeJeu(); // On affiche le séparateur de jeu
     AfficherCharSansRetour(' ', 2); // On affiche 2 espaces
+    attroff(COLOR_PAIR(COULEURS_CONTOUR)); // On désactive la couleur des contours
+    attron(COLOR_PAIR(COULEURS_MOT)); // On active la couleur des mots
     for(int compteur=0; compteur<strlen(motAAfficher); compteur++){ // Pour chaque lettre du mot à afficher
         AfficherCharSansRetour(motAAfficher[compteur], 1); // On affiche la lettre
         AfficherCharSansRetour(' ', 2); // On affiche 2 espaces
     }
+    attroff(COLOR_PAIR(COULEURS_MOT)); // On désactive la couleur des mots
     AfficherCharSansRetour(' ', 1); // On affiche 1 espace
+    attron(COLOR_PAIR(COULEURS_CONTOUR)); // On active la couleur des contours
     AfficherSeparateurDeJeu(); // On affiche le séparateur de jeu
+    attroff(COLOR_PAIR(COULEURS_CONTOUR)); // On désactive la couleur des contours
     AfficherCharSansRetour(' ', 1); // On affiche 1 espace
     int space = LENGTH-9; // On initialise la variable space à 10
     for(int compteur=0; compteur<nbreLettresBienplacées; compteur++){ // Pour chaque lettre bien placée
         space--; // On décrémente la variable space
+        attron(COLOR_PAIR(COULEURS_BIENPLACE)); // On active la couleur des lettres bien placées
         AfficherCharSansRetour('+', 1); // On affiche un +
+        attroff(COLOR_PAIR(COULEURS_BIENPLACE)); // On désactive la couleur des lettres bien placées
     }
     for(int compteur=0; compteur<nbreLettresMalplacées; compteur++){ // Pour chaque lettre mal placée
         space--; // On décrémente la variable space
+        attron(COLOR_PAIR(COULEURS_MALPLACE)); // On active la couleur des lettres mal placées
         AfficherCharSansRetour('-', 1); // On affiche un -
+        attroff(COLOR_PAIR(COULEURS_MALPLACE)); // On désactive la couleur des lettres mal placées
     }    
+    attron(COLOR_PAIR(COULEURS_CONTOUR)); // On active la couleur des contours
     AfficherCharSansRetour(' ', space); // On affiche 1 espace
     AfficherSeparateurDeJeu(); // On affiche le séparateur de jeu
     RetourALaLigne(); // On fait un retour à la ligne
@@ -225,6 +253,7 @@ void AfficherMotDeJeu(char *motAAfficher, int nbreLettresBienplacées, int nbreL
     AfficherCharSpecialSansRetour('q', LENGTH-8); // On affiche la ligne du bas
     AfficherCharSpecialSansRetour('u', 1); // On affiche le coin inférieur droit
     RetourALaLigne(); // On fait un retour à la ligne
+    attroff(COLOR_PAIR(COULEURS_CONTOUR)); // On désactive la couleur des contours
     refresh();
 }
 
@@ -237,10 +266,12 @@ void AfficherBasDeJeu()
     for(int compteur=0; compteur<NombreDeTabulationAGauche; compteur++){
         AfficherTexteIndenteSansRetour(" "); // On affiche les tabulations
     }
+    attron(COLOR_PAIR(COULEURS_CONTOUR)); // On active la couleur des contours
     AfficherCharSpecialSansRetour('m', 1); // On affiche le coin inférieur gauche
     AfficherCharSpecialSansRetour('q', LENGTH); // On affiche la ligne du bas
     AfficherCharSpecialSansRetour('v', 1); // On affiche la ligne du bas
     AfficherCharSpecialSansRetour('q', LENGTH-8); // On affiche la ligne du bas
     AfficherCharSpecialSansRetour('j', 1); // On affiche le coin inférieur droit
     RetourALaLigne(); // On fait un retour à la ligne
+    attroff(COLOR_PAIR(COULEURS_CONTOUR)); // On désactive la couleur des contours
 }

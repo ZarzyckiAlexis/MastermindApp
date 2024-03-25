@@ -91,7 +91,9 @@ bool JouerPartie(struct Partie *partieEnCours)
     bool modeDebug = false; // On initialise le mode debug
     do{
         AfficherPartie(partieEnCours, modeDebug);
+        attron(COLOR_PAIR(COULEURS_QUESTION)); // On met la couleur des questions
         AfficherTexteSansRetour("Entrez un mot de 4 lettres ou ENTER pour abandonner: ");
+        attroff(COLOR_PAIR(COULEURS_QUESTION)); // On enlève la couleur des questions
         char *answer = LireTexte();
 
         if(strcmp(answer, "*") == 0) {
@@ -103,8 +105,16 @@ bool JouerPartie(struct Partie *partieEnCours)
             strcpy(partieEnCours->liste_essais[partieEnCours->essaiEnCours], answer);
             if((VerifierMot(partieEnCours->liste_essais[partieEnCours->essaiEnCours]) == false)){ // On vérifie que le mot est correct
                 RetourALaLigne();
-                AfficherTexteSansRetour("Vous avez abandonner ou votre mot n'était pas correcte. La solution était: "); // On affiche un message
+                attron(COLOR_PAIR(COULEURS_ERREUR)); // On met la couleur d'une erreur
+                AfficherTexteSansRetour("Vous avez abandonner ou votre mot n'était pas correcte. "); // On affiche un message
+                attroff(COLOR_PAIR(COULEURS_ERREUR)); // On enlève la couleur d'une erreur
+                RetourALaLigne();
+                attron(COLOR_PAIR(COULEURS_MOT)); // On met la couleur des mots
+                AfficherTexteSansRetour("La solution était: ");
+                attroff(COLOR_PAIR(COULEURS_MOT)); // On enlève la couleur des mots
+                attron(COLOR_PAIR(COULEURS_BIENPLACE)); // On met la couleur du mot bien placé
                 AfficherTexteSansRetour(partieEnCours->solution); // On affiche la solution
+                attroff(COLOR_PAIR(COULEURS_BIENPLACE)); // On enlève la couleur du mot bien placé
                 free(answer); // On libère la mémoire allouée pour la réponse
                 return false; // On sort de la boucle
             }
@@ -122,7 +132,9 @@ bool JouerPartie(struct Partie *partieEnCours)
     } while (partieEnCours->resultat == false && partieEnCours->essaiEnCours < NbreMaxDEssais); // Tant que le jeu n'est pas fini
     if(partieEnCours->resultat == true){ // Si le résultat est vrai => Le joueur à gagner
         RetourALaLigne();
+        attron(COLOR_PAIR(COULEURS_QUESTION)); // On met la couleur des questions
         AfficherTexteSansRetour("Quel est votre pseudo ? "); // On demande le pseudo du joueur
+        attroff(COLOR_PAIR(COULEURS_QUESTION)); // On enlève la couleur des questions
         char *pseudo = LireTexte(); // On lit le pseudo du joueur
         strcpy(partieEnCours->nomJoueur, pseudo); // On copie le pseudo dans la structure
         free(pseudo); // On libère la mémoire allouée pour le pseudo
@@ -143,7 +155,9 @@ void AfficherMeilleursScores()
     if(points == NULL){ // Si on n'a pas pu lire les meilleurs scores
         AfficherTexteSansRetour("Il n'y a pas de score."); // On affiche un message d'erreur
         RetourALaLigne(); // On retourne à la ligne
+        attron(COLOR_PAIR(COULEURS_QUESTION));
         AfficherTexteSansRetour("Appuyez sur une touche pour continuer"); // On affiche un message
+        attroff(COLOR_PAIR(COULEURS_QUESTION));
         getch(); // On attend que l'utilisateur appuie sur une touche
         EffacerEcran(); // On efface l'écran
         TerminerEcran(); // On termine l'écran
@@ -151,16 +165,24 @@ void AfficherMeilleursScores()
     }
     for(int compteur = 0; compteur < NbreDeScoresAAfficher; compteur++){
         // Si le nom du joueur est vide
+        attron(COLOR_PAIR(COULEURS_CONTOUR)); // On met la couleur du contour
         if(strcmp(points[compteur].nomJoueur, "") == 0){
             break; // On sort de la boucle
         }
         AfficherTexteSansRetour(points[compteur].nomJoueur); // On affiche le nom du joueur
+        attroff(COLOR_PAIR(COULEURS_CONTOUR)); // On enlève la couleur du contour
+        attron(COLOR_PAIR(COULEURS_MOT)); // On met la couleur des mots
         AfficherTexteSansRetour(" : "); // On affiche un deux points
+        attroff(COLOR_PAIR(COULEURS_MOT)); // On enlève la couleur des mots
+        attron(COLOR_PAIR(COULEURS_MALPLACE)); // On met la couleur des lettres bien placées
         AfficherNombreSansRetour(points[compteur].score); // On affiche le score
+        attroff(COLOR_PAIR(COULEURS_MALPLACE)); // On enlève la couleur des lettres bien placées
         RetourALaLigne(); // On retourne à la ligne
     }
     RetourALaLigne(); // On retourne à la ligne
+    attron(COLOR_PAIR(COULEURS_QUESTION));
     AfficherTexteSansRetour("Enfoncez ENTER pour continuer..."); // On affiche un message
+    attroff(COLOR_PAIR(COULEURS_QUESTION));
     getch(); // On attend que l'utilisateur appuie sur une touche
     free(dico_message); // On libère la mémoire allouée pour la structure Dico_Message
     free(points); // On libère la mémoire allouée pour les points
@@ -178,10 +200,18 @@ void afficherMenu(){
     do{
         EffacerEcran(); // On efface l'écran
         // On affiche le menu
-        AfficherTexteSansRetour("1. Jouer\n");
-        AfficherTexteSansRetour("2. Meilleurs scores\n");
-        AfficherTexteSansRetour("3. Quitter\n");
-        AfficherTexteSansRetour("Votre choix: ");
+        attron(COLOR_PAIR(COULEURS_BIENPLACE)); 
+        AfficherTexteSansRetour("1. Jouer\n"); // On affiche le texte
+        attroff(COLOR_PAIR(COULEURS_BIENPLACE)); 
+        attron(COLOR_PAIR(COULEURS_CONTOUR)); 
+        AfficherTexteSansRetour("2. Meilleurs scores\n"); // On affiche le texte
+        attroff(COLOR_PAIR(COULEURS_CONTOUR)); 
+        attron(COLOR_PAIR(COULEURS_MALPLACE));
+        AfficherTexteSansRetour("3. Quitter\n"); // On affiche le texte
+        attroff(COLOR_PAIR(COULEURS_MALPLACE));
+        attron(COLOR_PAIR(COULEURS_QUESTION));
+        AfficherTexteSansRetour("Votre choix: "); // On affiche le texte
+        attroff(COLOR_PAIR(COULEURS_QUESTION));
         choix = LireTexte(); // On lit le choix de l'utilisateur
         if(strcmp(choix, "1") == 0){
              // Création des instances de la structure Partie et Dictionnaire
@@ -206,13 +236,16 @@ void afficherMenu(){
                     AfficherErreurEtTerminer(dico_message->message, dico_message->codeErreur);
                 }
             }
-            RetourALaLigne();
-            AfficherTexteSansRetour("Appuyez sur une touche pour continuer");
-            getch();
-            AfficherMeilleursScores();
-            EffacerDictionnaire(dictionnaire);
-            EffacerPartie(maPartie);
-            free(choix);
+            RetourALaLigne(); // On retourne à la ligne
+            attron(COLOR_PAIR(COULEURS_QUESTION));
+            AfficherTexteSansRetour("Appuyez sur une touche pour continuer"); // On affiche un message
+            attroff(COLOR_PAIR(COULEURS_QUESTION));
+            getch(); // On attend que l'utilisateur appuie sur une touche
+            AfficherMeilleursScores(); // On affiche les meilleurs scores
+            EffacerDictionnaire(dictionnaire); // On libère la mémoire allouée pour le dictionnaire
+            EffacerPartie(maPartie); // On libère la mémoire allouée pour la partie
+            free(choix); // On libère la mémoire allouée pour le choix
+            afficherMenu(); // On affiche le menu
         }
         else if(strcmp(choix, "2") == 0){
             // On affiche les meilleurs scores
