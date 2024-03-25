@@ -157,6 +157,9 @@ void AfficherErreurEtTerminer(char *texteDErreur, int codeDErreur)
 void AfficherHautDeJeu(char *motAAfficher)
 {
     if (motAAfficher == NULL) { // Si le mot à afficher est NULL
+        for(int compteur=0; compteur<NombreDeTabulationAGauche; compteur++){
+            AfficherTexteIndenteSansRetour(" "); // On affiche les tabulations
+        }
         AfficherCharSpecialSansRetour('l', 1); // On affiche le coin supérieur gauche
         AfficherCharSpecialSansRetour('q', LENGTH); // On affiche la ligne du haut
         AfficherCharSpecialSansRetour('w', 1); // On affiche la ligne du haut
@@ -164,6 +167,9 @@ void AfficherHautDeJeu(char *motAAfficher)
         AfficherCharSpecialSansRetour('k', 1); // On affiche le coin supérieur droit
         RetourALaLigne(); // On fait un retour à la ligne
     } else { // Sinon
+        for(int compteur=0; compteur<NombreDeTabulationAGauche; compteur++){
+            AfficherTexteIndenteSansRetour(" "); // On affiche les tabulations
+        }
         AfficherCharSpecialSansRetour('l', 1); // On affiche le coin supérieur gauche
         AfficherCharSpecialSansRetour('q', LENGTH-strlen(motAAfficher)); // On affiche la ligne du haut
         AfficherTexteSansRetour(motAAfficher); // On affiche le mot
@@ -186,6 +192,9 @@ void AfficherSeparateurDeJeu()
 // - Des espaces pour compléter
 void AfficherMotDeJeu(char *motAAfficher, int nbreLettresBienplacées, int nbreLettresMalplacées)
 {
+    for(int compteur=0; compteur<NombreDeTabulationAGauche; compteur++){
+            AfficherTexteIndenteSansRetour(" "); // On affiche les tabulations
+    }
     AfficherSeparateurDeJeu(); // On affiche le séparateur de jeu
     AfficherCharSansRetour(' ', 2); // On affiche 2 espaces
     for(int compteur=0; compteur<strlen(motAAfficher); compteur++){ // Pour chaque lettre du mot à afficher
@@ -203,12 +212,13 @@ void AfficherMotDeJeu(char *motAAfficher, int nbreLettresBienplacées, int nbreL
     for(int compteur=0; compteur<nbreLettresMalplacées; compteur++){ // Pour chaque lettre mal placée
         space--; // On décrémente la variable space
         AfficherCharSansRetour('-', 1); // On affiche un -
-    }
-    // Reste à géré la fin du cadre (Nb espace à ajouter en fonction des nbreLettresBienplacées et nbreLettresMalplacées)
-    
+    }    
     AfficherCharSansRetour(' ', space); // On affiche 1 espace
     AfficherSeparateurDeJeu(); // On affiche le séparateur de jeu
     RetourALaLigne(); // On fait un retour à la ligne
+    for(int compteur=0; compteur<NombreDeTabulationAGauche; compteur++){
+        AfficherTexteIndenteSansRetour(" "); // On affiche les tabulations
+    }
     AfficherCharSpecialSansRetour('t', 1); // On affiche le coin inférieur gauche
     AfficherCharSpecialSansRetour('q', LENGTH); // On affiche la ligne du bas
     AfficherCharSpecialSansRetour('n', 1); // On affiche la ligne du bas
@@ -224,6 +234,9 @@ void AfficherBasDeJeu()
     int x,y;
     getyx(stdscr, y, x); // On récupère la position courante
     move(y-1, 0); // On se déplace à la position courante
+    for(int compteur=0; compteur<NombreDeTabulationAGauche; compteur++){
+        AfficherTexteIndenteSansRetour(" "); // On affiche les tabulations
+    }
     AfficherCharSpecialSansRetour('m', 1); // On affiche le coin inférieur gauche
     AfficherCharSpecialSansRetour('q', LENGTH); // On affiche la ligne du bas
     AfficherCharSpecialSansRetour('v', 1); // On affiche la ligne du bas
