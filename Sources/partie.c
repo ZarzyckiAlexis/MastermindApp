@@ -136,7 +136,12 @@ bool JouerPartie(struct Partie *partieEnCours)
         AfficherTexteSansRetour("Quel est votre pseudo ? "); // On demande le pseudo du joueur
         attroff(COLOR_PAIR(COULEURS_QUESTION)); // On enlève la couleur des questions
         char *pseudo = LireTexte(); // On lit le pseudo du joueur
-        strcpy(partieEnCours->nomJoueur, pseudo); // On copie le pseudo dans la structure
+        if(pseudo[0] == '\0'){ // Si le pseudo est vide (l'utilisateur n'a rien rentré)
+            strcpy(partieEnCours->nomJoueur, "Anonyme"); // On met Anonyme dans la structure par défaut
+        }
+        else{
+            strcpy(partieEnCours->nomJoueur, pseudo); // On copie le pseudo dans la structure
+        }
         free(pseudo); // On libère la mémoire allouée pour le pseudo
     }
     return partieEnCours->resultat; // On retourne le résultat
