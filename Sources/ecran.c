@@ -106,6 +106,9 @@ void AfficherCharSpecialSansRetour(unsigned char caractereAAfficher, int repetit
 void AfficherTexteDansCadre(char *texteAAfficher)
 {
     RetourALaLigne();
+    for(int compteur=0; compteur<NombreDeTabulationAGauche; compteur++){
+        AfficherTexteIndenteSansRetour(" "); // On affiche un espace
+    }
     int longeurTexte = strlen(texteAAfficher)+2; // On prends la longeur du texte + 2 pour les coins
     attron(COLOR_PAIR(COULEURS_CONTOUR)); // On active la couleur des contours
     // Affichage de la ligne suppérieur du cadre
@@ -115,6 +118,9 @@ void AfficherTexteDansCadre(char *texteAAfficher)
     
     // Affichage de la ligne centrale du cadre avec le texte
     RetourALaLigne();
+    for(int compteur=0; compteur<NombreDeTabulationAGauche; compteur++){
+        AfficherTexteIndenteSansRetour(" "); // On affiche un espace
+    }
     AfficherCharSpecialSansRetour('x', 1); // On affiche la barre gauche
     AfficherCharSansRetour(' ', 1); // On affiche 3 espace pour la séparation
     attroff(COLOR_PAIR(COULEURS_CONTOUR)); // On désactive la couleur des contours
@@ -127,6 +133,9 @@ void AfficherTexteDansCadre(char *texteAAfficher)
 
     // Affichage de la ligne inférieur du cadre
     RetourALaLigne(); // On fais un retour à la ligne
+    for(int compteur=0; compteur<NombreDeTabulationAGauche; compteur++){
+        AfficherTexteIndenteSansRetour(" "); // On affiche un espace
+    }
     AfficherCharSpecialSansRetour('m', 1);  // On affiche le coin inférieur gauche
     AfficherCharSpecialSansRetour('q', longeurTexte); // On affiche la ligne du bas
     AfficherCharSpecialSansRetour('j', 1); // On affiche le coin inférieur droit
