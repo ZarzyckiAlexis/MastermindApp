@@ -97,9 +97,9 @@ bool JouerPartie(struct Partie *partieEnCours)
         char *answer = LireTexte();
 
         if(strcmp(answer, "*") == 0) {
-            modeDebug = !modeDebug; // Toggle debug mode
+            modeDebug = !modeDebug; // Activer/Désactiver debug mode
             free(answer); // On libère la mémoire allouée pour la réponse
-            continue; // Skip the rest of the loop and start from the beginning
+            continue; // On continue la boucle
         }
         else{
             strcpy(partieEnCours->liste_essais[partieEnCours->essaiEnCours], answer);
