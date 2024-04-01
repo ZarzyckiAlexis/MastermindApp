@@ -1,3 +1,23 @@
+CREATE DATABASE la219263;
+use la219263;
+
+CREATE TABLE joueurs(
+   id_joueur INT AUTO_INCREMENT,
+   pseudo VARCHAR(50) NOT NULL,
+   PRIMARY KEY(id_joueur)
+);
+
+CREATE TABLE scores(
+   id_score INT AUTO_INCREMENT,
+   score INT NOT NULL,
+   id_joueur INT NOT NULL,
+   PRIMARY KEY(id_score),
+   FOREIGN KEY(id_joueur) REFERENCES joueurs(id_joueur)
+);
+
+CREATE DATABASE la219263_test;
+use la219263_test;
+
 CREATE TABLE joueurs(
    id_joueur INT AUTO_INCREMENT,
    pseudo VARCHAR(50) NOT NULL,
