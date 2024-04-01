@@ -144,6 +144,15 @@ bool JouerPartie(struct Partie *partieEnCours)
         }
         free(pseudo); // On libère la mémoire allouée pour le pseudo
     }
+    else{ // Si le résultat est faux => Le joueur à perdu => On affiche la solution
+        RetourALaLigne();
+        attron(COLOR_PAIR(COULEURS_MOT)); // On met la couleur des mots
+        AfficherTexteSansRetour(" La solution était: ");
+        attroff(COLOR_PAIR(COULEURS_MOT)); // On enlève la couleur des mots
+        attron(COLOR_PAIR(COULEURS_BIENPLACE)); // On met la couleur du mot bien placé
+        AfficherTexteSansRetour(partieEnCours->solution); // On affiche la solution
+        attroff(COLOR_PAIR(COULEURS_BIENPLACE)); // On enlève la couleur du mot bien placé
+    }
     return partieEnCours->resultat; // On retourne le résultat
 }
 
