@@ -1,0 +1,294 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mastermind: Référence du fichier Sources/partie.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Mastermind
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.4 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_937900b87e0c7a5fa01190c395fb83f7.html">Sources</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle"><div class="title">Référence du fichier partie.c</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="common_8h_source.html">../Includes/common.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="clavier_8h_source.html">../Includes/clavier.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ecran_8h_source.html">../Includes/ecran.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mots_8h_source.html">../Includes/mots.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="partie_8h_source.html">../Includes/partie.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="score_8h_source.html">../Includes/score.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de partie.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="partie_8c__incl.png" border="0" usemap="#aSources_2partie_8c" alt=""/></div>
+<map name="aSources_2partie_8c" id="aSources_2partie_8c">
+<area shape="rect" title=" " alt="" coords="395,5,522,32"/>
+<area shape="rect" href="common_8h.html" title=" " alt="" coords="226,155,387,181"/>
+<area shape="rect" href="clavier_8h.html" title=" " alt="" coords="716,80,863,107"/>
+<area shape="rect" href="ecran_8h.html" title=" " alt="" coords="551,80,691,107"/>
+<area shape="rect" href="mots_8h.html" title=" " alt="" coords="411,155,549,181"/>
+<area shape="rect" href="partie_8h.html" title=" " alt="" coords="333,80,475,107"/>
+<area shape="rect" href="score_8h.html" title=" " alt="" coords="119,80,257,107"/>
+<area shape="rect" title=" " alt="" coords="489,229,559,256"/>
+<area shape="rect" title=" " alt="" coords="5,229,72,256"/>
+<area shape="rect" title=" " alt="" coords="97,229,167,256"/>
+<area shape="rect" title=" " alt="" coords="191,229,265,256"/>
+<area shape="rect" title=" " alt="" coords="289,229,372,256"/>
+<area shape="rect" title=" " alt="" coords="397,229,465,256"/>
+<area shape="rect" title=" " alt="" coords="631,229,695,256"/>
+<area shape="rect" title=" " alt="" coords="735,155,819,181"/>
+<area shape="rect" title=" " alt="" coords="573,155,648,181"/>
+<area shape="rect" title=" " alt="" coords="127,155,201,181"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a4750047b47f1df295c75e3dab2b4a57a"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structPartie.html">Partie</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="partie_8c.html#a4750047b47f1df295c75e3dab2b4a57a">CreerPartie</a> (struct <a class="el" href="structDictionnaire.html">Dictionnaire</a> *dictionnaire)</td></tr>
+<tr class="memdesc:a4750047b47f1df295c75e3dab2b4a57a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction pour créer une partie.  <a href="partie_8c.html#a4750047b47f1df295c75e3dab2b4a57a">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a4750047b47f1df295c75e3dab2b4a57a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61d11d8bb58f200314c53561a9b58a3f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="partie_8c.html#a61d11d8bb58f200314c53561a9b58a3f">EffacerPartie</a> (struct <a class="el" href="structPartie.html">Partie</a> *partieEnCours)</td></tr>
+<tr class="memdesc:a61d11d8bb58f200314c53561a9b58a3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction pour libérer la memoire liée a une partie.  <a href="partie_8c.html#a61d11d8bb58f200314c53561a9b58a3f">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a61d11d8bb58f200314c53561a9b58a3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a349742cb68cdca07ec8da9d80ab6956b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="partie_8c.html#a349742cb68cdca07ec8da9d80ab6956b">AfficherPartie</a> (struct <a class="el" href="structPartie.html">Partie</a> *partieEnCours, bool modeDebug)</td></tr>
+<tr class="memdesc:a349742cb68cdca07ec8da9d80ab6956b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction pour afficher une partie en cours. Pour chaque mot déjà essayé, on affiche.  <a href="partie_8c.html#a349742cb68cdca07ec8da9d80ab6956b">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a349742cb68cdca07ec8da9d80ab6956b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12a07c2bd259137edabb23332b43bc4c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="partie_8c.html#a12a07c2bd259137edabb23332b43bc4c">JouerPartie</a> (struct <a class="el" href="structPartie.html">Partie</a> *partieEnCours)</td></tr>
+<tr class="memdesc:a12a07c2bd259137edabb23332b43bc4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction pour jouer une partie.  <a href="partie_8c.html#a12a07c2bd259137edabb23332b43bc4c">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a12a07c2bd259137edabb23332b43bc4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e706a49a8dc97b1a375e8f7369653d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="partie_8c.html#a4e706a49a8dc97b1a375e8f7369653d8">AfficherMeilleursScores</a> ()</td></tr>
+<tr class="memdesc:a4e706a49a8dc97b1a375e8f7369653d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction pour afficher les meilleurs scores.  <a href="partie_8c.html#a4e706a49a8dc97b1a375e8f7369653d8">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a4e706a49a8dc97b1a375e8f7369653d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4ce73efb37dd498fc93d1b6f709fe00"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="partie_8c.html#ab4ce73efb37dd498fc93d1b6f709fe00">afficherMenu</a> ()</td></tr>
+<tr class="memdesc:ab4ce73efb37dd498fc93d1b6f709fe00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction pour afficher le menu principal.  <a href="partie_8c.html#ab4ce73efb37dd498fc93d1b6f709fe00">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ab4ce73efb37dd498fc93d1b6f709fe00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a4e706a49a8dc97b1a375e8f7369653d8" name="a4e706a49a8dc97b1a375e8f7369653d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e706a49a8dc97b1a375e8f7369653d8">&#9670;&nbsp;</a></span>AfficherMeilleursScores()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AfficherMeilleursScores </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction pour afficher les meilleurs scores. </p>
+
+</div>
+</div>
+<a id="ab4ce73efb37dd498fc93d1b6f709fe00" name="ab4ce73efb37dd498fc93d1b6f709fe00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4ce73efb37dd498fc93d1b6f709fe00">&#9670;&nbsp;</a></span>afficherMenu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void afficherMenu </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction pour afficher le menu principal. </p>
+
+</div>
+</div>
+<a id="a349742cb68cdca07ec8da9d80ab6956b" name="a349742cb68cdca07ec8da9d80ab6956b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a349742cb68cdca07ec8da9d80ab6956b">&#9670;&nbsp;</a></span>AfficherPartie()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AfficherPartie </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structPartie.html">Partie</a> *&#160;</td>
+          <td class="paramname"><em>partieEnCours</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>modeDebug</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction pour afficher une partie en cours. Pour chaque mot déjà essayé, on affiche. </p>
+<ul>
+<li>Le mot</li>
+<li>Le resultat: un + par lettre bien placée et un - par lettre mal placée</li>
+</ul>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">partieEnCours</td><td>Pointeur vers la structure <a class="el" href="structPartie.html" title="Permet de définir la structure Partie qui contient les informations d&#39;une partie.">Partie</a> </td></tr>
+    <tr><td class="paramname">modeDebug</td><td>Booleen qui indique si on est en mode debug (qui affiche la solution) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4750047b47f1df295c75e3dab2b4a57a" name="a4750047b47f1df295c75e3dab2b4a57a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4750047b47f1df295c75e3dab2b4a57a">&#9670;&nbsp;</a></span>CreerPartie()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structPartie.html">Partie</a> * CreerPartie </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structDictionnaire.html">Dictionnaire</a> *&#160;</td>
+          <td class="paramname"><em>dictionnaire</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction pour créer une partie. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dictionnaire</td><td>Le dictionnaire contenant tous les mots </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>struct Partie* Une structure <a class="el" href="structPartie.html" title="Permet de définir la structure Partie qui contient les informations d&#39;une partie.">Partie</a> allouée en memoire, avec un mot choisi au hasard et toute l'information mise à zero pour commencer la partie </dd></dl>
+
+</div>
+</div>
+<a id="a61d11d8bb58f200314c53561a9b58a3f" name="a61d11d8bb58f200314c53561a9b58a3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61d11d8bb58f200314c53561a9b58a3f">&#9670;&nbsp;</a></span>EffacerPartie()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EffacerPartie </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structPartie.html">Partie</a> *&#160;</td>
+          <td class="paramname"><em>partieEnCours</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction pour libérer la memoire liée a une partie. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">partieEnCours</td><td>Pointeur vers la structure <a class="el" href="structPartie.html" title="Permet de définir la structure Partie qui contient les informations d&#39;une partie.">Partie</a> a libérer de la memoire </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a12a07c2bd259137edabb23332b43bc4c" name="a12a07c2bd259137edabb23332b43bc4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12a07c2bd259137edabb23332b43bc4c">&#9670;&nbsp;</a></span>JouerPartie()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool JouerPartie </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structPartie.html">Partie</a> *&#160;</td>
+          <td class="paramname"><em>partieEnCours</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction pour jouer une partie. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">partieEnCours</td><td>Pointeur vers la structure <a class="el" href="structPartie.html" title="Permet de définir la structure Partie qui contient les informations d&#39;une partie.">Partie</a> préablement initialisée avec une nouvelle partie </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>true si fin de partie (gagnée ou perdue) </dd>
+<dd>
+false si abandon </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+</small></address>
+</body>
+</html>

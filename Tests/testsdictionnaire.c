@@ -1,14 +1,10 @@
 #include "./tests.h"
 #include "../Includes/mots.h"
 
-/** Test qui vérifie le garnissage des données dans le dictionnaire
- * TestDictionnaire_OK
- * TestDictionnaire_KO_mauvais_fichier
- * TestDictionnaire_KO_erreur_mot
- * => Total: 3 tests
-**/
-
-// Test qui lit un dictionnaire correct
+/**
+ * @brief Test qui lit un dictionnaire correct
+ * 
+ */
 void TestDictionnaire_OK()
 {
     struct Dico_Message message; // On crée la structure qui contient le message d'erreur
@@ -21,7 +17,10 @@ void TestDictionnaire_OK()
     EffacerDictionnaire(dico); // On libère la mémoire du dictionnaire
 }
 
-// Test qui lit un dictionnaire avec une erreur d'ouverture de fichier
+/**
+ * @brief Test qui lit un dictionnaire avec une erreur d'ouverture de fichier
+ * 
+ */
 void TestDictionnaire_KO_mauvais_fichier()
 {
     struct Dico_Message message; // On crée la structure qui contient le message d'erreur
@@ -31,7 +30,10 @@ void TestDictionnaire_KO_mauvais_fichier()
     TEST_ASSERT_EQUAL_INT(2, message.codeErreur); // On vérifie que le code d'erreur est correct
 }
 
-// Test qui lit un dictionnaire avec une erreur de mot
+/**
+ * @brief Test qui lit un dictionnaire avec une erreur de mot
+ * 
+ */
 void TestDictionnaire_KO_erreur_mot()
 {
     struct Dico_Message message; // On crée la structure qui contient le message d'erreur
@@ -42,7 +44,10 @@ void TestDictionnaire_KO_erreur_mot()
 }
 
 
-// Execute tous les tests de lecture du dictionnaire
+/**
+ * @brief Execute tous les tests de lecture du dictionnaire
+ * 
+ */
 void TestsDictionnaire()
 {
     RUN_TEST(TestDictionnaire_OK);

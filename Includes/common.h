@@ -8,17 +8,44 @@
 
 #ifndef _DICO_COMMON
 #define _DICO_COMMON
-// Structure pour stocker un message d'erreur à renvoyer
-// et toute autre information utile qui l'accompagne
+
+/**
+ * @brief Structure pour stocker un message d'erreur et son code à renvoyer
+ * 
+ */
 struct Dico_Message
 {
     char message[201];
     int codeErreur;
 };
-// Constantes du jeu
+
+/**
+ * @brief Nombre maximum d'essais pour deviner un mot
+ * 
+ */
 #define NbreMaxDEssais 10
+
+/**
+ * @brief Longeur max du nom d'un joueur
+ * 
+ */
 #define LongueurMaxNomJoueur 10
+
+/**
+ * @brief Longeur max d'un mot
+ * 
+ */
 #define LongueurDesMots 4
+
+/**
+ * @brief Nombre de scores à afficher
+ * 
+ */
 #define NbreDeScoresAAfficher 10
+
+/**
+ * @brief Utilisé la DB de test ?
+ * 
+ */
 #define Is_DB_TEST false
 #endif

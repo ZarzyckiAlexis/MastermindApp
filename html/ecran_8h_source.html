@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mastermind:  Fichier source de Includes/ecran.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Mastermind
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.4 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_983f03418386a76a32a9f4a7fdd2c4bd.html">Includes</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">ecran.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="ecran_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &lt;time.h&gt;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;ncurses.h&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">// Definition des caractères de bordures pour les cadres autour des mots</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#ifndef _ECRAN_CONST</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> NombreDeTabulationAGauche = 3;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">// Definition d&#39;aliases pour les codes de couleurs (dépassement)</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="ecran_8h.html#a49e18621f7eb434cc2e63b7cf010fc42">   18</a></span><span class="comment"></span><span class="preprocessor">#define COULEURS_CONTOUR 1</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="ecran_8h.html#a534c4199f588090f636113816c1e7782">   24</a></span><span class="preprocessor">#define COULEURS_MOT 2</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="ecran_8h.html#ab3452e010e9bb6ddb3aca800d0d2d042">   30</a></span><span class="preprocessor">#define COULEURS_BIENPLACE 3</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="ecran_8h.html#adf3d8d0744cb0d79eda7705a880f4229">   36</a></span><span class="preprocessor">#define COULEURS_QUESTION 3</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="ecran_8h.html#a16517049a4133d1d6ca7e139bc7e4129">   42</a></span><span class="preprocessor">#define COULEURS_MALPLACE 4</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="ecran_8h.html#aeb12a798187b88652496879f13fef036">   48</a></span><span class="preprocessor">#define COULEURS_ERREUR 4</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="ecran_8h.html#a30362161c93e3f1a4ee4c673f535b5a8">   55</a></span><span class="preprocessor">#define LENGTH 15 </span><span class="comment">// Longeur dynamique</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment">// Déclaration des fonctions du module</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment">//void ChoisirModeEcran(bool couleur);</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keywordtype">void</span> <a class="code hl_function" href="ecran_8h.html#afd9b1a6c676ae9d7bb234275e01f716f">InitialiserEcran</a>();</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="keywordtype">void</span> <a class="code hl_function" href="ecran_8h.html#aacc00d03214d610fe08ab904377a301f">TerminerEcran</a>();</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="keywordtype">void</span> <a class="code hl_function" href="ecran_8h.html#ac1225b41f998d60d5f2760b159424b66">EffacerEcran</a>();</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="keywordtype">void</span> <a class="code hl_function" href="ecran_8h.html#a71225280a6fba53442579148f9e01d77">RetourALaLigne</a>();</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="keywordtype">void</span> <a class="code hl_function" href="ecran_8h.html#ac936ca8ce27be4b09c046960ec7574f5">AfficherTexteIndenteSansRetour</a>(<span class="keywordtype">char</span> *texteAAfficher);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="keywordtype">void</span> <a class="code hl_function" href="ecran_8h.html#af114a3a3e961e29c8bfa20d39b494304">AfficherTexteSansRetour</a>(<span class="keywordtype">char</span> *texteAAfficher);</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="keywordtype">void</span> <a class="code hl_function" href="ecran_8h.html#afd0057dddb63c666622f2fea8300ab40">AfficherCharSansRetour</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> caractereAAfficher, <span class="keywordtype">int</span> repetition);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="keywordtype">void</span> <a class="code hl_function" href="ecran_8h.html#aa635ae93db52d9d64b534fc2fc276e62">AfficherNombreSansRetour</a>(<span class="keywordtype">int</span> nombreAAfficher);</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="keywordtype">void</span> <a class="code hl_function" href="ecran_8h.html#a8d25ac1a1fc7578aba1a61181657db14">AfficherCharSpecialSansRetour</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> caractereAAfficher, <span class="keywordtype">int</span> repetition);</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="keywordtype">void</span> <a class="code hl_function" href="ecran_8h.html#a2de7de62411e377569d51c75597dd6ec">AfficherTexteDansCadre</a>(<span class="keywordtype">char</span> *texteAAfficher);</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="keywordtype">void</span> <a class="code hl_function" href="ecran_8h.html#aa7859c96f20ed83a7e222a208e82dc8f">AfficherErreurEtTerminer</a>(<span class="keywordtype">char</span> *texteDErreur, <span class="keywordtype">int</span> codeDErreur);</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno"><a class="line" href="ecran_8h.html#aff73f15830f17b27abf9a03e82a86033">  140</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="ecran_8h.html#aff73f15830f17b27abf9a03e82a86033">AfficherHautDeJeu</a>();</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span><span class="keywordtype">void</span> <a class="code hl_function" href="ecran_8h.html#aa565b328517bca8ea87b0a7dc4b84903">AfficherSeparateurDeJeu</a>();</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span><span class="keywordtype">void</span> <a class="code hl_function" href="ecran_8h.html#a90cb8cde09adb793590f82d7eb01722f">AfficherMotDeJeu</a>(<span class="keywordtype">char</span> *motAAfficher, <span class="keywordtype">int</span> nbreLettresBienplacées, <span class="keywordtype">int</span> nbreLettresMalplacées);</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span><span class="keywordtype">void</span> <a class="code hl_function" href="ecran_8h.html#a4a2addfdee39b91ed8ed2d3600b0c776">AfficherBasDeJeu</a>();</div>
+<div class="ttc" id="aecran_8h_html_a2de7de62411e377569d51c75597dd6ec"><div class="ttname"><a href="ecran_8h.html#a2de7de62411e377569d51c75597dd6ec">AfficherTexteDansCadre</a></div><div class="ttdeci">void AfficherTexteDansCadre(char *texteAAfficher)</div><div class="ttdoc">Fonction qui permet d'afficher un texte dans un cadre.</div><div class="ttdef"><b>Definition:</b> ecran.c:106</div></div>
+<div class="ttc" id="aecran_8h_html_a4a2addfdee39b91ed8ed2d3600b0c776"><div class="ttname"><a href="ecran_8h.html#a4a2addfdee39b91ed8ed2d3600b0c776">AfficherBasDeJeu</a></div><div class="ttdeci">void AfficherBasDeJeu()</div><div class="ttdoc">Fonction qui permet d'afficher la bordure du jeu.</div><div class="ttdef"><b>Definition:</b> ecran.c:270</div></div>
+<div class="ttc" id="aecran_8h_html_a71225280a6fba53442579148f9e01d77"><div class="ttname"><a href="ecran_8h.html#a71225280a6fba53442579148f9e01d77">RetourALaLigne</a></div><div class="ttdeci">void RetourALaLigne()</div><div class="ttdoc">Fonction qui permet d'effectuer un retour à la ligne.</div><div class="ttdef"><b>Definition:</b> ecran.c:30</div></div>
+<div class="ttc" id="aecran_8h_html_a8d25ac1a1fc7578aba1a61181657db14"><div class="ttname"><a href="ecran_8h.html#a8d25ac1a1fc7578aba1a61181657db14">AfficherCharSpecialSansRetour</a></div><div class="ttdeci">void AfficherCharSpecialSansRetour(unsigned char caractereAAfficher, int repetition)</div><div class="ttdoc">Fonction qui permet d'afficher un caractère spécial sans retour à la ligne.</div><div class="ttdef"><b>Definition:</b> ecran.c:93</div></div>
+<div class="ttc" id="aecran_8h_html_a90cb8cde09adb793590f82d7eb01722f"><div class="ttname"><a href="ecran_8h.html#a90cb8cde09adb793590f82d7eb01722f">AfficherMotDeJeu</a></div><div class="ttdeci">void AfficherMotDeJeu(char *motAAfficher, int nbreLettresBienplacées, int nbreLettresMalplacées)</div><div class="ttdoc">Affiche un mot du jeu et son resultat.</div><div class="ttdef"><b>Definition:</b> ecran.c:219</div></div>
+<div class="ttc" id="aecran_8h_html_aa565b328517bca8ea87b0a7dc4b84903"><div class="ttname"><a href="ecran_8h.html#aa565b328517bca8ea87b0a7dc4b84903">AfficherSeparateurDeJeu</a></div><div class="ttdeci">void AfficherSeparateurDeJeu()</div><div class="ttdoc">// Affiche un separateur entre deux mots du jeu</div><div class="ttdef"><b>Definition:</b> ecran.c:210</div></div>
+<div class="ttc" id="aecran_8h_html_aa635ae93db52d9d64b534fc2fc276e62"><div class="ttname"><a href="ecran_8h.html#aa635ae93db52d9d64b534fc2fc276e62">AfficherNombreSansRetour</a></div><div class="ttdeci">void AfficherNombreSansRetour(int nombreAAfficher)</div><div class="ttdoc">Fonction qui permet d'afficher un nombre sans retour à la ligne.</div><div class="ttdef"><b>Definition:</b> ecran.c:79</div></div>
+<div class="ttc" id="aecran_8h_html_aa7859c96f20ed83a7e222a208e82dc8f"><div class="ttname"><a href="ecran_8h.html#aa7859c96f20ed83a7e222a208e82dc8f">AfficherErreurEtTerminer</a></div><div class="ttdeci">void AfficherErreurEtTerminer(char *texteDErreur, int codeDErreur)</div><div class="ttdoc">Fonction qui permet d'afficher une erreur et de terminer le programme.</div><div class="ttdef"><b>Definition:</b> ecran.c:154</div></div>
+<div class="ttc" id="aecran_8h_html_aacc00d03214d610fe08ab904377a301f"><div class="ttname"><a href="ecran_8h.html#aacc00d03214d610fe08ab904377a301f">TerminerEcran</a></div><div class="ttdeci">void TerminerEcran()</div><div class="ttdoc">Fonction qui permet de terminer l'écran.</div><div class="ttdef"><b>Definition:</b> ecran.c:16</div></div>
+<div class="ttc" id="aecran_8h_html_ac1225b41f998d60d5f2760b159424b66"><div class="ttname"><a href="ecran_8h.html#ac1225b41f998d60d5f2760b159424b66">EffacerEcran</a></div><div class="ttdeci">void EffacerEcran()</div><div class="ttdoc">Fonction qui permet d'effacer l'écran.</div><div class="ttdef"><b>Definition:</b> ecran.c:23</div></div>
+<div class="ttc" id="aecran_8h_html_ac936ca8ce27be4b09c046960ec7574f5"><div class="ttname"><a href="ecran_8h.html#ac936ca8ce27be4b09c046960ec7574f5">AfficherTexteIndenteSansRetour</a></div><div class="ttdeci">void AfficherTexteIndenteSansRetour(char *texteAAfficher)</div><div class="ttdoc">Fonction qui permet d'afficher un texte indenté sans retour à la ligne.</div><div class="ttdef"><b>Definition:</b> ecran.c:42</div></div>
+<div class="ttc" id="aecran_8h_html_af114a3a3e961e29c8bfa20d39b494304"><div class="ttname"><a href="ecran_8h.html#af114a3a3e961e29c8bfa20d39b494304">AfficherTexteSansRetour</a></div><div class="ttdeci">void AfficherTexteSansRetour(char *texteAAfficher)</div><div class="ttdoc">Fonction qui permet d'afficher un texte sans retour à la ligne.</div><div class="ttdef"><b>Definition:</b> ecran.c:53</div></div>
+<div class="ttc" id="aecran_8h_html_afd0057dddb63c666622f2fea8300ab40"><div class="ttname"><a href="ecran_8h.html#afd0057dddb63c666622f2fea8300ab40">AfficherCharSansRetour</a></div><div class="ttdeci">void AfficherCharSansRetour(unsigned char caractereAAfficher, int repetition)</div><div class="ttdoc">Fonction qui permet d'afficher un caractère sans retour à la ligne.</div><div class="ttdef"><b>Definition:</b> ecran.c:65</div></div>
+<div class="ttc" id="aecran_8h_html_afd9b1a6c676ae9d7bb234275e01f716f"><div class="ttname"><a href="ecran_8h.html#afd9b1a6c676ae9d7bb234275e01f716f">InitialiserEcran</a></div><div class="ttdeci">void InitialiserEcran()</div><div class="ttdoc">Fonction qui permet d'intialiser l'écran.</div><div class="ttdef"><b>Definition:</b> ecran.c:9</div></div>
+<div class="ttc" id="aecran_8h_html_aff73f15830f17b27abf9a03e82a86033"><div class="ttname"><a href="ecran_8h.html#aff73f15830f17b27abf9a03e82a86033">AfficherHautDeJeu</a></div><div class="ttdeci">void AfficherHautDeJeu()</div><div class="ttdoc">Affiche le haut du cadre de jeu (bordure supérieure)</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+</small></address>
+</body>
+</html>

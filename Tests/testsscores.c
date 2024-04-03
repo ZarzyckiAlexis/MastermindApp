@@ -4,6 +4,10 @@
 // Fonction pour remettre la base de donnees a zero avant un test
 // Ceci est appele dans presque tous les tests de DB mais pas ailleurs
 // donc pas d'utilisation de SetUp()
+/**
+ * @brief Fonction pour remettre la base de données à zéro avant un test
+ * 
+ */
 void ViderDBDeTest()
 {
     struct Dico_Message *dico_message = malloc(sizeof(struct Dico_Message)); // Allocation de la memoire pour les messages
@@ -12,7 +16,10 @@ void ViderDBDeTest()
     free(dico_message); // Liberer la memoire
 }
 
-// Test de connexion a la base de donnees PRODUCTION
+/**
+ * @brief Test de connexion a la base de donnees PRODUCTION
+ * 
+ */
 void test_connexionDBPROD_OK()
 {
     ViderDBDeTest(); // Vider la base de donnees de test
@@ -23,7 +30,10 @@ void test_connexionDBPROD_OK()
     mysql_close(sqlConnection); // Fermer la connexion
 }
 
-// Test de connexion a la base de donnees TEST
+/**
+ * @brief Test de connexion a la base de donnees TEST
+ * 
+ */
 void test_connexionDBTEST_OK()
 {
     ViderDBDeTest(); // Vider la base de donnees de test
@@ -34,7 +44,10 @@ void test_connexionDBTEST_OK()
     mysql_close(sqlConnection); // Fermer la connexion
 }
 
-// Test OK de la fonction ExecuterInstructionSQL
+/**
+ * @brief Test OK de la fonction ExecuterInstructionSQL
+ * 
+ */
 void test_ExecuterInstructionSQL_OK()
 {
     ViderDBDeTest(); // Vider la base de donnees de test
@@ -48,7 +61,10 @@ void test_ExecuterInstructionSQL_OK()
     mysql_close(sqlConnection); // Fermer la connexion
 }
 
-// Test KO de la fonction ExecuterInstructionSQL
+/**
+ * @brief Test KO de la fonction ExecuterInstructionSQL
+ * 
+ */
 void test_ExecuterInstructionSQL_KO()
 {
     ViderDBDeTest(); // Vider la base de donnees de test
@@ -64,7 +80,10 @@ void test_ExecuterInstructionSQL_KO()
     mysql_close(sqlConnection); // Fermer la connexion
 }
 
-// Test OK de la fonction LireIDJoueur pas encore existant
+/**
+ * @brief Test OK de la fonction LireIDJoueur pas encore existant
+ * 
+ */
 void test_LireIDJoueur_OK_PasExistant()
 {
     ViderDBDeTest(); // Vider la base de donnees de test
@@ -79,7 +98,10 @@ void test_LireIDJoueur_OK_PasExistant()
     mysql_close(sqlConnection); // Fermer la connexion
 }
 
-// Test OK de la fonction LireIDJoueur déjà existant
+/**
+ * @brief Test OK de la fonction LireIDJoueur déjà existant
+ * 
+ */
 void test_LireIDJoueur_OK_Existant()
 {
     ViderDBDeTest(); // Vider la base de donnees de test
@@ -94,7 +116,10 @@ void test_LireIDJoueur_OK_Existant()
     mysql_close(sqlConnection); // Fermer la connexion
 }
 
-// Test KO Pseudo NULL de la fonction LireIDJoueur
+/**
+ * @brief Test KO Pseudo NULL de la fonction LireIDJoueur
+ * 
+ */
 void test_LireIDJoueur_KO_NULL()
 {
     ViderDBDeTest(); // Vider la base de donnees de test
@@ -110,8 +135,11 @@ void test_LireIDJoueur_KO_NULL()
     mysql_close(sqlConnection); // Fermer la connexion
 }
 
-// Test KO Pseudo + de 50 caractères de la fonction LireIDJoueur
-void test_LireIDJoueur_KO_50C()
+/**
+ * @brief Test KO Pseudo + de 10 caractères de la fonction LireIDJoueur
+ * 
+ */
+void test_LireIDJoueur_KO_10C()
 {
     ViderDBDeTest(); // Vider la base de donnees de test
     struct Dico_Message *dico_message = malloc(sizeof(struct Dico_Message)); // Allocation de la memoire pour les messages
@@ -126,7 +154,10 @@ void test_LireIDJoueur_KO_50C()
     mysql_close(sqlConnection); // Fermer la connexion
 }
 
-// Test OK de la fonction SauverScore
+/**
+ * @brief Test OK de la fonction SauverScore
+ * 
+ */
 void test_SauverScore_OK()
 {
     ViderDBDeTest(); // Vider la base de donnees de test
@@ -142,7 +173,10 @@ void test_SauverScore_OK()
     mysql_close(sqlConnection); // Fermer la connexion
 }
 
-// Test KO pour la fonction SauverScore
+/**
+ * @brief Test KO pour la fonction SauverScore
+ * 
+ */
 void test_SauverScore_KO()
 {
     ViderDBDeTest(); // Vider la base de donnees de test
@@ -159,7 +193,10 @@ void test_SauverScore_KO()
     mysql_close(sqlConnection); // Fermer la connexion
 }
 
-// Test OK de la fonction viderBaseDeDonnees
+/**
+ * @brief Test OK de la fonction viderBaseDeDonnees
+ * 
+ */
 void test_supprimerDB_OK(){
     struct Dico_Message *dico_message = malloc(sizeof(struct Dico_Message)); // Allocation de la memoire pour les messages
     bool resultat = viderBaseDeDonnees(true, dico_message); // Vider la base de donnees de test
@@ -167,7 +204,10 @@ void test_supprimerDB_OK(){
     free(dico_message); // Liberer la memoire
 }
 
-// Test OK de la fonction creerBaseDeDonnees
+/**
+ * @brief Test OK de la fonction creerBaseDeDonnees
+ * 
+ */
 void test_creerDB_OK(){
     struct Dico_Message *dico_message = malloc(sizeof(struct Dico_Message)); // Allocation de la memoire pour les messages
     bool resultat = creerBaseDeDonnees(true, dico_message); // Creer la base de donnees de test
@@ -175,7 +215,10 @@ void test_creerDB_OK(){
     free(dico_message); // Liberer la memoire
 }
 
-// Test OK de la fonction LireMeilleursScores
+/**
+ * @brief Test OK de la fonction LireMeilleursScores
+ * 
+ */
 void test_LireMeilleursScores_OK(){
     ViderDBDeTest(); // Vider la base de donnees de test
     struct Dico_Message *dico_message = malloc(sizeof(struct Dico_Message)); // Allocation de la memoire pour les messages
@@ -191,7 +234,10 @@ void test_LireMeilleursScores_OK(){
     free(dico_message); // Liberer la memoire
 }
 
-// Test KO de la fonction LireMeilleursScores
+/**
+ * @brief Test KO de la fonction LireMeilleursScores
+ * 
+ */
 void test_LireMeilleursScores_KO(){
     ViderDBDeTest(); // Vider la base de donnees de test
     struct Dico_Message *dico_message = malloc(sizeof(struct Dico_Message)); // Allocation de la memoire pour les messages
@@ -202,7 +248,10 @@ void test_LireMeilleursScores_KO(){
     free(dico_message); // Liberer la memoire
 }
 
-// Execute tous les tests de scores dans la base de donnees
+/**
+ * @brief Execute tous les tests de scores dans la base de donnees
+ * 
+ */
 void TestsScores()
 {
     RUN_TEST(test_connexionDBPROD_OK);
@@ -212,7 +261,7 @@ void TestsScores()
     RUN_TEST(test_LireIDJoueur_OK_PasExistant);
     RUN_TEST(test_LireIDJoueur_OK_Existant);
     RUN_TEST(test_LireIDJoueur_KO_NULL);
-    RUN_TEST(test_LireIDJoueur_KO_50C);
+    RUN_TEST(test_LireIDJoueur_KO_10C);
     RUN_TEST(test_SauverScore_OK);
     RUN_TEST(test_SauverScore_KO);
     RUN_TEST(test_supprimerDB_OK);

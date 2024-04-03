@@ -1,6 +1,11 @@
 #include "../Includes/common.h"
 #include "./tests.h"
 
+/**
+ * @brief Permet de lancer tous les tests en une seule fois
+ * 
+ * @return int succès ou erreur
+ */
 int main()
 {
     UNITY_BEGIN();

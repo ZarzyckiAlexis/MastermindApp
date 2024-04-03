@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mastermind:  Fichier source de Includes/partie.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Mastermind
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.4 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_983f03418386a76a32a9f4a7fdd2c4bd.html">Includes</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">partie.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="partie_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Fonctions publiques</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;<a class="code" href="common_8h.html">./common.h</a>&quot;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="mots_8h.html">./mots.h</a>&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#ifndef _DICO_PARTIE</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="partie_8h.html#a6dcf6fefb42f0ac8257708dc28765162">    6</a></span><span class="preprocessor">#define _DICO_PARTIE</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="structPartie.html">   17</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structPartie.html">Partie</a></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="structPartie.html#afb0d683aad9d4cdc78e3e59062fdd900">   19</a></span>    <span class="keywordtype">char</span> <a class="code hl_variable" href="structPartie.html#afb0d683aad9d4cdc78e3e59062fdd900">solution</a>[5]; <span class="comment">// 4 lettres + \0</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="structPartie.html#a1ba13964df4bc2c6a789c88b746f5dd0">   20</a></span>    <span class="keywordtype">char</span> <a class="code hl_variable" href="structPartie.html#a1ba13964df4bc2c6a789c88b746f5dd0">liste_essais</a>[10][5]; <span class="comment">// 10 mots de 4 lettres + \0</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="structPartie.html#a5317834e4939c27a8bd03236947560f9">   21</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structResultatLigne.html">ResultatLigne</a> <a class="code hl_variable" href="structPartie.html#a5317834e4939c27a8bd03236947560f9">resultats</a>[10]; <span class="comment">// 10 résultats</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="structPartie.html#ae3beedf365881f2687ed972ec0e086a2">   22</a></span>    <span class="keywordtype">char</span> <a class="code hl_variable" href="structPartie.html#ae3beedf365881f2687ed972ec0e086a2">nomJoueur</a>[21]; <span class="comment">// 20 lettres + \0</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structPartie.html#acfaf2891fd5ad3e52f65199fc9a89492">   23</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structPartie.html#acfaf2891fd5ad3e52f65199fc9a89492">essaiEnCours</a>; <span class="comment">// 0 à 9</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="structPartie.html#a06dd9f5a0a5cfe92ef1703ddbba26b2a">   24</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="structPartie.html#a06dd9f5a0a5cfe92ef1703ddbba26b2a">resultat</a>; <span class="comment">// true = victoire, false = abandon</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>};</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keyword">struct </span><a class="code hl_struct" href="structPartie.html">Partie</a> *<a class="code hl_function" href="partie_8h.html#a4750047b47f1df295c75e3dab2b4a57a">CreerPartie</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structDictionnaire.html">Dictionnaire</a> *dictionnaire);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keywordtype">void</span> <a class="code hl_function" href="partie_8h.html#a61d11d8bb58f200314c53561a9b58a3f">EffacerPartie</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structPartie.html">Partie</a> *partieEnCours);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keywordtype">bool</span> <a class="code hl_function" href="partie_8h.html#a12a07c2bd259137edabb23332b43bc4c">JouerPartie</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structPartie.html">Partie</a> *partieEnCours);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keywordtype">void</span> <a class="code hl_function" href="partie_8h.html#a349742cb68cdca07ec8da9d80ab6956b">AfficherPartie</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structPartie.html">Partie</a> *partieEnCours, <span class="keywordtype">bool</span> modeDebug);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="keywordtype">void</span> <a class="code hl_function" href="partie_8h.html#a4e706a49a8dc97b1a375e8f7369653d8">AfficherMeilleursScores</a>();</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment">// Dépassement</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment"></span><span class="keywordtype">void</span> <a class="code hl_function" href="partie_8h.html#ab4ce73efb37dd498fc93d1b6f709fe00">afficherMenu</a>();</div>
+<div class="ttc" id="acommon_8h_html"><div class="ttname"><a href="common_8h.html">common.h</a></div></div>
+<div class="ttc" id="amots_8h_html"><div class="ttname"><a href="mots_8h.html">mots.h</a></div></div>
+<div class="ttc" id="apartie_8h_html_a12a07c2bd259137edabb23332b43bc4c"><div class="ttname"><a href="partie_8h.html#a12a07c2bd259137edabb23332b43bc4c">JouerPartie</a></div><div class="ttdeci">bool JouerPartie(struct Partie *partieEnCours)</div><div class="ttdoc">Fonction pour jouer une partie.</div><div class="ttdef"><b>Definition:</b> partie.c:89</div></div>
+<div class="ttc" id="apartie_8h_html_a349742cb68cdca07ec8da9d80ab6956b"><div class="ttname"><a href="partie_8h.html#a349742cb68cdca07ec8da9d80ab6956b">AfficherPartie</a></div><div class="ttdeci">void AfficherPartie(struct Partie *partieEnCours, bool modeDebug)</div><div class="ttdoc">Fonction pour afficher une partie en cours. Pour chaque mot déjà essayé, on affiche.</div><div class="ttdef"><b>Definition:</b> partie.c:59</div></div>
+<div class="ttc" id="apartie_8h_html_a4750047b47f1df295c75e3dab2b4a57a"><div class="ttname"><a href="partie_8h.html#a4750047b47f1df295c75e3dab2b4a57a">CreerPartie</a></div><div class="ttdeci">struct Partie * CreerPartie(struct Dictionnaire *dictionnaire)</div><div class="ttdoc">Fonction pour créer une partie.</div><div class="ttdef"><b>Definition:</b> partie.c:14</div></div>
+<div class="ttc" id="apartie_8h_html_a4e706a49a8dc97b1a375e8f7369653d8"><div class="ttname"><a href="partie_8h.html#a4e706a49a8dc97b1a375e8f7369653d8">AfficherMeilleursScores</a></div><div class="ttdeci">void AfficherMeilleursScores()</div><div class="ttdoc">Fonction pour afficher les meilleurs scores.</div><div class="ttdef"><b>Definition:</b> partie.c:163</div></div>
+<div class="ttc" id="apartie_8h_html_a61d11d8bb58f200314c53561a9b58a3f"><div class="ttname"><a href="partie_8h.html#a61d11d8bb58f200314c53561a9b58a3f">EffacerPartie</a></div><div class="ttdeci">void EffacerPartie(struct Partie *partieEnCours)</div><div class="ttdoc">Fonction pour libérer la memoire liée a une partie.</div><div class="ttdef"><b>Definition:</b> partie.c:46</div></div>
+<div class="ttc" id="apartie_8h_html_ab4ce73efb37dd498fc93d1b6f709fe00"><div class="ttname"><a href="partie_8h.html#ab4ce73efb37dd498fc93d1b6f709fe00">afficherMenu</a></div><div class="ttdeci">void afficherMenu()</div><div class="ttdoc">Fonction pour afficher le menu principal.</div><div class="ttdef"><b>Definition:</b> partie.c:215</div></div>
+<div class="ttc" id="astructDictionnaire_html"><div class="ttname"><a href="structDictionnaire.html">Dictionnaire</a></div><div class="ttdoc">Structure pour stocker le dictionnaire des mots.</div><div class="ttdef"><b>Definition:</b> mots.h:11</div></div>
+<div class="ttc" id="astructPartie_html"><div class="ttname"><a href="structPartie.html">Partie</a></div><div class="ttdoc">Permet de définir la structure Partie qui contient les informations d'une partie.</div><div class="ttdef"><b>Definition:</b> partie.h:18</div></div>
+<div class="ttc" id="astructPartie_html_a06dd9f5a0a5cfe92ef1703ddbba26b2a"><div class="ttname"><a href="structPartie.html#a06dd9f5a0a5cfe92ef1703ddbba26b2a">Partie::resultat</a></div><div class="ttdeci">bool resultat</div><div class="ttdef"><b>Definition:</b> partie.h:24</div></div>
+<div class="ttc" id="astructPartie_html_a1ba13964df4bc2c6a789c88b746f5dd0"><div class="ttname"><a href="structPartie.html#a1ba13964df4bc2c6a789c88b746f5dd0">Partie::liste_essais</a></div><div class="ttdeci">char liste_essais[10][5]</div><div class="ttdef"><b>Definition:</b> partie.h:20</div></div>
+<div class="ttc" id="astructPartie_html_a5317834e4939c27a8bd03236947560f9"><div class="ttname"><a href="structPartie.html#a5317834e4939c27a8bd03236947560f9">Partie::resultats</a></div><div class="ttdeci">struct ResultatLigne resultats[10]</div><div class="ttdef"><b>Definition:</b> partie.h:21</div></div>
+<div class="ttc" id="astructPartie_html_acfaf2891fd5ad3e52f65199fc9a89492"><div class="ttname"><a href="structPartie.html#acfaf2891fd5ad3e52f65199fc9a89492">Partie::essaiEnCours</a></div><div class="ttdeci">int essaiEnCours</div><div class="ttdef"><b>Definition:</b> partie.h:23</div></div>
+<div class="ttc" id="astructPartie_html_ae3beedf365881f2687ed972ec0e086a2"><div class="ttname"><a href="structPartie.html#ae3beedf365881f2687ed972ec0e086a2">Partie::nomJoueur</a></div><div class="ttdeci">char nomJoueur[21]</div><div class="ttdef"><b>Definition:</b> partie.h:22</div></div>
+<div class="ttc" id="astructPartie_html_afb0d683aad9d4cdc78e3e59062fdd900"><div class="ttname"><a href="structPartie.html#afb0d683aad9d4cdc78e3e59062fdd900">Partie::solution</a></div><div class="ttdeci">char solution[5]</div><div class="ttdef"><b>Definition:</b> partie.h:19</div></div>
+<div class="ttc" id="astructResultatLigne_html"><div class="ttname"><a href="structResultatLigne.html">ResultatLigne</a></div><div class="ttdoc">Structure pour le résultat d'une ligne contenant.</div><div class="ttdef"><b>Definition:</b> mots.h:27</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+</small></address>
+</body>
+</html>

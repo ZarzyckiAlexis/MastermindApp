@@ -1,0 +1,259 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mastermind: Référence du fichier Sources/mots.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Mastermind
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.4 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_937900b87e0c7a5fa01190c395fb83f7.html">Sources</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle"><div class="title">Référence du fichier mots.c</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="common_8h_source.html">../Includes/common.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mots_8h_source.html">../Includes/mots.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="clavier_8h_source.html">../Includes/clavier.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ecran_8h_source.html">../Includes/ecran.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de mots.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="mots_8c__incl.png" border="0" usemap="#aSources_2mots_8c" alt=""/></div>
+<map name="aSources_2mots_8c" id="aSources_2mots_8c">
+<area shape="rect" title=" " alt="" coords="532,5,653,32"/>
+<area shape="rect" href="common_8h.html" title=" " alt="" coords="257,80,419,107"/>
+<area shape="rect" href="mots_8h.html" title=" " alt="" coords="443,80,580,107"/>
+<area shape="rect" href="clavier_8h.html" title=" " alt="" coords="769,80,915,107"/>
+<area shape="rect" href="ecran_8h.html" title=" " alt="" coords="604,80,744,107"/>
+<area shape="rect" title=" " alt="" coords="303,155,373,181"/>
+<area shape="rect" title=" " alt="" coords="398,155,465,181"/>
+<area shape="rect" title=" " alt="" coords="489,155,560,181"/>
+<area shape="rect" title=" " alt="" coords="5,155,79,181"/>
+<area shape="rect" title=" " alt="" coords="103,155,186,181"/>
+<area shape="rect" title=" " alt="" coords="211,155,279,181"/>
+<area shape="rect" title=" " alt="" coords="585,155,649,181"/>
+<area shape="rect" title=" " alt="" coords="787,155,871,181"/>
+<area shape="rect" title=" " alt="" coords="673,155,747,181"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:ac7853ea32e0e3fe3cad81425f52df360"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mots_8c.html#ac7853ea32e0e3fe3cad81425f52df360">VerifierMot</a> (char *motAVerifier)</td></tr>
+<tr class="memdesc:ac7853ea32e0e3fe3cad81425f52df360"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet de vérifier qu'un mot comporte exactement 4 lettres minuscules sans accent.  <a href="mots_8c.html#ac7853ea32e0e3fe3cad81425f52df360">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ac7853ea32e0e3fe3cad81425f52df360"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa40c8905e76ad016a067fd37814e06d8"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structDictionnaire.html">Dictionnaire</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mots_8c.html#aa40c8905e76ad016a067fd37814e06d8">LireDictionnaire</a> (char *nomDeFichier, struct <a class="el" href="structDico__Message.html">Dico_Message</a> *messageDeRetour)</td></tr>
+<tr class="separator:aa40c8905e76ad016a067fd37814e06d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb7bbfe1e81cf7cbaafdada50b862ae3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mots_8c.html#acb7bbfe1e81cf7cbaafdada50b862ae3">EffacerDictionnaire</a> (struct <a class="el" href="structDictionnaire.html">Dictionnaire</a> *dictionnaire)</td></tr>
+<tr class="memdesc:acb7bbfe1e81cf7cbaafdada50b862ae3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui permet de libèrer la mémoire du dictionnaire passé en Paramètre.  <a href="mots_8c.html#acb7bbfe1e81cf7cbaafdada50b862ae3">Plus de détails...</a><br /></td></tr>
+<tr class="separator:acb7bbfe1e81cf7cbaafdada50b862ae3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ba4629d99029b5967c62eb9b0adf3fe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mots_8c.html#a3ba4629d99029b5967c62eb9b0adf3fe">ComparerMots</a> (char *solution, char *motPlace, struct <a class="el" href="structResultatLigne.html">ResultatLigne</a> *resultat)</td></tr>
+<tr class="memdesc:a3ba4629d99029b5967c62eb9b0adf3fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonctionqui compare deux mots pour une ligne de jeu en comptant les lettres bien placées et les lettres mal pacées.  <a href="mots_8c.html#a3ba4629d99029b5967c62eb9b0adf3fe">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a3ba4629d99029b5967c62eb9b0adf3fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a3ba4629d99029b5967c62eb9b0adf3fe" name="a3ba4629d99029b5967c62eb9b0adf3fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ba4629d99029b5967c62eb9b0adf3fe">&#9670;&nbsp;</a></span>ComparerMots()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ComparerMots </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>solution</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>motPlace</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structResultatLigne.html">ResultatLigne</a> *&#160;</td>
+          <td class="paramname"><em>resultat</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonctionqui compare deux mots pour une ligne de jeu en comptant les lettres bien placées et les lettres mal pacées. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">solution</td><td>Le mot de référence (pointeur) </td></tr>
+    <tr><td class="paramname">motPlace</td><td>Le mot placé par le joueur (pointeur) </td></tr>
+    <tr><td class="paramname">resultat</td><td>La structure qui contient le nombre de lettres bien placées et mal placées </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>true Si la comparaison est possible, elle garnit la structure <a class="el" href="structResultatLigne.html" title="Structure pour le résultat d&#39;une ligne contenant.">ResultatLigne</a> </dd>
+<dd>
+false Si la comparaison n'est pas possible </dd></dl>
+
+</div>
+</div>
+<a id="acb7bbfe1e81cf7cbaafdada50b862ae3" name="acb7bbfe1e81cf7cbaafdada50b862ae3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb7bbfe1e81cf7cbaafdada50b862ae3">&#9670;&nbsp;</a></span>EffacerDictionnaire()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EffacerDictionnaire </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structDictionnaire.html">Dictionnaire</a> *&#160;</td>
+          <td class="paramname"><em>dictionnaire</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction qui permet de libèrer la mémoire du dictionnaire passé en Paramètre. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dictionnaire</td><td>le dictionnaire à libèrer (pointeur) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa40c8905e76ad016a067fd37814e06d8" name="aa40c8905e76ad016a067fd37814e06d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa40c8905e76ad016a067fd37814e06d8">&#9670;&nbsp;</a></span>LireDictionnaire()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structDictionnaire.html">Dictionnaire</a> * LireDictionnaire </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>nomDeFichier</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structDico__Message.html">Dico_Message</a> *&#160;</td>
+          <td class="paramname"><em>messageDeRetour</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nomDeFichier</td><td>le nom du fichier (pointeur) </td></tr>
+    <tr><td class="paramname">messageDeRetour</td><td>l'adresse de la structure <a class="el" href="structDico__Message.html" title="Structure pour stocker un message d&#39;erreur et son code à renvoyer.">Dico_Message</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>struct Dictionnaire* Une structure <a class="el" href="structDictionnaire.html" title="Structure pour stocker le dictionnaire des mots.">Dictionnaire</a> remplie ou NULL s'il y a eu une erreur </dd></dl>
+
+</div>
+</div>
+<a id="ac7853ea32e0e3fe3cad81425f52df360" name="ac7853ea32e0e3fe3cad81425f52df360"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7853ea32e0e3fe3cad81425f52df360">&#9670;&nbsp;</a></span>VerifierMot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool VerifierMot </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>motAVerifier</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction qui permet de vérifier qu'un mot comporte exactement 4 lettres minuscules sans accent. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">motAVerifier</td><td>Le mot à vérifier (pointeur) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>true si le mot est correct </dd>
+<dd>
+false si le mot n'est pas correct </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+</small></address>
+</body>
+</html>

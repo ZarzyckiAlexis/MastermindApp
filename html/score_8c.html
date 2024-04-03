@@ -1,0 +1,435 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mastermind: Référence du fichier Sources/score.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Mastermind
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.4 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_937900b87e0c7a5fa01190c395fb83f7.html">Sources</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle"><div class="title">Référence du fichier score.c</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="common_8h_source.html">../Includes/common.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="score_8h_source.html">../Includes/score.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de score.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="score_8c__incl.png" border="0" usemap="#aSources_2score_8c" alt=""/></div>
+<map name="aSources_2score_8c" id="aSources_2score_8c">
+<area shape="rect" title=" " alt="" coords="315,5,438,32"/>
+<area shape="rect" href="common_8h.html" title=" " alt="" coords="243,155,404,181"/>
+<area shape="rect" href="score_8h.html" title=" " alt="" coords="361,80,499,107"/>
+<area shape="rect" title=" " alt="" coords="5,229,76,256"/>
+<area shape="rect" title=" " alt="" coords="101,229,167,256"/>
+<area shape="rect" title=" " alt="" coords="192,229,263,256"/>
+<area shape="rect" title=" " alt="" coords="287,229,360,256"/>
+<area shape="rect" title=" " alt="" coords="385,229,467,256"/>
+<area shape="rect" title=" " alt="" coords="492,229,560,256"/>
+<area shape="rect" title=" " alt="" coords="585,229,649,256"/>
+<area shape="rect" title=" " alt="" coords="429,155,503,181"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a867cb7d8a7417acf48750188df5a0b6c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="score_8c.html#a867cb7d8a7417acf48750188df5a0b6c">ExecuterInstructionSQL</a> (MYSQL *sqlConnection, char *instructionSQL, struct <a class="el" href="structDico__Message.html">Dico_Message</a> *messageDeRetour)</td></tr>
+<tr class="memdesc:a867cb7d8a7417acf48750188df5a0b6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction pour executer une instruction SQL. En cas d'erreur, affiche la cause a la console, mais continue toujours.  <a href="score_8c.html#a867cb7d8a7417acf48750188df5a0b6c">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a867cb7d8a7417acf48750188df5a0b6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4878a2af97c825ddd2d6a671d4771baf"><td class="memItemLeft" align="right" valign="top">MYSQL *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="score_8c.html#a4878a2af97c825ddd2d6a671d4771baf">ConnecterBaseDeDonnees</a> (bool baseDeTest, struct <a class="el" href="structDico__Message.html">Dico_Message</a> *messageDeRetour)</td></tr>
+<tr class="memdesc:a4878a2af97c825ddd2d6a671d4771baf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction pour se connecter a la base de donnees en la creant si elle n'existe pas.  <a href="score_8c.html#a4878a2af97c825ddd2d6a671d4771baf">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a4878a2af97c825ddd2d6a671d4771baf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c325fb5be8fea9cccc9e586cbdcbef6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="score_8c.html#a5c325fb5be8fea9cccc9e586cbdcbef6">LireIDJoueur</a> (MYSQL *sqlConnection, char *nomJoueur, struct <a class="el" href="structDico__Message.html">Dico_Message</a> *messageDeRetour)</td></tr>
+<tr class="memdesc:a5c325fb5be8fea9cccc9e586cbdcbef6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction lire l'identifiant unique du joueur dans la base de donnees.  <a href="score_8c.html#a5c325fb5be8fea9cccc9e586cbdcbef6">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a5c325fb5be8fea9cccc9e586cbdcbef6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75dd7547f27db3d55c71f3d5bc675e5d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="score_8c.html#a75dd7547f27db3d55c71f3d5bc675e5d">SauverScore</a> (bool baseDeTest, char *nomJoueur, int nombreDEssais, struct <a class="el" href="structDico__Message.html">Dico_Message</a> *messageDeRetour)</td></tr>
+<tr class="memdesc:a75dd7547f27db3d55c71f3d5bc675e5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction pour sauver un score dans la base de donnees.  <a href="score_8c.html#a75dd7547f27db3d55c71f3d5bc675e5d">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a75dd7547f27db3d55c71f3d5bc675e5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe5a4c4b038724dcbab2e84efd736476"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structPoints.html">Points</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="score_8c.html#abe5a4c4b038724dcbab2e84efd736476">LireMeilleursScores</a> (bool baseDeTest, int nombreDeScore, struct <a class="el" href="structDico__Message.html">Dico_Message</a> *messageDeRetour)</td></tr>
+<tr class="memdesc:abe5a4c4b038724dcbab2e84efd736476"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction pour lire les meilleurs scores dans la base de donnees.  <a href="score_8c.html#abe5a4c4b038724dcbab2e84efd736476">Plus de détails...</a><br /></td></tr>
+<tr class="separator:abe5a4c4b038724dcbab2e84efd736476"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3b2189a50dd9e1b79e5d6ec4bcc2846"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="score_8c.html#ae3b2189a50dd9e1b79e5d6ec4bcc2846">viderBaseDeDonnees</a> (bool baseDeTest, struct <a class="el" href="structDico__Message.html">Dico_Message</a> *messageDeRetour)</td></tr>
+<tr class="memdesc:ae3b2189a50dd9e1b79e5d6ec4bcc2846"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui supprimer les tables dans la base de données.  <a href="score_8c.html#ae3b2189a50dd9e1b79e5d6ec4bcc2846">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ae3b2189a50dd9e1b79e5d6ec4bcc2846"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49c5fb72958d29cb8897bc9aa75500c3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="score_8c.html#a49c5fb72958d29cb8897bc9aa75500c3">creerBaseDeDonnees</a> (bool baseDeTest, struct <a class="el" href="structDico__Message.html">Dico_Message</a> *messageDeRetour)</td></tr>
+<tr class="memdesc:a49c5fb72958d29cb8897bc9aa75500c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui crée les tables dans la base de données.  <a href="score_8c.html#a49c5fb72958d29cb8897bc9aa75500c3">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a49c5fb72958d29cb8897bc9aa75500c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a4878a2af97c825ddd2d6a671d4771baf" name="a4878a2af97c825ddd2d6a671d4771baf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4878a2af97c825ddd2d6a671d4771baf">&#9670;&nbsp;</a></span>ConnecterBaseDeDonnees()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MYSQL * ConnecterBaseDeDonnees </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>DBDeTest</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structDico__Message.html">Dico_Message</a> *&#160;</td>
+          <td class="paramname"><em>messageDeRetour</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction pour se connecter a la base de donnees en la creant si elle n'existe pas. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">DBDeTest</td><td>Booleen qui indique si c'est la base de donnees pour les tests unitaires ou pas </td></tr>
+    <tr><td class="paramname">messageDeRetour</td><td>Pointeur vers la structure pour remplir un message d'erreur et un eventuel code d'erreur </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>MYSQL* Pointeur vers la structure MYSQL de la connexion </dd></dl>
+
+</div>
+</div>
+<a id="a49c5fb72958d29cb8897bc9aa75500c3" name="a49c5fb72958d29cb8897bc9aa75500c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49c5fb72958d29cb8897bc9aa75500c3">&#9670;&nbsp;</a></span>creerBaseDeDonnees()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool creerBaseDeDonnees </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>baseDeTest</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structDico__Message.html">Dico_Message</a> *&#160;</td>
+          <td class="paramname"><em>messageDeRetour</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction qui crée les tables dans la base de données. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">baseDeTest</td><td>Boolen qui indique si c'est la base de données de test ou de production </td></tr>
+    <tr><td class="paramname">messageDeRetour</td><td>Pointeur vers la structure pour remplir un message d'erreur et un eventuel code d'erreur </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>true réussite </dd>
+<dd>
+false échec </dd></dl>
+
+</div>
+</div>
+<a id="a867cb7d8a7417acf48750188df5a0b6c" name="a867cb7d8a7417acf48750188df5a0b6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a867cb7d8a7417acf48750188df5a0b6c">&#9670;&nbsp;</a></span>ExecuterInstructionSQL()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ExecuterInstructionSQL </td>
+          <td>(</td>
+          <td class="paramtype">MYSQL *&#160;</td>
+          <td class="paramname"><em>sqlConnection</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>instructionSQL</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structDico__Message.html">Dico_Message</a> *&#160;</td>
+          <td class="paramname"><em>messageDeRetour</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction pour executer une instruction SQL. En cas d'erreur, affiche la cause a la console, mais continue toujours. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sqlConnection</td><td>Pointeur vers la structure de connexion MYSQL </td></tr>
+    <tr><td class="paramname">instructionSQL</td><td>Chaine de caracteres avec l'instruction a executer </td></tr>
+    <tr><td class="paramname">messageDeRetour</td><td>Structure pour ecrire un message et un code en cas d'erreur </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>true réussite </dd>
+<dd>
+false échec </dd></dl>
+
+</div>
+</div>
+<a id="a5c325fb5be8fea9cccc9e586cbdcbef6" name="a5c325fb5be8fea9cccc9e586cbdcbef6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c325fb5be8fea9cccc9e586cbdcbef6">&#9670;&nbsp;</a></span>LireIDJoueur()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int LireIDJoueur </td>
+          <td>(</td>
+          <td class="paramtype">MYSQL *&#160;</td>
+          <td class="paramname"><em>sqlConnection</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>nomJoueur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structDico__Message.html">Dico_Message</a> *&#160;</td>
+          <td class="paramname"><em>messageDeRetour</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction lire l'identifiant unique du joueur dans la base de donnees. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sqlConnection</td><td>Pointeur vers la structure de connexion MYSQL </td></tr>
+    <tr><td class="paramname">nomJoueur</td><td>Le nom du joueur </td></tr>
+    <tr><td class="paramname">messageDeRetour</td><td>Pointeur vers la structure pour remplir un message d'erreur et un eventuel code d'erreur </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int L'identifiant unique du joueur dans la base de donnees </dd></dl>
+
+</div>
+</div>
+<a id="abe5a4c4b038724dcbab2e84efd736476" name="abe5a4c4b038724dcbab2e84efd736476"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe5a4c4b038724dcbab2e84efd736476">&#9670;&nbsp;</a></span>LireMeilleursScores()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structPoints.html">Points</a> * LireMeilleursScores </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>baseDeTest</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nombreDeScore</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structDico__Message.html">Dico_Message</a> *&#160;</td>
+          <td class="paramname"><em>messageDeRetour</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction pour lire les meilleurs scores dans la base de donnees. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">baseDeTest</td><td>Booleen qui indique si c'est la base de donnees pour les tests unitaires ou pas </td></tr>
+    <tr><td class="paramname">nombreDeScore</td><td>Le nombre de scores maximum à lire </td></tr>
+    <tr><td class="paramname">messageDeRetour</td><td>Pointeur vers la structure pour remplir un message d'erreur et un eventuel code d'erreur </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>struct Points* Un pointeur vers le nombre demandé de <a class="el" href="structPoints.html" title="Structure Points qui contient:">Points</a> ou bien NULL en cas d'erreur </dd></dl>
+
+</div>
+</div>
+<a id="a75dd7547f27db3d55c71f3d5bc675e5d" name="a75dd7547f27db3d55c71f3d5bc675e5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75dd7547f27db3d55c71f3d5bc675e5d">&#9670;&nbsp;</a></span>SauverScore()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SauverScore </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>baseDeTest</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>nomJoueur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nombreDEssais</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structDico__Message.html">Dico_Message</a> *&#160;</td>
+          <td class="paramname"><em>messageDeRetour</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction pour sauver un score dans la base de donnees. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">baseDeTest</td><td>Booleen qui indique si c'est la base de donnees pour les tests unitaires ou pas </td></tr>
+    <tr><td class="paramname">nomJoueur</td><td>Le nom du joueur </td></tr>
+    <tr><td class="paramname">nombreDEssais</td><td>Le nombre d'essai </td></tr>
+    <tr><td class="paramname">messageDeRetour</td><td>Pointeur vers la structure pour remplir un message d'erreur et un eventuel code d'erreur </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>true réussite </dd>
+<dd>
+false échec </dd></dl>
+
+</div>
+</div>
+<a id="ae3b2189a50dd9e1b79e5d6ec4bcc2846" name="ae3b2189a50dd9e1b79e5d6ec4bcc2846"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3b2189a50dd9e1b79e5d6ec4bcc2846">&#9670;&nbsp;</a></span>viderBaseDeDonnees()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool viderBaseDeDonnees </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>baseDeTest</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structDico__Message.html">Dico_Message</a> *&#160;</td>
+          <td class="paramname"><em>messageDeRetour</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction qui supprimer les tables dans la base de données. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">baseDeTest</td><td>Boolen qui indique si c'est la base de données de test ou de production </td></tr>
+    <tr><td class="paramname">messageDeRetour</td><td>Pointeur vers la structure pour remplir un message d'erreur et un eventuel code d'erreur </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>true réussite </dd>
+<dd>
+false échec </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+</small></address>
+</body>
+</html>

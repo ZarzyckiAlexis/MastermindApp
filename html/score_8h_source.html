@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mastermind:  Fichier source de Includes/score.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Mastermind
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.4 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_983f03418386a76a32a9f4a7fdd2c4bd.html">Includes</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">score.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="score_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &lt;mysql.h&gt;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;<a class="code" href="common_8h.html">./common.h</a>&quot;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#ifndef _DICO_SCORE</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#define _DICO_SCORE</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="score_8h.html#a147806a214f4f1bc0ba018707c7644df">   10</a></span><span class="preprocessor">#define PROD_DB_NAME &quot;la219263&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="score_8h.html#a16c16c01d231e26efb9e2b4d4c09ddb0">   16</a></span><span class="preprocessor">#define TEST_DB_NAME &quot;la219263_test&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="structPoints.html">   24</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structPoints.html">Points</a></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>{</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="structPoints.html#adcfda4d8bc10778567ceb4fcdf751883">   26</a></span>    <span class="keywordtype">char</span> <a class="code hl_variable" href="structPoints.html#adcfda4d8bc10778567ceb4fcdf751883">nomJoueur</a>[51]; <span class="comment">// 50 caractères + 1 pour le \0</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="structPoints.html#a223ff2f43194a3f7d277651580aa70f7">   27</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structPoints.html#a223ff2f43194a3f7d277651580aa70f7">score</a>;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>};</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *ServerDB = <span class="stringliteral">&quot;127.0.0.1&quot;</span>;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keyword">static</span> MYSQL_RES *sqlResult;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keywordtype">bool</span> <a class="code hl_function" href="score_8h.html#a867cb7d8a7417acf48750188df5a0b6c">ExecuterInstructionSQL</a>(MYSQL *sqlConnection, <span class="keywordtype">char</span> *instructionSQL, <span class="keyword">struct</span> <a class="code hl_struct" href="structDico__Message.html">Dico_Message</a> *messageDeRetour);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>MYSQL *<a class="code hl_function" href="score_8h.html#a0fb3bb532cc9848737b60480fbf16eca">ConnecterBaseDeDonnees</a>(<span class="keywordtype">bool</span> DBDeTest, <span class="keyword">struct</span> <a class="code hl_struct" href="structDico__Message.html">Dico_Message</a> *messageDeRetour);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="keywordtype">int</span> <a class="code hl_function" href="score_8h.html#a5c325fb5be8fea9cccc9e586cbdcbef6">LireIDJoueur</a>(MYSQL *sqlConnection, <span class="keywordtype">char</span> *nomJoueur, <span class="keyword">struct</span> <a class="code hl_struct" href="structDico__Message.html">Dico_Message</a> *messageDeRetour);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="keywordtype">bool</span> <a class="code hl_function" href="score_8h.html#a75dd7547f27db3d55c71f3d5bc675e5d">SauverScore</a>(<span class="keywordtype">bool</span> baseDeTest, <span class="keywordtype">char</span> *nomJoueur, <span class="keywordtype">int</span> nombreDEssais, <span class="keyword">struct</span> <a class="code hl_struct" href="structDico__Message.html">Dico_Message</a> *messageDeRetour);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="keyword">struct </span><a class="code hl_struct" href="structPoints.html">Points</a> *<a class="code hl_function" href="score_8h.html#abe5a4c4b038724dcbab2e84efd736476">LireMeilleursScores</a>(<span class="keywordtype">bool</span> baseDeTest, <span class="keywordtype">int</span> nombreDeScore,  <span class="keyword">struct</span> <a class="code hl_struct" href="structDico__Message.html">Dico_Message</a> *messageDeRetour);</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="comment">// Dépassement</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="keywordtype">bool</span> <a class="code hl_function" href="score_8h.html#ae3b2189a50dd9e1b79e5d6ec4bcc2846">viderBaseDeDonnees</a>(<span class="keywordtype">bool</span> baseDeTest, <span class="keyword">struct</span> <a class="code hl_struct" href="structDico__Message.html">Dico_Message</a> *messageDeRetour);</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="keywordtype">bool</span> <a class="code hl_function" href="score_8h.html#a49c5fb72958d29cb8897bc9aa75500c3">creerBaseDeDonnees</a>(<span class="keywordtype">bool</span> baseDeTest, <span class="keyword">struct</span> <a class="code hl_struct" href="structDico__Message.html">Dico_Message</a> *messageDeRetour);</div>
+<div class="ttc" id="acommon_8h_html"><div class="ttname"><a href="common_8h.html">common.h</a></div></div>
+<div class="ttc" id="ascore_8h_html_a0fb3bb532cc9848737b60480fbf16eca"><div class="ttname"><a href="score_8h.html#a0fb3bb532cc9848737b60480fbf16eca">ConnecterBaseDeDonnees</a></div><div class="ttdeci">MYSQL * ConnecterBaseDeDonnees(bool DBDeTest, struct Dico_Message *messageDeRetour)</div><div class="ttdoc">Fonction pour se connecter a la base de donnees en la creant si elle n'existe pas.</div><div class="ttdef"><b>Definition:</b> score.c:39</div></div>
+<div class="ttc" id="ascore_8h_html_a49c5fb72958d29cb8897bc9aa75500c3"><div class="ttname"><a href="score_8h.html#a49c5fb72958d29cb8897bc9aa75500c3">creerBaseDeDonnees</a></div><div class="ttdeci">bool creerBaseDeDonnees(bool baseDeTest, struct Dico_Message *messageDeRetour)</div><div class="ttdoc">Fonction qui crée les tables dans la base de données.</div><div class="ttdef"><b>Definition:</b> score.c:244</div></div>
+<div class="ttc" id="ascore_8h_html_a5c325fb5be8fea9cccc9e586cbdcbef6"><div class="ttname"><a href="score_8h.html#a5c325fb5be8fea9cccc9e586cbdcbef6">LireIDJoueur</a></div><div class="ttdeci">int LireIDJoueur(MYSQL *sqlConnection, char *nomJoueur, struct Dico_Message *messageDeRetour)</div><div class="ttdoc">Fonction lire l'identifiant unique du joueur dans la base de donnees.</div><div class="ttdef"><b>Definition:</b> score.c:104</div></div>
+<div class="ttc" id="ascore_8h_html_a75dd7547f27db3d55c71f3d5bc675e5d"><div class="ttname"><a href="score_8h.html#a75dd7547f27db3d55c71f3d5bc675e5d">SauverScore</a></div><div class="ttdeci">bool SauverScore(bool baseDeTest, char *nomJoueur, int nombreDEssais, struct Dico_Message *messageDeRetour)</div><div class="ttdoc">Fonction pour sauver un score dans la base de donnees.</div><div class="ttdef"><b>Definition:</b> score.c:143</div></div>
+<div class="ttc" id="ascore_8h_html_a867cb7d8a7417acf48750188df5a0b6c"><div class="ttname"><a href="score_8h.html#a867cb7d8a7417acf48750188df5a0b6c">ExecuterInstructionSQL</a></div><div class="ttdeci">bool ExecuterInstructionSQL(MYSQL *sqlConnection, char *instructionSQL, struct Dico_Message *messageDeRetour)</div><div class="ttdoc">Fonction pour executer une instruction SQL. En cas d'erreur, affiche la cause a la console,...</div><div class="ttdef"><b>Definition:</b> score.c:14</div></div>
+<div class="ttc" id="ascore_8h_html_abe5a4c4b038724dcbab2e84efd736476"><div class="ttname"><a href="score_8h.html#abe5a4c4b038724dcbab2e84efd736476">LireMeilleursScores</a></div><div class="ttdeci">struct Points * LireMeilleursScores(bool baseDeTest, int nombreDeScore, struct Dico_Message *messageDeRetour)</div><div class="ttdoc">Fonction pour lire les meilleurs scores dans la base de donnees.</div><div class="ttdef"><b>Definition:</b> score.c:186</div></div>
+<div class="ttc" id="ascore_8h_html_ae3b2189a50dd9e1b79e5d6ec4bcc2846"><div class="ttname"><a href="score_8h.html#ae3b2189a50dd9e1b79e5d6ec4bcc2846">viderBaseDeDonnees</a></div><div class="ttdeci">bool viderBaseDeDonnees(bool baseDeTest, struct Dico_Message *messageDeRetour)</div><div class="ttdoc">Fonction qui supprimer les tables dans la base de données.</div><div class="ttdef"><b>Definition:</b> score.c:219</div></div>
+<div class="ttc" id="astructDico__Message_html"><div class="ttname"><a href="structDico__Message.html">Dico_Message</a></div><div class="ttdoc">Structure pour stocker un message d'erreur et son code à renvoyer.</div><div class="ttdef"><b>Definition:</b> common.h:17</div></div>
+<div class="ttc" id="astructPoints_html"><div class="ttname"><a href="structPoints.html">Points</a></div><div class="ttdoc">Structure Points qui contient:</div><div class="ttdef"><b>Definition:</b> score.h:25</div></div>
+<div class="ttc" id="astructPoints_html_a223ff2f43194a3f7d277651580aa70f7"><div class="ttname"><a href="structPoints.html#a223ff2f43194a3f7d277651580aa70f7">Points::score</a></div><div class="ttdeci">int score</div><div class="ttdef"><b>Definition:</b> score.h:27</div></div>
+<div class="ttc" id="astructPoints_html_adcfda4d8bc10778567ceb4fcdf751883"><div class="ttname"><a href="structPoints.html#adcfda4d8bc10778567ceb4fcdf751883">Points::nomJoueur</a></div><div class="ttdeci">char nomJoueur[51]</div><div class="ttdef"><b>Definition:</b> score.h:26</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+</small></address>
+</body>
+</html>

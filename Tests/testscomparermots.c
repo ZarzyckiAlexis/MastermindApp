@@ -1,29 +1,10 @@
 #include "./tests.h"
 #include "../Includes/mots.h"
 
-/** Test qui vérifie la comparaison de mots
- * TestComparerMots_Identiques
- * TestComparerMots_TroisLettresBienPlacees_UneLettreAbsente
- * TestComparerMots_DeuxLettresBienPlacees_DeuxLettresMalPlacees
- * TestComparerMots_DeuxLettresBienPlacees_DeuxLettresAbsentes
- * TestComparerMots_UneLettreBienPlacee_TroisLettresMalPlacees
- * TestComparerMots_UneLettreBienPlacee_DeuxLettresMalPlacees_UneLettreAbsente
- * TestComparerMots_UneLettreBienPlacee_TroisLettresAbsentes
- * TestComparerMots_AucuneLettreBienPlacee
- * TestComparerMots_TroisLettresMalPlacees_UneLettreAbsente
- * TestComparerMots_DeuxLettresMalPlacees_DeuxLettresAbsentes
- * TestComparerMots_UneLettreMalPlacee_TroisLettresAbsentes
- * TestComparerMots_AucuneLettreBienPlacee_UneLettreAbsente
- * TestComparerMots_DeuxLettresAbsentes_DeuxLettresBienPlacees
- * TestComparerMots_UneLettreAbsente_TroisLettresBienPlacees
- * TestComparerMots_DeuxLettresAbsentes_DeuxLettresMalPlacees
- * TestComparerMots_UneLettreAbsente_DeuxLettresMalPlacees_UneLettreBienPlacee
- * TestComparerMots_QuatreLettresAbsentes
- * => Total: 17 tests
+/**
+ * @brief Test de comparaison de mots identiques
  * 
-**/
-
-// Test de comparaison de mots identiques
+ */
 void TestComparerMots_Identiques()
 {
     char mot1[] = "test"; // Mot à deviner
@@ -35,7 +16,10 @@ void TestComparerMots_Identiques()
     TEST_ASSERT_EQUAL_INT(0, resultat.malPlaces); // Vérification du nombre de lettres mal placées
 }
 
-// Test de comparaison de mots trois lettres sont bien placées et une lettre absente
+/**
+ * @brief Test de comparaison de mots trois lettres sont bien placées et une lettre absente
+ * 
+*/
 void TestComparerMots_TroisLettresBienPlacees_UneLettreAbsente()
 {
     char mot1[] = "test"; // Mot à deviner
@@ -47,7 +31,10 @@ void TestComparerMots_TroisLettresBienPlacees_UneLettreAbsente()
     TEST_ASSERT_EQUAL_INT(0, resultat.malPlaces); // Vérification du nombre de lettres mal placées
 }
 
-// Test de comparaison de mots deux lettres sont bien placées et deux lettres sont mal placées
+/**
+ * @brief Test de comparaison de mots deux lettres sont bien placées et deux lettres sont mal placées
+ * 
+**/
 void TestComparerMots_DeuxLettresBienPlacees_DeuxLettresMalPlacees()
 {
     char mot1[] = "lore"; // Mot à deviner
@@ -59,7 +46,10 @@ void TestComparerMots_DeuxLettresBienPlacees_DeuxLettresMalPlacees()
     TEST_ASSERT_EQUAL_INT(2, resultat.malPlaces); // Vérification du nombre de lettres mal placées
 }
 
-// Test de comparaison de mots deux lettres sont bien placées et deux lettres sont absentes
+/**
+ * @brief Test de comparaison de mots deux lettres sont bien placées et deux lettres sont absentes
+ * 
+ */
 void TestComparerMots_DeuxLettresBienPlacees_DeuxLettresAbsentes()
 {
     char mot1[] = "tard"; // Mot à deviner
@@ -71,7 +61,10 @@ void TestComparerMots_DeuxLettresBienPlacees_DeuxLettresAbsentes()
     TEST_ASSERT_EQUAL_INT(0, resultat.malPlaces); // Vérification du nombre de lettres mal placées
 }
 
-// Test de comparaison de mots une lettre est bien placée et trois lettres sont mal placées
+/**
+ * @brief Test de comparaison de mots une lettre est bien placée et trois lettres sont mal placées
+ * 
+ */
 void TestComparerMots_UneLettreBienPlacee_TroisLettresMalPlacees()
 {
     char mot1[] = "arme"; // Mot à deviner
@@ -83,7 +76,10 @@ void TestComparerMots_UneLettreBienPlacee_TroisLettresMalPlacees()
     TEST_ASSERT_EQUAL_INT(3, resultat.malPlaces); // Vérification du nombre de lettres mal placées
 }
 
-// Test de comparaison de mots une lettre est bien placée, deux lettres sont mal placées et une lettre est absente
+/**
+ * @brief Test de comparaison de mots une lettre est bien placée, deux lettres sont mal placées et une lettre est absente
+ * 
+ */
 void TestComparerMots_UneLettreBienPlacee_DeuxLettresMalPlacees_UneLettreAbsente()
 {
     char mot1[] = "arme"; // Mot à deviner
@@ -95,7 +91,10 @@ void TestComparerMots_UneLettreBienPlacee_DeuxLettresMalPlacees_UneLettreAbsente
     TEST_ASSERT_EQUAL_INT(2, resultat.malPlaces); // Vérification du nombre de lettres mal placées
 }
 
-// Test de comparaison de mots une lettre est bien placée et trois lettres sont absentes
+/**
+ * @brief Test de comparaison de mots une lettre est bien placée et trois lettres sont absentes
+ * 
+ */
 void TestComparerMots_UneLettreBienPlacee_TroisLettresAbsentes()
 {
     char mot1[] = "arme"; // Mot à deviner
@@ -107,7 +106,10 @@ void TestComparerMots_UneLettreBienPlacee_TroisLettresAbsentes()
     TEST_ASSERT_EQUAL_INT(0, resultat.malPlaces); // Vérification du nombre de lettres mal placées
 }
 
-// Test de comparaison de mots aucune lettre n'est bien placée, mais les quatre lettres sont présentes
+/**
+ * @brief Test de comparaison de mots aucune lettre n'est bien placée, mais les quatres lettres sont présentes
+ * 
+ */
 void TestComparerMots_AucuneLettreBienPlacee()
 {
     char mot1[] = "tard"; // Mot à deviner
@@ -119,7 +121,10 @@ void TestComparerMots_AucuneLettreBienPlacee()
     TEST_ASSERT_EQUAL_INT(4, resultat.malPlaces); // Vérification du nombre de lettres mal placées
 }
 
-// Test de comparaison de mots trois lettres sont mal placées et une lettre est absente
+/**
+ * @brief Test de comparaison de mots trois lettres sont mal placées et une lettre est absente
+ * 
+ */
 void TestComparerMots_TroisLettresMalPlacees_UneLettreAbsente()
 {
     char mot1[] = "lore"; // Mot à deviner
@@ -131,7 +136,10 @@ void TestComparerMots_TroisLettresMalPlacees_UneLettreAbsente()
     TEST_ASSERT_EQUAL_INT(3, resultat.malPlaces); // Vérification du nombre de lettres mal placées
 }
 
-// Test de comparaison de mots deux lettres sont mal placées et deux lettres sont absentes
+/**
+ * @brief Test de comparaison de mots deux lettres sont mal placées et deux lettres sont absentes
+ * 
+ */
 void TestComparerMots_DeuxLettresMalPlacees_DeuxLettresAbsentes()
 {
     char mot1[] = "arme"; // Mot à deviner
@@ -143,7 +151,10 @@ void TestComparerMots_DeuxLettresMalPlacees_DeuxLettresAbsentes()
     TEST_ASSERT_EQUAL_INT(2, resultat.malPlaces);  // Vérification du nombre de lettres mal placées
 }
 
-// Test de comparaison de mots une lettre est mal placée et trois lettres sont absentes
+/**
+ * @brief Test de comparaison de mots une lettre est mal placée et trois lettres sont absentes
+ * 
+ */
 void TestComparerMots_UneLettreMalPlacee_TroisLettresAbsentes()
 {
     char mot1[] = "arme"; // Mot à deviner
@@ -155,7 +166,10 @@ void TestComparerMots_UneLettreMalPlacee_TroisLettresAbsentes()
     TEST_ASSERT_EQUAL_INT(1, resultat.malPlaces); // Vérification du nombre de lettres mal placées
 }
 
-// Test de comparaisons de mots aucune lettre n'est bien placée et une lettre est absente
+/**
+ * @brief Test de comparaisons de mots aucune lettre n'est bien placée et une lettre est absente
+ * 
+ */
 void TestComparerMots_AucuneLettreBienPlacee_UneLettreAbsente()
 {
     char mot1[] = "arme"; // Mot à deviner
@@ -167,7 +181,10 @@ void TestComparerMots_AucuneLettreBienPlacee_UneLettreAbsente()
     TEST_ASSERT_EQUAL_INT(0, resultat.malPlaces); // Vérification du nombre de lettres mal placées
 }
 
-// Test de comparaisons de mots deux lettres sont absentes et deux lettres sont bien placées
+/**
+ * @brief Test de comparaisons de mots deux lettres sont absentes et deux lettres sont bien placées
+ * 
+ */
 void TestComparerMots_DeuxLettresAbsentes_DeuxLettresBienPlacees()
 {
     char mot1[] = "arme"; // Mot à deviner
@@ -179,7 +196,10 @@ void TestComparerMots_DeuxLettresAbsentes_DeuxLettresBienPlacees()
     TEST_ASSERT_EQUAL_INT(0, resultat.malPlaces); // Vérification du nombre de lettres mal placées
 }
 
-// Test de comparaisons de mots une lettre est absente et trois lettres sont bien placées
+/**
+ * @brief Test de comparaisons de mots une lettre est absente et trois lettres sont bien placées
+ * 
+ */
 void TestComparerMots_UneLettreAbsente_TroisLettresBienPlacees()
 {
     char mot1[] = "arme"; // Mot à deviner
@@ -191,7 +211,10 @@ void TestComparerMots_UneLettreAbsente_TroisLettresBienPlacees()
     TEST_ASSERT_EQUAL_INT(0, resultat.malPlaces); // Vérification du nombre de lettres mal placées
 }
 
-// Test de comparaisons de mots deux lettres sont absentes et deux lettres sont mal placées
+/**
+ * @brief Test de comparaisons de mots deux lettres sont absentes et deux lettres sont mal placées
+ * 
+ */
 void TestComparerMots_DeuxLettresAbsentes_DeuxLettresMalPlacees()
 {
     char mot1[] = "arme"; // Mot à deviner
@@ -203,7 +226,10 @@ void TestComparerMots_DeuxLettresAbsentes_DeuxLettresMalPlacees()
     TEST_ASSERT_EQUAL_INT(2, resultat.malPlaces); // Vérification du nombre de lettres mal placées
 }
 
-// Test de comparaisons de mots une lettre est absente, deux lettres sont mal placées et une lettre est bien placée
+/**
+ * @brief Test de comparaisons de mots une lettre est absente, deux lettres sont mal placées et une lettre est bien placée
+ * 
+ */
 void TestComparerMots_UneLettreAbsente_DeuxLettresMalPlacees_UneLettreBienPlacee()
 {
     char mot1[] = "arme"; // Mot à deviner
@@ -215,7 +241,10 @@ void TestComparerMots_UneLettreAbsente_DeuxLettresMalPlacees_UneLettreBienPlacee
     TEST_ASSERT_EQUAL_INT(2, resultat.malPlaces); // Vérification du nombre de lettres mal placées
 }
 
-// Test de comparaisons de mots quatre lettres sont absentes
+/**
+ * @brief Test de comparaisons de mots quatre lettres sont absentes
+ * 
+ */
 void TestComparerMots_QuatreLettresAbsentes()
 {
     char mot1[] = "arme"; // Mot à deviner
@@ -227,7 +256,10 @@ void TestComparerMots_QuatreLettresAbsentes()
     TEST_ASSERT_EQUAL_INT(0, resultat.malPlaces); // Vérification du nombre de lettres mal placées
 }
 
-// Execute tous les tests de comparaison de mots
+/**
+ * @brief Execute tous les tests de comparaison de mots
+ * 
+ */
 void TestsComparaisonDeMots()
 {
     RUN_TEST(TestComparerMots_Identiques);
