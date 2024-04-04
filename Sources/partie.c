@@ -285,6 +285,7 @@ void afficherMenu(){
             EffacerDictionnaire(dictionnaire); // On libère la mémoire allouée pour le dictionnaire
             EffacerPartie(maPartie); // On libère la mémoire allouée pour la partie
             free(choix); // On libère la mémoire allouée pour le choix
+            free(dico_message); // On libère la mémoire allouée pour le message
             afficherMenu(); // On affiche le menu
         }
         else if(strcmp(choix, "2") == 0){
@@ -301,6 +302,7 @@ void afficherMenu(){
         else if(strcmp(choix, "4") == 0){
             // On quitte le jeu
             free(choix);
+            free(dico_message); // On libère la mémoire allouée pour le message
             TerminerEcran();
             exit(EXIT_SUCCESS);
         }
