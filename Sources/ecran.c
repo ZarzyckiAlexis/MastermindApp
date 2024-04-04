@@ -289,9 +289,14 @@ void AfficherBasDeJeu()
 void ChoisirModeEcran(bool couleur){
     if(couleur == true){
         start_color(); // Initialisation des couleurs
-        init_pair(COULEURS_CONTOUR, COLOR_CYAN, COLOR_BLACK);
-        init_pair(COULEURS_MOT, COLOR_WHITE, COLOR_BLACK);
+        init_pair(COULEURS_CONTOUR, COLOR_CYAN, COLOR_BLACK); // Couleur pour le contour
+        init_pair(COULEURS_MOT, COLOR_WHITE, COLOR_BLACK); // Couleur pour les mots
         init_pair(COULEURS_BIENPLACE, COLOR_GREEN, COLOR_BLACK); // Couleur des lettres bien placées & de la question
         init_pair(COULEURS_MALPLACE, COLOR_RED, COLOR_BLACK); // Couleur des lettres mal placées & des erreurs
+    } else{
+        init_pair(COULEURS_CONTOUR, COLOR_WHITE, COLOR_BLACK); // Couleur pour le contour
+        init_pair(COULEURS_MOT, COLOR_WHITE, COLOR_BLACK); // Couleur pour les mots
+        init_pair(COULEURS_BIENPLACE, COLOR_WHITE, COLOR_BLACK); // Couleur des lettres bien placées & de la question
+        init_pair(COULEURS_MALPLACE, COLOR_WHITE, COLOR_BLACK); // Couleur des lettres mal placées & des erreurs
     }
 }

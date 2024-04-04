@@ -217,8 +217,6 @@ void afficherMenu(){
     struct Dico_Message *dico_message = malloc(sizeof(struct Dico_Message));
     MYSQL *sqlConnection = ConnecterBaseDeDonnees(Is_DB_TEST, dico_message); // Se connecter à la DB
     mysql_close(sqlConnection); // Fermer la connexion à la DB
-    bool modeEcran = false;
-    //ChoisirModeEcran(modeEcran);
     do{
         EffacerEcran(); // On efface l'écran
         AfficherTexteDansCadre("Mastermind"); // On affiche un titre au menu
@@ -238,7 +236,7 @@ void afficherMenu(){
         for(int compteur=0; compteur<NombreDeTabulationAGauche-1; compteur++){
             AfficherTexteIndenteSansRetour(" "); // On affiche un espace
         }
-        if(modeEcran == false){
+        if(useColor == false){
             AfficherTexteSansRetour("3. Activer les couleurs\n"); // On affiche le texte
         } else{
             attron(COLOR_PAIR(COULEURS_BIENPLACE));
@@ -297,8 +295,8 @@ void afficherMenu(){
         else if(strcmp(choix, "3") == 0){
             // On active les couleurs
             free(choix);
-            modeEcran=!modeEcran; // Activer ou désactiver
-            ChoisirModeEcran(modeEcran);
+            useColor=!useColor; // Activer ou désactiver
+            ChoisirModeEcran(useColor);
         }
         else if(strcmp(choix, "4") == 0){
             // On quitte le jeu

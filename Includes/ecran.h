@@ -58,7 +58,7 @@ static const int NombreDeTabulationAGauche = 3;
 /**
  * @brief Permet de choisir si l'ont veut utiliser les couleurs ou non
  * 
- * @param couleur booléen : true pour activer ; impossible de désactiver
+ * @param couleur booléen : true pour activer ; false pour désactiver
  */
 void ChoisirModeEcran(bool couleur);
 

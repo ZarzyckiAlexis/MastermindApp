@@ -26,6 +26,12 @@ struct Partie
 #endif
 
 /**
+ * @brief Variable qui permet de sauvegarder l'état de l'écran (couleur ou non)
+ * 
+ */
+static bool useColor = false;
+
+/**
  * @brief Fonction pour créer une partie
  * 
  * @param dictionnaire Le dictionnaire contenant tous les mots
