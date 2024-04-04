@@ -209,7 +209,11 @@ void AfficherHautDeJeu(char *motAAfficher)
 // Affiche un separateur entre deux mots du jeu
 void AfficherSeparateurDeJeu()
 {
-    AfficherCharSpecialSansRetour('x', 1); // On affiche la barre gauche
+    AfficherCharSpecialSansRetour('t', 1); // On affiche le coin inférieur gauche
+    AfficherCharSpecialSansRetour('q', LENGTH); // On affiche la ligne du bas
+    AfficherCharSpecialSansRetour('n', 1); // On affiche la ligne du bas
+    AfficherCharSpecialSansRetour('q', LENGTH-8); // On affiche la ligne du bas
+    AfficherCharSpecialSansRetour('u', 1); // On affiche le coin inférieur droit
 }
 
 // Affiche un mot du jeu et son resultat
@@ -222,7 +226,7 @@ void AfficherMotDeJeu(char *motAAfficher, int nbreLettresBienplacées, int nbreL
             AfficherTexteIndenteSansRetour(" "); // On affiche les tabulations
     }
     attron(COLOR_PAIR(COULEURS_CONTOUR)); // On active la couleur des contours
-    AfficherSeparateurDeJeu(); // On affiche le séparateur de jeu
+    AfficherCharSpecialSansRetour('x', 1); // On affiche le séparateur
     AfficherCharSansRetour(' ', 2); // On affiche 2 espaces
     attroff(COLOR_PAIR(COULEURS_CONTOUR)); // On désactive la couleur des contours
     attron(COLOR_PAIR(COULEURS_MOT)); // On active la couleur des mots
@@ -233,7 +237,7 @@ void AfficherMotDeJeu(char *motAAfficher, int nbreLettresBienplacées, int nbreL
     attroff(COLOR_PAIR(COULEURS_MOT)); // On désactive la couleur des mots
     AfficherCharSansRetour(' ', 1); // On affiche 1 espace
     attron(COLOR_PAIR(COULEURS_CONTOUR)); // On active la couleur des contours
-    AfficherSeparateurDeJeu(); // On affiche le séparateur de jeu
+    AfficherCharSpecialSansRetour('x', 1); // On affiche le séparateur
     attroff(COLOR_PAIR(COULEURS_CONTOUR)); // On désactive la couleur des contours
     AfficherCharSansRetour(' ', 1); // On affiche 1 espace
     int space = LENGTH-9; // On initialise la variable space à 10
@@ -251,16 +255,12 @@ void AfficherMotDeJeu(char *motAAfficher, int nbreLettresBienplacées, int nbreL
     }    
     attron(COLOR_PAIR(COULEURS_CONTOUR)); // On active la couleur des contours
     AfficherCharSansRetour(' ', space); // On affiche 1 espace
-    AfficherSeparateurDeJeu(); // On affiche le séparateur de jeu
+    AfficherCharSpecialSansRetour('x', 1); // On affiche le séparateur
     RetourALaLigne(); // On fait un retour à la ligne
     for(int compteur=0; compteur<NombreDeTabulationAGauche; compteur++){
         AfficherTexteIndenteSansRetour(" "); // On affiche les tabulations
     }
-    AfficherCharSpecialSansRetour('t', 1); // On affiche le coin inférieur gauche
-    AfficherCharSpecialSansRetour('q', LENGTH); // On affiche la ligne du bas
-    AfficherCharSpecialSansRetour('n', 1); // On affiche la ligne du bas
-    AfficherCharSpecialSansRetour('q', LENGTH-8); // On affiche la ligne du bas
-    AfficherCharSpecialSansRetour('u', 1); // On affiche le coin inférieur droit
+    AfficherSeparateurDeJeu();
     RetourALaLigne(); // On fait un retour à la ligne
     attroff(COLOR_PAIR(COULEURS_CONTOUR)); // On désactive la couleur des contours
     refresh();
