@@ -1,5 +1,6 @@
 #include "../Includes/common.h"
 #include "../Includes/ecran.h"
+#include "../Includes/partie.h" // Pour afficher mon menu personnalisé
 
 // ***************************************//
 // FONCTIONS DECLAREES DANS LE FICHIER .h //
@@ -283,4 +284,14 @@ void AfficherBasDeJeu()
     AfficherCharSpecialSansRetour('j', 1); // On affiche le coin inférieur droit
     RetourALaLigne(); // On fait un retour à la ligne
     attroff(COLOR_PAIR(COULEURS_CONTOUR)); // On désactive la couleur des contours
+}
+
+void ChoisirModeEcran(bool couleur){
+    if(couleur == true){
+        start_color(); // Initialisation des couleurs
+        init_pair(COULEURS_CONTOUR, COLOR_CYAN, COLOR_BLACK);
+        init_pair(COULEURS_MOT, COLOR_WHITE, COLOR_BLACK);
+        init_pair(COULEURS_BIENPLACE, COLOR_GREEN, COLOR_BLACK); // Couleur des lettres bien placées & de la question
+        init_pair(COULEURS_MALPLACE, COLOR_RED, COLOR_BLACK); // Couleur des lettres mal placées & des erreurs
+    }
 }

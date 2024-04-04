@@ -55,7 +55,12 @@ static const int NombreDeTabulationAGauche = 3;
 #define LENGTH 15 // Longeur dynamique
 
 // Déclaration des fonctions du module
-//void ChoisirModeEcran(bool couleur);
+/**
+ * @brief Permet de choisir si l'ont veut utiliser les couleurs ou non
+ * 
+ * @param couleur booléen : true pour activer ; impossible de désactiver
+ */
+void ChoisirModeEcran(bool couleur);
 
 /**
  * @brief Fonction qui permet d'intialiser l'écran

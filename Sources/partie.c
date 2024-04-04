@@ -217,6 +217,8 @@ void afficherMenu(){
     struct Dico_Message *dico_message = malloc(sizeof(struct Dico_Message));
     MYSQL *sqlConnection = ConnecterBaseDeDonnees(Is_DB_TEST, dico_message); // Se connecter à la DB
     mysql_close(sqlConnection); // Fermer la connexion à la DB
+    bool modeEcran = false;
+    //ChoisirModeEcran(modeEcran);
     do{
         EffacerEcran(); // On efface l'écran
         AfficherTexteDansCadre("Mastermind"); // On affiche un titre au menu
@@ -233,11 +235,21 @@ void afficherMenu(){
         }
         AfficherTexteSansRetour("2. Meilleurs scores\n"); // On affiche le texte
         attroff(COLOR_PAIR(COULEURS_CONTOUR)); 
-        attron(COLOR_PAIR(COULEURS_MALPLACE));
         for(int compteur=0; compteur<NombreDeTabulationAGauche-1; compteur++){
             AfficherTexteIndenteSansRetour(" "); // On affiche un espace
         }
-        AfficherTexteSansRetour("3. Quitter\n"); // On affiche le texte
+        if(modeEcran == false){
+            AfficherTexteSansRetour("3. Activer les couleurs\n"); // On affiche le texte
+        } else{
+            attron(COLOR_PAIR(COULEURS_BIENPLACE));
+            AfficherTexteSansRetour("3. Désactiver les couleurs\n"); // On affiche le texte
+            attroff(COLOR_PAIR(COULEURS_BIENPLACE));
+        }
+        for(int compteur=0; compteur<NombreDeTabulationAGauche-1; compteur++){
+            AfficherTexteIndenteSansRetour(" "); // On affiche un espace
+        }
+        attron(COLOR_PAIR(COULEURS_MALPLACE));
+        AfficherTexteSansRetour("4. Quitter\n"); // On affiche le texte
         attroff(COLOR_PAIR(COULEURS_MALPLACE));
         attron(COLOR_PAIR(COULEURS_QUESTION));
         AfficherTexteSansRetour(" Votre choix: "); // On affiche le texte
@@ -283,10 +295,16 @@ void afficherMenu(){
             AfficherMeilleursScores();
         }
         else if(strcmp(choix, "3") == 0){
+            // On active les couleurs
+            free(choix);
+            modeEcran=!modeEcran; // Activer ou désactiver
+            ChoisirModeEcran(modeEcran);
+        }
+        else if(strcmp(choix, "4") == 0){
             // On quitte le jeu
             free(choix);
             TerminerEcran();
             exit(EXIT_SUCCESS);
         }
-    } while (strcmp(choix, "1") != 0 && strcmp(choix, "2") != 0 && strcmp(choix, "3") != 0);
+    } while (strcmp(choix, "1") != 0 && strcmp(choix, "2") != 0 && strcmp(choix, "3") != 0 && strcmp(choix, "4") != 0);
 }
