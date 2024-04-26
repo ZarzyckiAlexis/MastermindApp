@@ -94,7 +94,8 @@ bool JouerPartie(struct Partie *partieEnCours)
         attron(COLOR_PAIR(COULEURS_QUESTION)); // On met la couleur des questions
         AfficherTexteSansRetour(" Entrez un mot de 4 lettres ou ENTER pour abandonner: ");
         attroff(COLOR_PAIR(COULEURS_QUESTION)); // On enlève la couleur des questions
-        char *answer = LireTexte();
+        char *answer;
+        answer = LireTexte();
 
         if(strcmp(answer, "*") == 0) {
             modeDebug = !modeDebug; // Activer/Désactiver debug mode
