@@ -42,10 +42,10 @@ MYSQL *ConnecterBaseDeDonnees(bool baseDeTest, struct Dico_Message *messageDeRet
     sqlConnection = mysql_init(NULL); // Initialisation de la structure de connexion MYSQL
     if(baseDeTest == false){ // Si c'est la base de donnees de production
         // Connexion a la base de donnees
-        if (mysql_real_connect(sqlConnection, "localhost", "root", "", PROD_DB_NAME, 0, NULL, 0) == NULL)
+        if (mysql_real_connect(sqlConnection, "127.0.0.1", "root", "", PROD_DB_NAME, 0, NULL, 0) == NULL)
         {
             // Creation de la base de données si elle n'existe pas
-            if (mysql_real_connect(sqlConnection, "localhost", "root", "", "", 0, NULL, 0) == NULL)
+            if (mysql_real_connect(sqlConnection, "127.0.0.1", "root", "", "", 0, NULL, 0) == NULL)
             {
                 messageDeRetour->codeErreur = 10; // Code d'erreur
                 strcpy(messageDeRetour->message, "Erreur lors de la connexion a la base de donnees"); // Message d'erreur
@@ -67,10 +67,10 @@ MYSQL *ConnecterBaseDeDonnees(bool baseDeTest, struct Dico_Message *messageDeRet
     else if(baseDeTest==true){ // Si c'est la base de donnees pour les tests
 
         // Connexion a la base de donnees pour les tests
-        if (mysql_real_connect(sqlConnection, "localhost", "root", "", TEST_DB_NAME, 0, NULL, 0) == NULL)
+        if (mysql_real_connect(sqlConnection, "127.0.0.1", "root", "", TEST_DB_NAME, 0, NULL, 0) == NULL)
         {
             // Creation de la base de données si elle n'existe pas
-            if (mysql_real_connect(sqlConnection, "localhost", "root", "", "", 0, NULL, 0) == NULL)
+            if (mysql_real_connect(sqlConnection, "127.0.0.1", "root", "", "", 0, NULL, 0) == NULL)
             {
                 messageDeRetour->codeErreur = 11; // Code d'erreur
                 strcpy(messageDeRetour->message, "Erreur lors de la connexion a la base de donnees"); // Message d'erreur
