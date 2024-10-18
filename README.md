@@ -1,6 +1,6 @@
 # Projet Mastermind
 
-Ce projet est une implémentation du jeu **Mastermind** en ligne de commande, développé dans le cadre de la première année du Bachelier en Informatique de Gestion à la HELHa.
+Ce projet est une implémentation du jeu **Mastermind** en C, développé dans le cadre de la première année du Bachelier en Informatique de Gestion à la HELHa de Montignies-Sur-Sambre.
 
 ## Objectifs du projet
 
@@ -55,23 +55,6 @@ Le projet utilise une petite base de données avec deux tables principales :
 
 - [Valgrind](https://valgrind.org/) pour la détection des fuites de mémoire.
 - [Doxygen](https://www.doxygen.nl/) pour la génération automatique de documentation à partir du code.
-
-## Installation et exécution
-
-1. Cloner le dépôt :
-    ```bash
-    git clone https://github.com/username/mastermind.git
-    ```
-
-2. Compiler le projet :
-    ```bash
-    make
-    ```
-
-3. Lancer l'application :
-    ```bash
-    ./mastermind
-    ```
 
 ## Crédits
 
